@@ -1,65 +1,77 @@
-**Title: Pharmacy Shop Management Application Proposal**
+Pharmacy Shop Management Application Proposal
 
-**Group Members:**
-- [Your Name]
-- [Member 2 Name]
-- [Member 3 Name]
+Group Members:
+- Chandimal - TG/2020/674
+- Lakindu   - TG/2020/707
+- Rashini   - TG/2020/694
+- Madhusha  - TG/2020/704
+- Ganidu    - TG/2020/706
+- Danuki    - TG/2020/684
+- Asama     - TG/2020/676
+- Tirasha   - TG/2020/747
 
-**Proposed Project Description:**
-We propose to design and develop a comprehensive Pharmacy Shop Management Application that will streamline the operations of a pharmacy, ensuring efficient staff management, customer engagement, medicine inventory control, accurate financial tracking, and robust reporting capabilities. The application will be user-friendly and accessible, targeting both small and large pharmacies.
 
-**Aim and Objectives:**
+Description:
+We propose to design and develop a comprehensive Pharmacy Shop Management Application that will streamline the operations of a pharmacy, ensuring efficient staff management, customer engagement, medicine inventory control, accurate financial tracking,formal Communication facilities (email), remort medicine dristibution, and robust reporting capabilities. The application will be user-friendly and accessible,targeting both small and large pharmacies.
+
+Aim and Objectives:
 The aim of this project is to create a user-friendly and efficient Pharmacy Shop Management Application that enhances the overall workflow of pharmacy operations. The specific objectives include:
 
-1. **Managing Staff Information:** Develop a module that allows easy management of staff details, including personal information, roles, shifts, and schedules.
+1. Managing Staff Information: Develop a module that allows easy management of staff details, including personal information, roles, shifts, and schedules.
 
-2. **Managing Customers:** Design a customer management module that facilitates customer registration, order history, and communication.
+2. Managing Customers: Design a customer management module that facilitates customer registration, order history, and communication.
 
-3. **Managing Medicine:** Create a module for managing medicine inventory, tracking stock levels, expiry dates, and facilitating reordering alerts.
+3. Managing Medicine: Create a module for managing medicine inventory, tracking stock levels, expiry dates, and facilitating reordering alerts.
 
-4. **Managing Financials:** Develop an accounting and invoicing module for accurate tracking of sales, expenses, and generating invoices for customers.
+4. Managing Financials: Develop an accounting and invoicing module for accurate tracking of sales, expenses, and generating invoices for customers.
 
-5. **Reporting:** Design a reporting module that provides insights into sales trends, inventory turnover, profit margins, and other key performance indicators.
+5. Reporting: Design a reporting module that provides insights into sales trends, inventory turnover, profit margins, and other key performance indicators.
 
-**Plan of Work:**
+6. Formal Communication: Develop a module that it possible to communicate with customers & suppliers.
 
-1. **Project Planning (Week 1-2):**
+7. Remote Medicine Distribution - Design a medicine distribution module that provides accurate & time effective service to customers. 
+
+Plan of Work:
+
+1. Project Planning (Week 1):
    - Define project scope, objectives, and requirements.
    - Allocate roles and responsibilities among team members.
    - Set up communication channels for effective collaboration.
 
-2. **UI/UX Design (Week 3-4):**
+2. UI/UX Design (Week 2):
    - Create wireframes and mockups for the application's user interface.
    - Gather feedback and refine the design for optimal user experience.
 
-3. **Database Design (Week 5-6):**
+3. Database Design (Week 3):**
    - Design the database schema to store staff, customer, medicine, and financial data.
    - Ensure data integrity and scalability.
 
-4. **Front-end Development (Week 7-10):**
-   - Develop the user interfaces for various modules using modern web technologies.
-   - Implement responsive design for seamless usage on different devices.
+4. Front-end Development (Week 4):
+   - Develop the user interfaces for various modules using modern JavaFX technologies.
+   - Implement responsive design.
 
-5. **Back-end Development (Week 11-14):**
+5. Back-end Development (Week 5):
    - Build the application's core logic and functionality.
    - Integrate the front-end with the database and back-end services.
 
-6. **Testing and Quality Assurance (Week 15-16):**
+6. Testing and Quality Assurance (Week 6):
    - Conduct thorough testing to identify and fix any bugs or issues.
    - Ensure data security and system stability.
 
-7. **Documentation (Week 17-18):**
+7.   Documentation (Week 6):
    - Create comprehensive documentation for user guides, installation, and maintenance.
 
-8. **Deployment and Training (Week 19-20):**
-   - Deploy the application on a hosting platform or server.
+8. Deployment and Training (Week 7):
+   - Deploy the application on a hosting platform or client computer.
    - Provide training to pharmacy staff for effective system usage.
 
-9. **Finalization and Presentation (Week 21-22):**
+9. Finalization and Presentation (Week 8):
    - Conduct a final review of the application to ensure all requirements are met.
    - Prepare a presentation showcasing the application's features and functionality.
 
-**References (if any):**
-- [List of references used for research or inspiration]
+References:
+- https://openjfx.io - JavaFX Documantation
+- https://docs.oracle.com/en/java/ Java Documantation
+- 
 
 This proposed Pharmacy Shop Management Application aims to revolutionize the way pharmacies manage their operations, ensuring accuracy, efficiency, and enhanced customer service. Our team is dedicated to delivering a high-quality and user-friendly solution that addresses the specific needs of pharmacy management.
