@@ -27,7 +27,7 @@ The aim of this project is to create a user-friendly and efficient Pharmacy Shop
 
 5. Reporting: Design a reporting module that provides insights into sales trends, inventory turnover, profit margins, and other key performance indicators.
 
-6. Formal Communication: Develop a module that it possible to communicate with customers & suppliers.
+6. Formal Communication: Develop a module it possible to communicate with customers & suppliers.
 
 7. Remote Medicine Distribution - Design a medicine distribution module that provides accurate & time effective service to customers. 
 
