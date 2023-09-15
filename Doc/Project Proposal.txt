@@ -14,7 +14,13 @@ Group Members:
 Description:
 We propose to design and develop a comprehensive Pharmacy Shop Management Application that will streamline the operations of a pharmacy, ensuring efficient staff management, customer engagement, medicine inventory control, accurate financial tracking,formal Communication facilities (email), remort medicine dristibution, and robust reporting capabilities. The application will be user-friendly and accessible,targeting both small and large pharmacies.
 
-Aim and Objectives:
+1. Problem Specification:
+
+Problem Statement:
+Many small and medium-sized pharmacies struggle to efficiently manage their operations due to manual processes, leading to errors in inventory, customer management, and financial tracking.
+Lack of a centralized system for staff information, customer data, and medicine inventory management leads to inefficiencies and potential revenue loss.
+
+2. Aim and Objectives:
 The aim of this project is to create a user-friendly and efficient Pharmacy Shop Management Application that enhances the overall workflow of pharmacy operations. The specific objectives include:
 
 1. Managing Staff Information: Develop a module that allows easy management of staff details, including personal information, roles, shifts, and schedules.
@@ -30,6 +36,34 @@ The aim of this project is to create a user-friendly and efficient Pharmacy Shop
 6. Formal Communication: Develop a module it possible to communicate with customers & suppliers.
 
 7. Remote Medicine Distribution - Design a medicine distribution module that provides accurate & time effective service to customers. 
+
+3. Proposed Solution:
+
+Software Description:
+Develop a  application software using modern technologies like JavaFX for the front end and Java for the back end.
+Utilize a secure database system (e.g., MySQL) to store and manage data.
+Implement role-based access control to ensure data security.
+Modules: Staff Management, Customer Management, Medicine Inventory, Financial Accounting, Invoicing, Reporting, Formal Communication, Remote Medicine Distribution.
+
+4. Key Benefits to Stakeholders:
+
+Pharmacy Owners:
+
+Streamlined operations lead to cost savings and increased revenue.
+Enhanced customer service and loyalty.
+Better financial management and compliance.
+
+Pharmacy Staff:
+
+Simplified workflows and reduced manual paperwork.
+Access to real-time data for better decision-making.
+Reduced workload and increased efficiency.
+
+Customers:
+
+Faster service and accurate information.
+Improved prescription management.
+Enhanced overall experience.
 
 Plan of Work:
 
@@ -72,6 +106,7 @@ Plan of Work:
 References:
 - https://openjfx.io - JavaFX Documantation
 - https://docs.oracle.com/en/java/ Java Documantation
+- https://dev.mysql.com/doc/
 - 
 
 This proposed Pharmacy Shop Management Application aims to revolutionize the way pharmacies manage their operations, ensuring accuracy, efficiency, and enhanced customer service. Our team is dedicated to delivering a high-quality and user-friendly solution that addresses the specific needs of pharmacy management.
