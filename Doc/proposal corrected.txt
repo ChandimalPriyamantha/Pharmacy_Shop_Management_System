@@ -1,0 +1,148 @@
+
+1. Detailed Problem Description
+
+We propose to design and build a thorough pharmacy shop management application that will streamline business processes and ensure effective staff management, customer engagement, medication inventory control, precise financial tracking, formal communication facilities (email), remote medication distribution, and strong reporting capabilities. The app will target both small and large pharmacies and be user-friendly and accessible.
+
+
+Problem Proposition:
+
+Due to manual processes, many small- and medium-sized pharmacies find it difficult to operate their business effectively, which causes mistakes in the management of inventory, customers, and finances.
+
+Inefficiencies and significant revenue losses result from the lack of a centralised system for managing the inventory of medicines, customer information, and employee data.
+
+
+
+2. Goals and Objectives: The project's goal is to provide a user-friendly, effective Pharmacy Shop Management Application that improves the workflow of pharmacy operations as a whole. The precise goals consist of:
+
+1. Managing personnel Information: Create a module that makes it simple to handle personnel details such identities, responsibilities, and schedules.
+
+2. Managing Customers: Create a customer management module that simplifies order history, communication, and customer registration.
+
+3. Managing Medicine: Develop a module to check stock levels, expiration dates, and enable reordering alerts for medicines.
+
+4. Managing Financials: Create a module for accounting and invoicing so that revenues, expenses, and client bills can all be tracked accurately.
+
+5. Reporting: Create a reporting module that offers details on sales patterns, inventory turnover, profit margins, and other important performance metrics.
+
+6. Formal Communication: Create a module that enables communication with clients and vendors.
+
+7. Remote pharmaceutical Distribution: Create a pharmaceutical distribution module that offers consumers precise and efficient service.
+
+
+3. proposed solution
+
+software explanation
+
+Create application software by utilising cutting-edge frameworks like JavaFX and Java on the back end.
+Use a safe database management system, like MySQL, to manage and store data.
+For data security, use role-based access control.
+Staff management, client management, drug inventory, financial accounting, billing, reporting, formal communication, and remote drug distribution are among the modules.
+
+
+
+
+4. Important Gains for Stakeholders:
+
+Pharmacy Owners:
+Operations that are more efficiently run save money and generate more money.
+improved client loyalty and service.
+better compliance and financial management.
+
+Pharmacy Staff:
+streamlined processes and less manual paperwork.
+Real-time data access for improved decision-making.
+a lighter workload and greater effectiveness.
+
+Customers:
+better information and quicker service.
+improved handling of prescriptions.
+an improved overall experience.
+
+Plan of project:
+
+1.Planning the project (Week 1):
+
+   - Specify the project's goals, objectives, and needs.
+
+   - Divide up team members' roles and tasks.
+
+   - Create lines of communication to facilitate productive teamwork.
+
+
+
+2.Designing UI/UX (Week 2):
+
+   - Produce mockups and wireframes for the user interface of the programme.
+
+   - Collect suggestions and improve the design for the best user experience.
+
+
+
+3. Database design(Week 3):
+
+   - Create a database schema to contain information about the personnel, customers, medications, and finances.
+
+   - Ensure scalability and data integrity.
+
+
+
+4.Development on the front end (Week 4):
+
+   - Create user interfaces for different modules utilising cutting-edge JavaFX technologies.
+
+   Develop a responsive design strategy.
+
+
+
+5.Development on the back end (Week 5):
+
+   - Create the essential logic and features of the programme.
+
+   - Connect the front end to the back end services and database.
+
+
+6. Quality assurance and testing (Week 6):
+   - Carry out exhaustive testing to find and address any flaws or problems.
+   - Ensure system stability and data security.
+
+
+
+7.Documentation (Week 6):
+
+   - Produce thorough documentation for installation, upkeep, and user instructions.
+
+
+
+8.Deployment and Training(Week 7):
+
+   - Install the application on a client machine or hosting platform.
+
+   - Teach pharmacy personnel how to use the system efficiently.
+
+
+
+9.Finalisation and Presentation(Week 9):
+
+   - Check the application one last time to make sure all requirements have been completed.
+
+   - Create a presentation that highlights the features and functionality of the programme.
+
+References:
+- https://openjfx.io - JavaFX Documantation
+- https://docs.oracle.com/en/java/ Java Documantation
+- https://dev.mysql.com/doc/
+
+Group Members:
+- Chandimal - TG/2020/674
+- Lakindu   - TG/2020/707
+- Rashini   - TG/2020/694
+- Madhusha  - TG/2020/704
+- Ganidu    - TG/2020/706
+- Danuki    - TG/2020/684
+- Asama     - TG/2020/676
+- Tirasha   - TG/2020/747
+
+
+
+
+
