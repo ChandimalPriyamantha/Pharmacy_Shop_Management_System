@@ -1,22 +1,25 @@
-<mxfile host="app.diagrams.net" modified="2023-09-29T03:22:08.124Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36" etag="8GfX3ypoE3ptI8EArt1W" version="22.0.0" type="device">
+<mxfile host="app.diagrams.net" modified="2023-09-29T03:20:48.058Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36" etag="FNDskfUKncHV8wpmbV5M" version="22.0.0" type="device">
   <diagram name="Page-1" id="2YBvvXClWsGukQMizWep">
-    <mxGraphModel dx="765" dy="397" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="880" dy="456" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="aM9ryv3xv72pqoxQDRHE-1" value=":User" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
-          <mxGeometry x="40" y="40" width="100" height="680" as="geometry" />
+          <mxGeometry x="40" y="40" width="100" height="690" as="geometry" />
         </mxCell>
         <mxCell id="aM9ryv3xv72pqoxQDRHE-2" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="aM9ryv3xv72pqoxQDRHE-1" vertex="1">
           <mxGeometry x="45" y="70" width="10" height="140" as="geometry" />
         </mxCell>
+        <mxCell id="uyghOkKBtB4ZRYNY3Dqb-1" value="" style="shape=umlDestroy;whiteSpace=wrap;html=1;strokeWidth=1;targetShapes=umlLifeline;" vertex="1" parent="aM9ryv3xv72pqoxQDRHE-1">
+          <mxGeometry x="35" y="674" width="30" height="30" as="geometry" />
+        </mxCell>
         <mxCell id="aM9ryv3xv72pqoxQDRHE-5" value=":System" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
-          <mxGeometry x="220" y="40" width="100" height="680" as="geometry" />
+          <mxGeometry x="220" y="40" width="100" height="690" as="geometry" />
         </mxCell>
         <mxCell id="aM9ryv3xv72pqoxQDRHE-6" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="aM9ryv3xv72pqoxQDRHE-5" vertex="1">
           <mxGeometry x="45" y="70" width="10" height="130" as="geometry" />
         </mxCell>
-        <mxCell id="aM9ryv3xv72pqoxQDRHE-7" value="Request add remote order" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=horizontal;curved=0;rounded=0;" parent="1" source="aM9ryv3xv72pqoxQDRHE-2" target="aM9ryv3xv72pqoxQDRHE-6" edge="1">
+        <mxCell id="aM9ryv3xv72pqoxQDRHE-7" value="Request add medicine" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=horizontal;curved=0;rounded=0;" parent="1" source="aM9ryv3xv72pqoxQDRHE-2" target="aM9ryv3xv72pqoxQDRHE-6" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="195" y="130" as="sourcePoint" />
             <Array as="points">
@@ -25,12 +28,12 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="xENhY5tNj3Xzj7cGjBOY-2" value=":Database" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
-          <mxGeometry x="400" y="40" width="100" height="680" as="geometry" />
+          <mxGeometry x="400" y="40" width="100" height="690" as="geometry" />
         </mxCell>
         <mxCell id="xENhY5tNj3Xzj7cGjBOY-3" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="xENhY5tNj3Xzj7cGjBOY-2" vertex="1">
           <mxGeometry x="45" y="164" width="10" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="xENhY5tNj3Xzj7cGjBOY-4" value="Return add remote order" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" parent="1" edge="1">
+        <mxCell id="xENhY5tNj3Xzj7cGjBOY-4" value="Return add medicine" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" parent="1" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="95" y="144" as="targetPoint" />
             <Array as="points">
@@ -76,7 +79,7 @@
         <mxCell id="xENhY5tNj3Xzj7cGjBOY-10" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
           <mxGeometry x="265" y="266" width="10" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="xENhY5tNj3Xzj7cGjBOY-11" value="Request&amp;nbsp; update remote order" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" parent="1" edge="1">
+        <mxCell id="xENhY5tNj3Xzj7cGjBOY-11" value="Request&amp;nbsp; update medicine" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" parent="1" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="95" y="275" as="sourcePoint" />
             <Array as="points">
@@ -88,7 +91,7 @@
         <mxCell id="xENhY5tNj3Xzj7cGjBOY-12" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
           <mxGeometry x="445" y="280" width="10" height="230" as="geometry" />
         </mxCell>
-        <mxCell id="xENhY5tNj3Xzj7cGjBOY-13" value="Return update remote order form" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" parent="1" edge="1">
+        <mxCell id="xENhY5tNj3Xzj7cGjBOY-13" value="Return update medicine form" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;edgeStyle=elbowEdgeStyle;elbow=horizontal;curved=0;rounded=0;" parent="1" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="95" y="357" as="targetPoint" />
             <Array as="points">
@@ -145,7 +148,7 @@
         <mxCell id="KE-mL2BSJ963tJkiToLp-2" value="Insert data" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="474" y="218" width="80" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="KE-mL2BSJ963tJkiToLp-3" value="Request remote orders" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" parent="1" edge="1">
+        <mxCell id="KE-mL2BSJ963tJkiToLp-3" value="Request medicine" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" parent="1" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="275" y="289" as="sourcePoint" />
             <Array as="points">
@@ -154,7 +157,7 @@
             <mxPoint x="445" y="289" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="KE-mL2BSJ963tJkiToLp-4" value="Send remote orders list" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" parent="1" target="xENhY5tNj3Xzj7cGjBOY-9" edge="1">
+        <mxCell id="KE-mL2BSJ963tJkiToLp-4" value="Send medicine list" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" parent="1" target="xENhY5tNj3Xzj7cGjBOY-9" edge="1">
           <mxGeometry x="-0.5143" relative="1" as="geometry">
             <mxPoint x="275" y="311" as="targetPoint" />
             <Array as="points">
@@ -167,7 +170,7 @@
         <mxCell id="KE-mL2BSJ963tJkiToLp-5" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
           <mxGeometry x="265" y="320" width="10" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="KE-mL2BSJ963tJkiToLp-6" value="Request patricular order" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" parent="1" edge="1">
+        <mxCell id="KE-mL2BSJ963tJkiToLp-6" value="Request patricular medicine" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" parent="1" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="95" y="333" as="sourcePoint" />
             <Array as="points">
@@ -176,7 +179,7 @@
             <mxPoint x="265" y="333" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="KE-mL2BSJ963tJkiToLp-7" value="Request patricular order details&amp;nbsp;" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" parent="1" edge="1">
+        <mxCell id="KE-mL2BSJ963tJkiToLp-7" value="Request patricular medicine details&amp;nbsp;" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" parent="1" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="275" y="339" as="sourcePoint" />
             <Array as="points">
@@ -185,7 +188,7 @@
             <mxPoint x="445" y="339" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="KE-mL2BSJ963tJkiToLp-8" value="Send patricular order details&amp;nbsp;" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;edgeStyle=elbowEdgeStyle;elbow=horizontal;curved=0;rounded=0;" parent="1" edge="1">
+        <mxCell id="KE-mL2BSJ963tJkiToLp-8" value="Send patricular medicine details&amp;nbsp;" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;edgeStyle=elbowEdgeStyle;elbow=horizontal;curved=0;rounded=0;" parent="1" edge="1">
           <mxGeometry x="-0.5143" y="1" relative="1" as="geometry">
             <mxPoint x="95" y="379" as="targetPoint" />
             <Array as="points">
@@ -214,7 +217,7 @@
         <mxCell id="KE-mL2BSJ963tJkiToLp-12" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
           <mxGeometry x="265" y="526" width="10" height="34" as="geometry" />
         </mxCell>
-        <mxCell id="KE-mL2BSJ963tJkiToLp-13" value="Request&amp;nbsp; delete remote order" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" parent="1" edge="1">
+        <mxCell id="KE-mL2BSJ963tJkiToLp-13" value="Request&amp;nbsp; delete medicine" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" parent="1" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="95" y="535" as="sourcePoint" />
             <Array as="points">
@@ -226,7 +229,7 @@
         <mxCell id="KE-mL2BSJ963tJkiToLp-14" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
           <mxGeometry x="445" y="540" width="10" height="110" as="geometry" />
         </mxCell>
-        <mxCell id="KE-mL2BSJ963tJkiToLp-21" value="Request remote orders" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" parent="1" edge="1">
+        <mxCell id="KE-mL2BSJ963tJkiToLp-21" value="Request medicine list" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" parent="1" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="275" y="549" as="sourcePoint" />
             <Array as="points">
@@ -235,7 +238,7 @@
             <mxPoint x="445" y="549" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="KE-mL2BSJ963tJkiToLp-22" value="Send remote orders list" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" parent="1" target="KE-mL2BSJ963tJkiToLp-11" edge="1">
+        <mxCell id="KE-mL2BSJ963tJkiToLp-22" value="Send medicine list" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" parent="1" target="KE-mL2BSJ963tJkiToLp-11" edge="1">
           <mxGeometry x="-0.5143" relative="1" as="geometry">
             <mxPoint x="275" y="571" as="targetPoint" />
             <Array as="points">
@@ -248,7 +251,7 @@
         <mxCell id="KE-mL2BSJ963tJkiToLp-23" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
           <mxGeometry x="265" y="580" width="10" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="KE-mL2BSJ963tJkiToLp-24" value="Select an order" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" parent="1" edge="1">
+        <mxCell id="KE-mL2BSJ963tJkiToLp-24" value="Select an medicine" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" parent="1" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="95" y="593" as="sourcePoint" />
             <Array as="points">
@@ -257,7 +260,7 @@
             <mxPoint x="265" y="593" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="KE-mL2BSJ963tJkiToLp-25" value="Delete patricular order" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" parent="1" edge="1">
+        <mxCell id="KE-mL2BSJ963tJkiToLp-25" value="Delete patricular medicine" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" parent="1" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="275" y="602" as="sourcePoint" />
             <Array as="points">
@@ -309,14 +312,11 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="D63dTky_6eCF_mkXM9KE-1" value="" style="shape=umlDestroy;whiteSpace=wrap;html=1;strokeWidth=1;targetShapes=umlLifeline;" vertex="1" parent="1">
-          <mxGeometry x="75" y="706" width="30" height="30" as="geometry" />
+        <mxCell id="uyghOkKBtB4ZRYNY3Dqb-2" value="" style="shape=umlDestroy;whiteSpace=wrap;html=1;strokeWidth=1;targetShapes=umlLifeline;" vertex="1" parent="1">
+          <mxGeometry x="255" y="714" width="30" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="D63dTky_6eCF_mkXM9KE-2" value="" style="shape=umlDestroy;whiteSpace=wrap;html=1;strokeWidth=1;targetShapes=umlLifeline;" vertex="1" parent="1">
-          <mxGeometry x="255" y="706" width="30" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="D63dTky_6eCF_mkXM9KE-3" value="" style="shape=umlDestroy;whiteSpace=wrap;html=1;strokeWidth=1;targetShapes=umlLifeline;" vertex="1" parent="1">
-          <mxGeometry x="435" y="706" width="30" height="30" as="geometry" />
+        <mxCell id="uyghOkKBtB4ZRYNY3Dqb-3" value="" style="shape=umlDestroy;whiteSpace=wrap;html=1;strokeWidth=1;targetShapes=umlLifeline;" vertex="1" parent="1">
+          <mxGeometry x="435" y="714" width="30" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
