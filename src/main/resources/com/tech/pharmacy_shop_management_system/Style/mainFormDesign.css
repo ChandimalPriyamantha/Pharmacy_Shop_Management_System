@@ -1,28 +1,36 @@
 .header{
 
-    -fx-background-color:linear-gradient(to bottom right, #0a3d37, #0a3d37);
+    -fx-background-color:linear-gradient(to bottom right, #0d0e0e, #020202);
 
     -fx-border-width: 0 0 .8px 0;
 }
 
 .nav-form{
 
-    -fx-background-color: linear-gradient(to bottom right, #1C8274, #1C8274);
+    -fx-background-color: linear-gradient(to bottom right, #2F2E5E, #2F2E5E);
 }
 .nav-btn{
 
+
     -fx-background-color:  transparent;
-    -fx-border-color: #fff;
-    -fx-border-width: .4px;
+    -fx-border-color: #ffffff;
+    -fx-border-width: 1 1 1 1px;
     -fx-cursor: hand;
     -fx-text-fill: #fff;
     -fx-font-size: 14px;
+    -fx-border-radius: 8px;
 }
 
 .nav-btn:hover{
 
-    -fx-background-color: #a4a4a4;
+    -fx-background-color: #ffff;
+    -fx-border-color: #ffffff;
+    -fx-border-width: 1 1 1 1px;
+    -fx-cursor: hand;
     -fx-text-fill: #101010;
+    -fx-font-size: 14px;
+    -fx-border-radius: 8px;
+
 }
 
 .logout{
@@ -48,6 +56,12 @@
     -fx-background-color: #fff;
 }
 
+.main-bg{
+
+
+    -fx-background-color: #D9D9D9;
+}
+
 .radius{
 
    -fx-background-radius: 8px;
@@ -62,14 +76,14 @@
 
     -fx-background-color: trasparent;
     -fx-padding: 0;
-    -fx-border-color: linear-gradient(to bottom right,#106abf,#106abf);
+    -fx-border-color: linear-gradient(to bottom right, #101010, #bb0d28);
     -fx-border-radius: 5px;
     -fx-border-width: 1.5px;
 }
 
 .table-view . column-header-background{
 
-    -fx-background-color: linear-gradient(to bottom right,#106abf,#106abf);
+    -fx-background-color: linear-gradient(to bottom right, #101010, #bb0939);
     -fx-background-radius: 5px 5px 0 0;
     -fx-background-insets: 0 0 0 0;
 }
@@ -145,4 +159,16 @@
 .ComBtn:hover{
 
     -fx-background-color: linear-gradient(to bottom right, #0f6789, #399a8f);
+}
+
+.admin-icon {
+    -fx-background-image: url('../icones/icons8-admin-100.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: right center;
+}
+
+.pharmacy-icon {
+    -fx-background-image: url('../icones/icons8-pharmacy-48.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: right center;
 }
