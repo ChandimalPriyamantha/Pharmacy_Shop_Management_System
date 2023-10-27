@@ -3,11 +3,14 @@
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="648.0" prefWidth="1133.0" styleClass="main-bg" stylesheets="@Style/mainFormDesign.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="648.0" prefWidth="1133.0" styleClass="main-bg" stylesheets="@Style/mainFormDesign.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="-2.0" layoutY="11.0" prefHeight="591.0" prefWidth="198.0" styleClass="nav-form" stylesheets="@Style/mainFormDesign.css" AnchorPane.bottomAnchor="-5.0" AnchorPane.topAnchor="11.0">
          <children>
@@ -55,6 +58,189 @@
                   <Font size="18.0" />
                </font>
             </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="201.0" layoutY="73.0" prefHeight="541.0" prefWidth="928.0" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="201.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="73.0">
+         <children>
+            <AnchorPane layoutX="6.0" layoutY="14.0" prefHeight="265.0" prefWidth="916.0" stylesheets="@Style/mainFormDesign.css" AnchorPane.bottomAnchor="262.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="14.0">
+               <styleClass>
+                  <String fx:value="white-bg" />
+                  <String fx:value="shadow" />
+                  <String fx:value="radius" />
+               </styleClass>
+               <children>
+                  <TableView layoutX="14.0" layoutY="14.0" prefHeight="279.0" prefWidth="889.0" stylesheets="@Style/mainFormDesign.css" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="14.0">
+                    <columns>
+                      <TableColumn prefWidth="138.0" text="ID" />
+                      <TableColumn prefWidth="152.0" text="Name" />
+                        <TableColumn prefWidth="154.0" text="Address" />
+                        <TableColumn prefWidth="148.0" text="Contact No" />
+                        <TableColumn prefWidth="147.0" text="Item" />
+                        <TableColumn prefWidth="148.5" text="Price" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="6.0" layoutY="332.0" prefHeight="194.0" prefWidth="916.0" stylesheets="@Style/mainFormDesign.css" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0">
+               <styleClass>
+                  <String fx:value="white-bg" />
+                  <String fx:value="radius" />
+                  <String fx:value="shadow" />
+               </styleClass>
+               <children>
+                  <Button layoutX="16.0" layoutY="122.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="88.0" stylesheets="@Style/mainFormDesign706.css" text="Add">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="radius" />
+                     </styleClass></Button>
+                  <Button layoutX="121.0" layoutY="122.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="88.0" stylesheets="@Style/mainFormDesign706.css" text="Update">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="radius" />
+                     </styleClass></Button>
+                  <Button layoutX="228.0" layoutY="122.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="88.0" stylesheets="@Style/mainFormDesign706.css" text="Delete">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="radius" />
+                     </styleClass></Button>
+                  <Button layoutX="338.0" layoutY="122.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="88.0" stylesheets="@Style/mainFormDesign706.css" text="Search">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="radius" />
+                     </styleClass></Button>
+                  <Button layoutX="448.0" layoutY="122.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="88.0" stylesheets="@Style/mainFormDesign706.css" text="Clear">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="radius" />
+                     </styleClass></Button>
+                  <TextField layoutX="19.0" layoutY="11.0" prefHeight="36.0" prefWidth="223.0" stylesheets="@Style/mainFormDesign.css" text="Read ID">
+                     <styleClass>
+                        <String fx:value="radius" />
+                        <String fx:value="main-bg" />
+                     </styleClass>
+                     <font>
+                        <Font size="14.0" />
+                     </font></TextField>
+                  <TextField layoutX="19.0" layoutY="60.0" prefHeight="36.0" prefWidth="223.0" stylesheets="@Style/mainFormDesign.css" text="Price">
+                     <styleClass>
+                        <String fx:value="radius" />
+                        <String fx:value="main-bg" />
+                     </styleClass>
+                     <font>
+                        <Font size="14.0" />
+                     </font></TextField>
+                  <TextField layoutX="256.0" layoutY="11.0" prefHeight="36.0" prefWidth="223.0" stylesheets="@Style/mainFormDesign.css" text="Medicine Name">
+                     <styleClass>
+                        <String fx:value="radius" />
+                        <String fx:value="main-bg" />
+                     </styleClass>
+                     <font>
+                        <Font size="14.0" />
+                     </font></TextField>
+                  <TextField layoutX="257.0" layoutY="61.0" prefHeight="36.0" prefWidth="223.0" stylesheets="@Style/mainFormDesign.css" text="Stoke">
+                     <styleClass>
+                        <String fx:value="radius" />
+                        <String fx:value="main-bg" />
+                     </styleClass>
+                     <font>
+                        <Font size="14.0" />
+                     </font></TextField>
+                  <TextField layoutX="492.0" layoutY="11.0" prefHeight="36.0" prefWidth="223.0" stylesheets="@Style/mainFormDesign.css" text="Manufacture">
+                     <styleClass>
+                        <String fx:value="radius" />
+                        <String fx:value="main-bg" />
+                     </styleClass>
+                     <font>
+                        <Font size="14.0" />
+                     </font></TextField>
+                  <TextField layoutX="493.0" layoutY="61.0" prefHeight="36.0" prefWidth="223.0" stylesheets="@Style/mainFormDesign.css" text="Expire Date">
+                     <styleClass>
+                        <String fx:value="radius" />
+                        <String fx:value="main-bg" />
+                     </styleClass>
+                     <font>
+                        <Font size="14.0" />
+                     </font></TextField>
+                  <Label layoutY="155.0" prefHeight="17.0" prefWidth="910.0" text="---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="6.0" />
+               </children>
+            </AnchorPane>
+            <Button layoutX="24.0" layoutY="504.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="126.0" stylesheets="@Style/mainFormDesign706.css" text="Inventory" AnchorPane.bottomAnchor="10.0">
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="radius" />
+               </styleClass></Button>
+            <Button layoutX="163.0" layoutY="504.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="126.0" stylesheets="@Style/mainFormDesign706.css" text="Report" AnchorPane.bottomAnchor="10.0">
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="radius" />
+               </styleClass></Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="207.0" layoutY="74.0" prefHeight="541.0" prefWidth="922.0" visible="false" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="207.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="74.0">
+         <children>
+            <AnchorPane layoutY="10.0" prefHeight="324.0" prefWidth="916.0" stylesheets="@Style/mainFormDesign706.css" AnchorPane.bottomAnchor="207.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="10.0">
+               <styleClass>
+                  <String fx:value="white-bg" />
+                  <String fx:value="radius" />
+                  <String fx:value="shadow" />
+               </styleClass>
+               <children>
+                  <TableView layoutX="14.0" layoutY="14.0" prefHeight="298.0" prefWidth="889.0" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="14.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="ID" />
+                      <TableColumn prefWidth="75.0" text="Date" />
+                        <TableColumn prefWidth="75.0" text="Quantity" />
+                        <TableColumn prefWidth="75.0" text="Sales" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutY="357.0" prefHeight="121.0" prefWidth="916.0" stylesheets="@Style/mainFormDesign706.css" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="6.0">
+               <styleClass>
+                  <String fx:value="white-bg" />
+                  <String fx:value="radius" />
+                  <String fx:value="shadow" />
+               </styleClass>
+               <children>
+                  <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="126.0" stylesheets="@Style/mainFormDesign706.css" text="RCO Report">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="radius" />
+                     </styleClass></Button>
+                  <Button layoutX="165.0" layoutY="14.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="126.0" stylesheets="@Style/mainFormDesign706.css" text="DCO Report">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="radius" />
+                     </styleClass></Button>
+                  <Button layoutX="320.0" layoutY="14.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="126.0" stylesheets="@Style/mainFormDesign706.css" text="Purchase Report">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="radius" />
+                     </styleClass></Button>
+                  <Button layoutX="792.0" layoutY="81.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="110.0" stylesheets="@Style/mainFormDesign706.css" text="Print" AnchorPane.rightAnchor="14.0">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="radius" />
+                     </styleClass></Button>
+                  <Label layoutY="53.0" prefHeight="17.0" prefWidth="916.0" text="----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+               </children>
+            </AnchorPane>
+            <Button layoutX="8.0" layoutY="494.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="126.0" stylesheets="@Style/mainFormDesign706.css" text="Inventory" AnchorPane.bottomAnchor="20.0">
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="radius" />
+               </styleClass></Button>
+            <Button layoutX="163.0" layoutY="494.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="126.0" stylesheets="@Style/mainFormDesign706.css" text="Report" AnchorPane.bottomAnchor="20.0">
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="radius" />
+               </styleClass></Button>
          </children>
       </AnchorPane>
    </children>
