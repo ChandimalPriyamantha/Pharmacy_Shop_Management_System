@@ -116,7 +116,7 @@
         <mxCell id="nY_uiTRwyGMx2RZcLAmJ-76" value="+ printReceipt : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="nY_uiTRwyGMx2RZcLAmJ-73" vertex="1">
           <mxGeometry y="118" width="170" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="nY_uiTRwyGMx2RZcLAmJ-78" value="RemoteCustomerOrderShippingDetails" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+        <mxCell id="nY_uiTRwyGMx2RZcLAmJ-78" value="RemortCustomer.RemoteCustomerOrderShippingDetails" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="120" y="2060" width="250" height="170" as="geometry" />
         </mxCell>
         <mxCell id="nY_uiTRwyGMx2RZcLAmJ-79" value="- orderID :String;&lt;br&gt;- name : String;&lt;br&gt;- address : String&lt;br&gt;-phoneNumber : String&lt;br&gt;-dateAndTime : Date &amp;amp; Time" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="nY_uiTRwyGMx2RZcLAmJ-78" vertex="1">
