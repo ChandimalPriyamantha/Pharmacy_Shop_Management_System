@@ -14,6 +14,9 @@
     <junit.version>5.9.2</junit.version>      </properties>
 
   <dependencies>
+    <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-web -->
+
+
     <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-controls</artifactId>
@@ -60,7 +63,10 @@
       <artifactId>junit-jupiter-engine</artifactId>
       <version>${junit.version}</version>
       <scope>test</scope>
-    </dependency>              </dependencies>
+    </dependency>
+
+
+  </dependencies>
 
   <build>
         <plugins>
