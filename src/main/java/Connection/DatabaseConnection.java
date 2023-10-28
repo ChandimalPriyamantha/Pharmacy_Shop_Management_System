@@ -11,7 +11,7 @@ public class DatabaseConnection {
 
     private static  String user = "root";
 
-    private static String pw = "1234";
+    private static String pw = "root";
 
 
     private Connection myCon = null;

@@ -60,7 +60,7 @@
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="201.0" layoutY="73.0" prefHeight="541.0" prefWidth="928.0" visible="false" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="201.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="73.0">
+      <AnchorPane layoutX="201.0" layoutY="73.0" prefHeight="541.0" prefWidth="928.0" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="201.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="73.0">
          <children>
             <AnchorPane layoutX="6.0" layoutY="14.0" prefHeight="265.0" prefWidth="916.0" stylesheets="@Style/mainFormDesign.css" AnchorPane.bottomAnchor="262.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="14.0">
                <styleClass>
@@ -116,7 +116,7 @@
                         <String fx:value="btn" />
                         <String fx:value="radius" />
                      </styleClass></Button>
-                  <TextField layoutX="19.0" layoutY="11.0" prefHeight="36.0" prefWidth="223.0" stylesheets="@Style/mainFormDesign.css" text="Read ID">
+                  <TextField layoutX="19.0" layoutY="11.0" prefHeight="36.0" prefWidth="223.0" promptText="Read ID" stylesheets="@Style/mainFormDesign.css">
                      <styleClass>
                         <String fx:value="radius" />
                         <String fx:value="main-bg" />
@@ -124,7 +124,7 @@
                      <font>
                         <Font size="14.0" />
                      </font></TextField>
-                  <TextField layoutX="19.0" layoutY="60.0" prefHeight="36.0" prefWidth="223.0" stylesheets="@Style/mainFormDesign.css" text="Price">
+                  <TextField layoutX="19.0" layoutY="60.0" prefHeight="36.0" prefWidth="223.0" promptText="Price" stylesheets="@Style/mainFormDesign.css">
                      <styleClass>
                         <String fx:value="radius" />
                         <String fx:value="main-bg" />
@@ -132,7 +132,7 @@
                      <font>
                         <Font size="14.0" />
                      </font></TextField>
-                  <TextField layoutX="256.0" layoutY="11.0" prefHeight="36.0" prefWidth="223.0" stylesheets="@Style/mainFormDesign.css" text="Medicine Name">
+                  <TextField layoutX="256.0" layoutY="11.0" prefHeight="36.0" prefWidth="223.0" promptText="Medicine Name" stylesheets="@Style/mainFormDesign.css">
                      <styleClass>
                         <String fx:value="radius" />
                         <String fx:value="main-bg" />
@@ -140,7 +140,7 @@
                      <font>
                         <Font size="14.0" />
                      </font></TextField>
-                  <TextField layoutX="257.0" layoutY="61.0" prefHeight="36.0" prefWidth="223.0" stylesheets="@Style/mainFormDesign.css" text="Stoke">
+                  <TextField layoutX="257.0" layoutY="61.0" prefHeight="36.0" prefWidth="223.0" promptText="Stoke" stylesheets="@Style/mainFormDesign.css">
                      <styleClass>
                         <String fx:value="radius" />
                         <String fx:value="main-bg" />
@@ -148,7 +148,7 @@
                      <font>
                         <Font size="14.0" />
                      </font></TextField>
-                  <TextField layoutX="492.0" layoutY="11.0" prefHeight="36.0" prefWidth="223.0" stylesheets="@Style/mainFormDesign.css" text="Manufacture">
+                  <TextField layoutX="492.0" layoutY="11.0" prefHeight="36.0" prefWidth="223.0" promptText="Manufacture" stylesheets="@Style/mainFormDesign.css">
                      <styleClass>
                         <String fx:value="radius" />
                         <String fx:value="main-bg" />
@@ -156,7 +156,7 @@
                      <font>
                         <Font size="14.0" />
                      </font></TextField>
-                  <TextField layoutX="493.0" layoutY="61.0" prefHeight="36.0" prefWidth="223.0" stylesheets="@Style/mainFormDesign.css" text="Expire Date">
+                  <TextField layoutX="493.0" layoutY="61.0" prefHeight="36.0" prefWidth="223.0" promptText="Expire Date" stylesheets="@Style/mainFormDesign.css">
                      <styleClass>
                         <String fx:value="radius" />
                         <String fx:value="main-bg" />
