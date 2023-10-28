@@ -60,7 +60,7 @@
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="201.0" layoutY="73.0" prefHeight="541.0" prefWidth="928.0" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="201.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="73.0">
+      <AnchorPane layoutX="201.0" layoutY="73.0" prefHeight="541.0" prefWidth="928.0" visible="false" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="201.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="73.0">
          <children>
             <AnchorPane layoutX="6.0" layoutY="14.0" prefHeight="265.0" prefWidth="916.0" stylesheets="@Style/mainFormDesign.css" AnchorPane.bottomAnchor="262.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="14.0">
                <styleClass>
