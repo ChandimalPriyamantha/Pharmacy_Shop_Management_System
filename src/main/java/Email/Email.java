@@ -1,32 +1,27 @@
 package Email;
 
+
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-
-import java.net.URL;
-import java.util.ResourceBundle;
-
-import javafx.scene.layout.VBox;
 import javafx.scene.web.WebEngine;
 import  javafx.scene.web.WebView;
 
-public class Email extends VBox {
+public class Email{
+
+    @FXML
     private WebView webView;
-    private WebEngine webEngine;
+    private WebEngine engine;
 
-    public Email() {
-        initializeWebView();
+    public Email(WebView webView) {
+        this.webView = webView;
+        emailServer();
     }
 
-    private void initializeWebView() {
-        // Create a WebView and a WebEngine
-        webView = new WebView();
-        webEngine = webView.getEngine();
+    public void emailServer(){
 
-        // Load a web page
-        webEngine.load("https://www.example.com");
+        //call the email service
+        engine = webView.getEngine();
+        engine.load("https://outlook.office.com/owa/?realm=fot.ruh.ac.lk&exsvurl=1&ll-cc=1033&modurl=0&login_hint");
 
-        // Add the WebView to the container
-        getChildren().add(webView);
     }
+
 }

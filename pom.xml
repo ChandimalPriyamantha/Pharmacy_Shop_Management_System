@@ -64,6 +64,11 @@
       <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-web</artifactId>
+      <version>22-ea+11</version>
+    </dependency>
 
 
   </dependencies>
