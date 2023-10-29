@@ -81,7 +81,7 @@
     -fx-border-width: 1.5px;
 }
 
-.table-view . column-header-background{
+.table-view .column-header-background{
 
     -fx-background-color: linear-gradient(to bottom right, #101010, #bb0939);
     -fx-background-radius: 5px 5px 0 0;
