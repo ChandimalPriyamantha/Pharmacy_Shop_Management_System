@@ -61,8 +61,3 @@
     -fx-font-weight: bold;
 }
 
-.table-row-cell:focused {
-    -fx-dark-text-color: #000000;
-    -fx-mid-text-color: #000000;
-    -fx-light-text-color: #000000;
- }
