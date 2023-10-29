@@ -1,30 +1,39 @@
 package com.tech.pharmacy_shop_management_system;
 
+import Email.Email;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-
-import java.sql.SQLException;
-import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.web.WebView;
 
-public class MainAppController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+
+public class MainAppController implements Initializable {
+
     @FXML
-    private Button inrbtn;
+    private Button emailPage;
 
     @FXML
-    private AnchorPane inventoryAP;
-
-    @FXML
-    private AnchorPane reportAP;
-        public void inventoryAndReport(ActionEvent event) throws SQLException {
-            if (event.getSource() == inrbtn){
-                inventoryAP.setVisible(true);
-            }
-        }
+    private WebView webView;
 
 
+          // This method can help to move through the windows
+          public void controlPanel(ActionEvent event){
+                 if(event.getSource() == emailPage){
+                    Email email = new  Email(webView);
+                    email.emailServer();
+                 }
+          }
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        Email email = new  Email(webView);
+        email.emailServer();
     }
+}
 
 

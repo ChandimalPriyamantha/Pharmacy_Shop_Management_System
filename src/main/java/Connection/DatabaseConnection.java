@@ -6,7 +6,6 @@ import java.sql.DriverManager;
 public class DatabaseConnection {
 
 
-
     private static String url = "jdbc:mysql://localhost:3306/pharmacyDB";
 
     private static  String user = "root";
