@@ -3,8 +3,29 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 5,0,0,0);
 }
 
+.table-view .column-header .label{
+
+    -fx-text-fill: #fff;
+}
+
+.table-view{
+
+    -fx-background-color: trasparent;
+    -fx-padding: 0;
+    -fx-border-color: #2F2E5E;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1.5px;
+}
+
+.table-view .column-header-background{
+
+    -fx-background-color:#2F2E5E;
+    -fx-background-radius: 5px 5px 0 0;
+    -fx-background-insets: 0 0 0 0;
+}
+
 .text-field {
-    -fx-background-radius: 13px;
+    -fx-background-radius: 10px;
     -fx-font-size: 14px;
     -fx-background-color: #D9D9D9;
 }

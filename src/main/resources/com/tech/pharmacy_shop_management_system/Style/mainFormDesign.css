@@ -74,16 +74,16 @@
 
 .table-view{
 
-    -fx-background-color: trasparent;
+    background-color: trasparent;
     -fx-padding: 0;
-    -fx-border-color: linear-gradient(to bottom right, #101010, #bb0d28);
+    -fx-border-color: linear-gradient(to bottom right, #2F2E5E, #2F2E5E);
     -fx-border-radius: 5px;
     -fx-border-width: 1.5px;
 }
 
 .table-view .column-header-background{
 
-    -fx-background-color: linear-gradient(to bottom right, #101010, #bb0939);
+    -fx-background-color: linear-gradient(to bottom right, #2F2E5E, #2F2E5E);
     -fx-background-radius: 5px 5px 0 0;
     -fx-background-insets: 0 0 0 0;
 }
