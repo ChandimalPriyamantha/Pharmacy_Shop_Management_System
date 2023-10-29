@@ -1,0 +1,174 @@
+.header{
+
+    -fx-background-color:linear-gradient(to bottom right, #0d0e0e, #020202);
+
+    -fx-border-width: 0 0 .8px 0;
+}
+
+.nav-form{
+
+    -fx-background-color: linear-gradient(to bottom right, #2F2E5E, #2F2E5E);
+}
+.nav-btn{
+
+
+    -fx-background-color:  transparent;
+    -fx-border-color: #ffffff;
+    -fx-border-width: 1 1 1 1px;
+    -fx-cursor: hand;
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+    -fx-border-radius: 8px;
+}
+
+.nav-btn:hover{
+
+    -fx-background-color: #ffff;
+    -fx-border-color: #ffffff;
+    -fx-border-width: 1 1 1 1px;
+    -fx-cursor: hand;
+    -fx-text-fill: #101010;
+    -fx-font-size: 14px;
+    -fx-border-radius: 8px;
+
+}
+
+.logout{
+
+    -fx-background-color: #106abf;
+    -fx-padding: 5px;
+    -fx-cursor: hand;
+    -fx-background-radius: 50px;
+}
+
+.logout:hover{
+    -fx-background-color: #a71931;
+}
+
+.shadow{
+
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 5,0,0,0);
+}
+
+.white-bg{
+
+
+    -fx-background-color: #fff;
+}
+
+.main-bg{
+
+
+    -fx-background-color: #D9D9D9;
+}
+
+.radius{
+
+   -fx-background-radius: 8px;
+
+}
+
+.transparent{
+    -fx-background-color: transparent;
+}
+
+.table-view{
+
+    -fx-background-color: trasparent;
+    -fx-padding: 0;
+    -fx-border-color: linear-gradient(to bottom right, #2F2E5E, #2F2E5E);
+    -fx-border-radius: 5px;
+    -fx-border-width: 1.5px;
+}
+
+.table-view . column-header-background{
+
+    -fx-background-color: linear-gradient(to bottom right, #2F2E5E, #2F2E5E);
+    -fx-background-radius: 5px 5px 0 0;
+    -fx-background-insets: 0 0 0 0;
+}
+
+.table-view .column-header, .filter{
+
+    -fx-background-color: transparent;
+    -fx-size: 40px;
+}
+
+.table-view .column-header .label{
+
+    -fx-text-fill: #fff;
+}
+
+.btn{
+
+    -fx-background-color: linear-gradient(to bottom right,  #2F2E5E,  #2F2E5E);
+    -fx-cursor: hand;
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+}
+
+.deleteBtn{
+
+    -fx-background-color: linear-gradient(to bottom right, #bb0d28, #bb0939);
+    -fx-cursor: hand;
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+}
+
+.updateBtn{
+
+    -fx-background-color: linear-gradient(to bottom right, #f3c709, #e0bb08);
+    -fx-cursor: hand;
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+}
+
+.clearBtn{
+
+    -fx-background-color: linear-gradient(to bottom right, #3274bd, #3878de);
+    -fx-cursor: hand;
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+}
+.clearBtn:hover{
+
+    -fx-background-color: linear-gradient(to bottom right, #0f6789, #2371da);
+}
+.updateBtn:hover{
+
+    -fx-background-color: linear-gradient(to bottom right, #0f6789, #f3c709);
+}
+.deleteBtn:hover{
+
+    -fx-background-color: linear-gradient(to bottom right, #0f6789, #d9013c);
+}
+
+.btn:hover{
+
+    -fx-background-color: linear-gradient(to bottom right, #0f6789, #399a8f);
+}
+
+.ComBtn{
+
+    -fx-background-color: linear-gradient(to bottom right, #3878de, #3274bd);
+    -fx-cursor: hand;
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+}
+
+.ComBtn:hover{
+
+    -fx-background-color: linear-gradient(to bottom right, #0f6789, #399a8f);
+}
+
+.admin-icon {
+    -fx-background-image: url('../icones/icons8-admin-100.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: right center;
+}
+
+.pharmacy-icon {
+    -fx-background-image: url('../icones/icons8-pharmacy-48.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: right center;
+}
