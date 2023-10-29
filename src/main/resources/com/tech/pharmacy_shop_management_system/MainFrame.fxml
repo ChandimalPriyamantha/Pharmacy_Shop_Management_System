@@ -28,10 +28,10 @@
             <Button layoutX="15.0" layoutY="148.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@Style/mainFormDesign.css" text="Dashboard" />
             <Button layoutX="15.0" layoutY="204.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@Style/mainFormDesign.css" text="RCO Manage" />
             <Button layoutX="15.0" layoutY="263.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@Style/mainFormDesign.css" text="RCO Payment" />
-            <Button layoutX="15.0" layoutY="325.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@Style/mainFormDesign.css" text="DCO Manage" />
+            <Button fx:id="dcoManageButton" layoutX="15.0" layoutY="325.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@Style/mainFormDesign.css" text="DCO Manage" />
             <Button fx:id="emailPage" layoutX="16.0" layoutY="387.0" mnemonicParsing="false" onAction="#controlPanel" prefHeight="42.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@Style/mainFormDesign.css" text="Email" />
             <Button layoutX="17.0" layoutY="447.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@Style/mainFormDesign.css" text="Inventory | Report" />
-            <Button layoutX="16.0" layoutY="507.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@Style/mainFormDesign.css" text="User Manage" />
+            <Button fx:id="userManageButton" layoutX="16.0" layoutY="507.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@Style/mainFormDesign.css" text="User Manage" />
             <Button layoutX="17.0" layoutY="572.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@Style/mainFormDesign.css" text="Purchase" />
          </children>
       </AnchorPane>
@@ -60,7 +60,7 @@
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="207.0" layoutY="81.0" prefHeight="539.0" prefWidth="916.0" stylesheets="@Style/mainFormDesign.css" AnchorPane.bottomAnchor="27.799999999999955" AnchorPane.leftAnchor="207.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="81.0">
+      <AnchorPane layoutX="207.0" layoutY="81.0" prefHeight="539.0" prefWidth="916.0" stylesheets="@Style/mainFormDesign.css" visible="false" AnchorPane.bottomAnchor="27.799999999999955" AnchorPane.leftAnchor="207.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="81.0">
          <styleClass>
             <String fx:value="radius" />
             <String fx:value="shadow" />
@@ -68,6 +68,24 @@
          </styleClass>
          <children>
             <WebView fx:id="webView" layoutX="9.0" layoutY="9.0" prefHeight="517.0" prefWidth="896.0" AnchorPane.bottomAnchor="12.600024414062545" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="9.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="217.0" layoutY="91.0" prefHeight="539.0" prefWidth="916.0" stylesheets="@Style/mainFormDesign.css" AnchorPane.bottomAnchor="27.799999999999955" AnchorPane.leftAnchor="207.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="81.0">
+         <children>
+            <AnchorPane layoutX="603.0" layoutY="-31.0" prefHeight="539.0" prefWidth="313.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="521.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <styleClass>
+                  <String fx:value="white-bg" />
+                  <String fx:value="shadow" />
+                  <String fx:value="radius" />
+               </styleClass>
+            </AnchorPane>
+            <AnchorPane layoutX="613.0" layoutY="-21.0" prefHeight="339.0" prefWidth="520.0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="410.0" AnchorPane.topAnchor="0.0">
+               <styleClass>
+                  <String fx:value="white-bg" />
+                  <String fx:value="shadow" />
+                  <String fx:value="radius" />
+               </styleClass>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>

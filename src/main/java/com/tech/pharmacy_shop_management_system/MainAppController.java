@@ -32,7 +32,7 @@ public class MainAppController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Email email = new  Email(webView);
-        email.emailServer();
+        //email.emailServer();
     }
 }
 
