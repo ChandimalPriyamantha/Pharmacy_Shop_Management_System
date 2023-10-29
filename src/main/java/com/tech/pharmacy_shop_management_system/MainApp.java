@@ -1,5 +1,6 @@
 package com.tech.pharmacy_shop_management_system;
 
+import Email.Email;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -19,5 +20,6 @@ public class MainApp extends Application {
 
     public static void main(String[] args) {
         launch();
+
     }
 }
