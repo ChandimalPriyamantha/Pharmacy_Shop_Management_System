@@ -8,9 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebView;
@@ -21,6 +19,79 @@ import java.util.ResourceBundle;
 
 
 public class MainAppController implements Initializable {
+
+    //DCO Dashboard FXML variables -->Start
+
+    @FXML
+    private Button DCOAddButton;
+
+    @FXML
+    private AnchorPane DCOBackground;
+
+    @FXML
+    private Label DCOChangeLable;
+
+    @FXML
+    private Button DCOClearButton;
+
+    @FXML
+    private Button DCOManageButton;
+
+    @FXML
+    private Button DCOPayButton;
+
+    @FXML
+    private TextField DCOPriceTextField;
+
+    @FXML
+    private TextField DCOQuantityTextField;
+
+    @FXML
+    private TextField DCOReadIDTextField;
+
+    @FXML
+    private Button DCORemoveButton;
+
+    @FXML
+    private TextField DCOSettledTextField;
+
+    @FXML
+    private TableView<?> DCOStockMedicineTable;
+
+    @FXML
+    private TableColumn<?, ?> DCOStockMedicineTableID;
+
+    @FXML
+    private TableColumn<?, ?> DCOStockMedicineTableName;
+
+    @FXML
+    private TableColumn<?, ?> DCOStockMedicineTablePrice;
+
+    @FXML
+    private TableColumn<?, ?> DCOStockMedicineTableStock;
+
+    @FXML
+    private TextField DCOTextFieldMedicineName;
+
+    @FXML
+    private Label DCOTotalLable;
+
+    @FXML
+    private TableView<?> OrderedMedicineTable;
+
+    @FXML
+    private TableColumn<?, ?> OrderedMedicineTableID;
+
+    @FXML
+    private TableColumn<?, ?> OrderedMedicineTableName;
+
+    @FXML
+    private TableColumn<?, ?> OrderedMedicineTablePrice;
+
+    @FXML
+    private TableColumn<?, ?> OrderedMedicineTableQuantity;
+
+    ////DCO Dashboard FXML variables -->END
 
     @FXML
     private Button emailPage;
@@ -83,18 +154,27 @@ public class MainAppController implements Initializable {
                      RCOManagePanel.setVisible(false);
                      WEB_VIEW.setVisible(true);
                      RCOPaymentPanel.setVisible(false);
+                     DCOBackground.setVisible(false);
                      Email email = new  Email(webView);
                      email.emailServer();
                  }else if (event.getSource() == RCO_BTN ) { // navigate into remote customer oder page
                      RCOManagePanel.setVisible(true);
                      WEB_VIEW.setVisible(false);
                      RCOPaymentPanel.setVisible(false);
+                     DCOBackground.setVisible(false);
               }else if(event.getSource() ==RCOPaymentBtn){ // navigate into remote customer payment page
                      System.out.println("hi");
                      RCOManagePanel.setVisible(false);
                      WEB_VIEW.setVisible(false);
                      RCOPaymentPanel.setVisible(true);
+                     DCOBackground.setVisible(false);
+                 }else if(event.getSource()==DCOManageButton){ // navigate into Direct customer order page
+                     DCOBackground.setVisible(true);
+                     RCOPaymentPanel.setVisible(false);
+                     RCOManagePanel.setVisible(false);
+                     WEB_VIEW.setVisible(false);
                  }
+
           }
 
     public ObservableList<RemoteCustomerOrderMedicineDetails> getData(){
