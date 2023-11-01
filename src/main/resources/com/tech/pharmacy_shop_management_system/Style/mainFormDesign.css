@@ -21,6 +21,18 @@
     -fx-border-radius: 8px;
 }
 
+.text-field{
+
+    -fx-background-color: #D9D9D9 ;
+    -fx-border-color: #ffffff;
+    -fx-border-width: 1 1 1 1px;
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+    -fx-background-radius: 10px;
+
+
+}
+
 .nav-btn:hover{
 
     -fx-background-color: #ffff;
@@ -101,10 +113,11 @@
 
 .btn{
 
-    -fx-background-color: linear-gradient(to bottom right,  #399a8f,  #399a8f);
+    -fx-background-color: linear-gradient(to bottom right,  #2F2E5E, #2F2E5E);
     -fx-cursor: hand;
     -fx-text-fill: #fff;
     -fx-font-size: 14px;
+    -fx-background-radius: 10px;
 }
 
 .deleteBtn{
