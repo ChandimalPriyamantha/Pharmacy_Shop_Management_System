@@ -1,0 +1,84 @@
+.card-shadow{
+
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 5,0,0,0);
+}
+
+.table-view .column-header .label{
+
+    -fx-text-fill: #fff;
+}
+
+.table-view{
+
+    -fx-background-color: trasparent;
+    -fx-padding: 0;
+    -fx-border-color: #2F2E5E;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1.5px;
+}
+
+.table-view .column-header-background{
+
+    -fx-background-color:#2F2E5E;
+    -fx-background-radius: 5px 5px 0 0;
+    -fx-background-insets: 0 0 0 0;
+}
+
+.text-field {
+    -fx-background-radius: 10px;
+    -fx-font-size: 14px;
+    -fx-background-color: #D9D9D9;
+}
+.textfield:focused{
+    -fx-border-width: 1px;
+    -fx-border-color: #0c0c0c9a;
+    -fx-border-radius: 13px;
+    
+}
+
+.textfield:hover{
+    -fx-border-width: 1px;
+    -fx-border-color: #0c0c0c9a;
+    -fx-border-radius: 13px;
+    
+}
+
+.custom-spinner Button {
+    -fx-background-color: #D9D9D9;
+}
+
+.addButton{
+
+
+    -fx-background-color: linear-gradient(to bottom right,  #2F2E5E,  #2F2E5E);
+    -fx-cursor: hand;
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+}
+
+.add-btn:hover{
+
+    -fx-background-color: #ffff;
+    -fx-border-color: #000000;
+    -fx-border-width: 1 1 1 1px;
+    -fx-cursor: hand;
+    -fx-text-fill: #101010;
+    -fx-font-size: 14px;
+    -fx-border-radius: 5px;
+
+}
+
+.label-DCO {
+    -fx-text-fill: #2F2E5E;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.settled-label {
+    -fx-background-radius: 10px;
+    -fx-background-color: #D9D9D9;
+    -fx-text-fill: #2F2E5E;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
