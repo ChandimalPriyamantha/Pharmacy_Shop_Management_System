@@ -79,17 +79,17 @@ public class MainAppController implements Initializable {
 
     // This method can help to move through the windows
           public void controlPanel(ActionEvent event){
-                 if(event.getSource() == emailPage){
+                 if(event.getSource() == emailPage){ // navigate into email page
                      RCOManagePanel.setVisible(false);
                      WEB_VIEW.setVisible(true);
                      RCOPaymentPanel.setVisible(false);
                      Email email = new  Email(webView);
                      email.emailServer();
-                 }else if (event.getSource() == RCO_BTN ) {
+                 }else if (event.getSource() == RCO_BTN ) { // navigate into remote customer oder page
                      RCOManagePanel.setVisible(true);
                      WEB_VIEW.setVisible(false);
                      RCOPaymentPanel.setVisible(false);
-              }else if(event.getSource() ==RCOPaymentBtn){
+              }else if(event.getSource() ==RCOPaymentBtn){ // navigate into remote customer payment page
                      System.out.println("hi");
                      RCOManagePanel.setVisible(false);
                      WEB_VIEW.setVisible(false);
