@@ -29,10 +29,16 @@ public class MainAppController implements Initializable {
     private WebView webView;
 
     @FXML
-    private AnchorPane DOCManagePanale;
+    private AnchorPane RCOManagePanel;
 
     @FXML
     private Button RCO_BTN;
+
+    @FXML
+    private Button RCOPaymentBtn;
+
+    @FXML
+    private AnchorPane RCOPaymentPanel;
 
     @FXML
     private AnchorPane WEB_VIEW;
@@ -74,14 +80,21 @@ public class MainAppController implements Initializable {
     // This method can help to move through the windows
           public void controlPanel(ActionEvent event){
                  if(event.getSource() == emailPage){
-                     DOCManagePanale.setVisible(false);
+                     RCOManagePanel.setVisible(false);
                      WEB_VIEW.setVisible(true);
-                    Email email = new  Email(webView);
-                    email.emailServer();
+                     RCOPaymentPanel.setVisible(false);
+                     Email email = new  Email(webView);
+                     email.emailServer();
                  }else if (event.getSource() == RCO_BTN ) {
-                     DOCManagePanale.setVisible(true);
+                     RCOManagePanel.setVisible(true);
                      WEB_VIEW.setVisible(false);
-              }
+                     RCOPaymentPanel.setVisible(false);
+              }else if(event.getSource() ==RCOPaymentBtn){
+                     System.out.println("hi");
+                     RCOManagePanel.setVisible(false);
+                     WEB_VIEW.setVisible(false);
+                     RCOPaymentPanel.setVisible(true);
+                 }
           }
 
     public ObservableList<RemoteCustomerOrderMedicineDetails> getData(){
