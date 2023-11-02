@@ -14,6 +14,18 @@
     <junit.version>5.9.2</junit.version>      </properties>
 
   <dependencies>
+    <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-web -->
+
+    <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+    <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+    <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>8.0.21</version>
+    </dependency>
+
+
     <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-controls</artifactId>
@@ -60,7 +72,15 @@
       <artifactId>junit-jupiter-engine</artifactId>
       <version>${junit.version}</version>
       <scope>test</scope>
-    </dependency>              </dependencies>
+    </dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-web</artifactId>
+      <version>22-ea+11</version>
+    </dependency>
+
+
+  </dependencies>
 
   <build>
         <plugins>
@@ -82,7 +102,7 @@
             <!-- Default configuration for running with: mvn clean javafx:run -->
             <id>default-cli</id>
             <configuration>
-              <mainClass>com.tech.pharmacy_shop_management_system/com.tech.pharmacy_shop_management_system.HelloApplication</mainClass>
+              <mainClass>com.tech.pharmacy_shop_management_system/com.tech.pharmacy_shop_management_system.MainApp</mainClass>
               <launcher>app</launcher>
               <jlinkZipName>app</jlinkZipName>
               <jlinkImageName>app</jlinkImageName>
