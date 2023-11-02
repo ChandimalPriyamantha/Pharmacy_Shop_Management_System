@@ -75,8 +75,6 @@ public class MainAppController implements Initializable {
     private ResultSet result;
 
 
-
-
     // This method can help to move through the windows
           public void controlPanel(ActionEvent event){
                  if(event.getSource() == emailPage){ // navigate into email page
