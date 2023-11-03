@@ -9,6 +9,10 @@ public class RemoteCustomerOrderMedicineDetails {
     private String phoneNo;
     private String DateTime;
 
+    public static String RCO_ID;
+
+    public static String path;
+
     public RemoteCustomerOrderMedicineDetails(String orderID, String name, String address, String phoneNo, String dateTime) {
         this.orderID = orderID;
         this.name = name;
