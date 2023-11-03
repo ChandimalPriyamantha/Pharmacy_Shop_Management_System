@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import java.lang.String?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -68,6 +69,11 @@
                   <Font size="18.0" />
                </font>
             </Text>
+            <FontAwesomeIconView fontSmoothingType="LCD" glyphName="SIGN_OUT" layoutX="853.0" layoutY="40.0" selectionFill="#ececec" selectionStart="1" size="30" wrappingWidth="31.199951171874886" AnchorPane.rightAnchor="25.800048828125114">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </FontAwesomeIconView>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="WEB_VIEW" layoutX="207.0" layoutY="81.0" prefHeight="539.0" prefWidth="916.0" stylesheets="@Style/mainFormDesign.css" visible="false" AnchorPane.bottomAnchor="27.799999999999955" AnchorPane.leftAnchor="207.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="81.0">
@@ -125,13 +131,13 @@
                         <Font size="10.0" />
                      </font>
                   </Button>
-                  <Pane layoutX="333.0" layoutY="18.0" prefHeight="78.0" prefWidth="118.0" stylesheets="@Style/mainFormDesign.css">
+                  <Pane layoutX="333.0" layoutY="10.0" prefHeight="86.0" prefWidth="105.0" stylesheets="@Style/mainFormDesign.css">
                      <styleClass>
                         <String fx:value="radius" />
                         <String fx:value="main-bg" />
                      </styleClass>
                      <children>
-                        <ImageView fx:id="ROC_IMAGE_VIEW" fitHeight="65.0" fitWidth="105.0" layoutX="6.0" layoutY="7.0" onMouseClicked="#setReceipt" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="ROC_IMAGE_VIEW" fitHeight="78.0" fitWidth="92.0" layoutX="7.0" layoutY="4.0" onMouseClicked="#setReceipt" pickOnBounds="true" preserveRatio="true">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -155,6 +161,7 @@
                   </Button>
                   <Spinner layoutX="173.0" layoutY="200.0" prefHeight="30.0" prefWidth="146.0" AnchorPane.bottomAnchor="49.6" />
                   <Line endX="365.0" layoutX="101.0" layoutY="150.0" startX="-100.0" AnchorPane.leftAnchor="0.10000000000002274" AnchorPane.rightAnchor="-0.5" />
+                  <Label fx:id="IMAGE_PATH_L" layoutX="289.0" layoutY="116.0" prefHeight="18.0" prefWidth="154.0" textFill="WHITE" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="488.0" layoutY="260.0" prefHeight="280.0" prefWidth="426.0" stylesheets="@Style/mainFormDesign.css" AnchorPane.bottomAnchor="-1.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="260.0">
@@ -175,7 +182,7 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
-                  <Button layoutX="291.0" layoutY="235.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="98.0" styleClass="btn" stylesheets="@Style/mainFormDesign.css" text="Place Order" AnchorPane.bottomAnchor="14.600000000000001" AnchorPane.rightAnchor="36.99999999999997">
+                  <Button fx:id="RCO_PLACR_ORDER" layoutX="291.0" layoutY="235.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="98.0" styleClass="btn" stylesheets="@Style/mainFormDesign.css" text="Place Order" AnchorPane.bottomAnchor="14.600000000000001" AnchorPane.rightAnchor="36.99999999999997">
                      <font>
                         <Font size="10.0" />
                      </font>

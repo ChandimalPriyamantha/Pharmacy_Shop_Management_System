@@ -71,7 +71,12 @@ public class MainAppController implements Initializable {
     @FXML
     private ImageView ROC_IMAGE_VIEW;
 
+    @FXML
+    private Label IMAGE_PATH_L;
 
+
+    @FXML
+    private Button RCO_PLACR_ORDER;
 
 
 
@@ -121,6 +126,7 @@ public class MainAppController implements Initializable {
                      RCOPaymentPanel.setVisible(false);
                      RCO_M_ADD_BTN.setDisable(true);
                      RCOrderID();
+                     RCO_PLACR_ORDER.setDisable(true);
               }else if(event.getSource() ==RCOPaymentBtn){ // navigate into remote customer payment page
                      System.out.println("hi");
                      RCOManagePanel.setVisible(false);
@@ -212,24 +218,30 @@ public class MainAppController implements Initializable {
         if(file != null){
 
             RemoteCustomerOrderMedicineDetails.path = file.getAbsolutePath();
-            Image image = new Image(file.toURI().toString(), 105, 65, false, true);
+            Image image = new Image(file.toURI().toString(), 92, 78, false, true);
             ROC_IMAGE_VIEW.setImage(image);
+            IMAGE_PATH_L.setText(RemoteCustomerOrderMedicineDetails.path);
         }
 
     }
 
     public void addRCOOrder(){ // to add RCO-Shipping details
             if(RCO_ADD_NAME.getText().isEmpty() ||
-                    RCO_ADD_ADDRESS.getText().isEmpty() || RCO_ADD_CONTACT_NO.getText().isEmpty()){
+                    RCO_ADD_ADDRESS.getText().isEmpty() || RCO_ADD_CONTACT_NO.getText().isEmpty()|| IMAGE_PATH_L.getText().isEmpty()){
                 alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error Message");
-                alert.setHeaderText("Alert");
+                alert.setHeaderText("Error Alert");
                 alert.setContentText("Please fill in all fields..!");
                 alert.showAndWait();
             }else{
                 //sendRCOShippingDetails();
                 RCO_ADD_BTN.setDisable(true);
                 RCO_M_ADD_BTN.setDisable(false);
+                RCO_ADD_NAME.setDisable(true);
+                RCO_ADD_ADDRESS.setDisable(true);
+                RCO_ADD_CONTACT_NO.setDisable(true);
+                RCO_ADD_ID.setDisable(true);
+
 
             }
 
@@ -263,7 +275,7 @@ public class MainAppController implements Initializable {
             prepare.executeUpdate();
             alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Message");
-            alert.setHeaderText(null);
+            alert.setHeaderText("Successes Alert ");
             alert.setContentText("Customer is added..!");
             alert.showAndWait();
 
@@ -284,7 +296,9 @@ public class MainAppController implements Initializable {
         RCO_ADD_NAME.setText("");
         RCO_ADD_ADDRESS.setText("");
         RCO_ADD_CONTACT_NO.setText("");
-        ROC_IMAGE_VIEW.setImage(null);
+        Image image = new Image("F:\\University Of Ruhuna\\lectur note\\Academic\\Level II - Semester - II\\Software Engineering\\Activities\\Project\\Pharmacy_Shop_Management_System\\src\\main\\resources\\com\\tech\\pharmacy_shop_management_system\\Icones\\icons8-receipt-100.png".toString(), 92, 78, false, true);
+        ROC_IMAGE_VIEW.setImage(image);
+        IMAGE_PATH_L.setText("");
 
     }
 
