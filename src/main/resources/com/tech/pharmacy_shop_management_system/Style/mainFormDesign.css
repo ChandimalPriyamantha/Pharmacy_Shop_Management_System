@@ -185,3 +185,15 @@
     -fx-background-repeat: no-repeat;
     -fx-background-position: right center;
 }
+
+.user-icon{
+    -fx-background-image: url('../icones/icons8-user-100.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: right center;
+}
+
+
+.user-admin{
+    -fx-border-color:#2F2E5E;
+    -fx-border-radius:10px;
+}
