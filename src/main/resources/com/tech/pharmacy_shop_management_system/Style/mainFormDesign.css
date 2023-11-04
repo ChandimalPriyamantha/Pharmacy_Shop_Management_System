@@ -21,6 +21,18 @@
     -fx-border-radius: 8px;
 }
 
+.text-field{
+
+    -fx-background-color: #D9D9D9 ;
+    -fx-border-color: #ffffff;
+    -fx-border-width: 1 1 1 1px;
+    -fx-text-fill: #101010;
+    -fx-font-size: 14px;
+    -fx-background-radius: 10px;
+
+
+}
+
 .nav-btn:hover{
 
     -fx-background-color: #ffff;
@@ -74,14 +86,14 @@
 
 .table-view{
 
-    -fx-background-color: trasparent;
+
     -fx-padding: 0;
     -fx-border-color: linear-gradient(to bottom right, #2F2E5E, #2F2E5E);
     -fx-border-radius: 5px;
     -fx-border-width: 1.5px;
 }
 
-.table-view . column-header-background{
+.table-view .column-header-background{
 
     -fx-background-color: linear-gradient(to bottom right, #2F2E5E, #2F2E5E);
     -fx-background-radius: 5px 5px 0 0;
@@ -101,10 +113,11 @@
 
 .btn{
 
-    -fx-background-color: linear-gradient(to bottom right,  #2F2E5E,  #2F2E5E);
+    -fx-background-color: linear-gradient(to bottom right,  #2F2E5E, #2F2E5E);
     -fx-cursor: hand;
     -fx-text-fill: #fff;
     -fx-font-size: 14px;
+    -fx-background-radius: 10px;
 }
 
 .deleteBtn{
