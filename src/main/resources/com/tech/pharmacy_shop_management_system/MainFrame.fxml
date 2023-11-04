@@ -619,11 +619,11 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="irViewAP" layoutX="208.0" layoutY="80.0" prefHeight="525.0" prefWidth="916.0" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="208.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="80.0">
+      <AnchorPane fx:id="irViewAP" layoutX="208.0" layoutY="80.0" prefHeight="525.0" prefWidth="916.0" visible="false" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="208.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="80.0">
          <children>
             <AnchorPane fx:id="purchareview" layoutY="6.0" prefHeight="428.0" prefWidth="1103.0" visible="false" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="6.0">
                <children>
-                  <AnchorPane layoutX="20.0" layoutY="22.0" prefHeight="222.0" prefWidth="856.0" stylesheets="@Style/mainFormDesign.css" AnchorPane.bottomAnchor="226.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="6.0">
+                  <AnchorPane fx:id="inventorytblAP" layoutX="20.0" layoutY="22.0" prefHeight="222.0" prefWidth="856.0" stylesheets="@Style/mainFormDesign.css" AnchorPane.bottomAnchor="226.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="6.0">
                      <styleClass>
                         <String fx:value="white-bg" />
                         <String fx:value="shadow" />
@@ -697,7 +697,7 @@
                   <Font size="10.0" />
                </font>
             </Button>
-            <AnchorPane fx:id="reportAP" layoutX="7.0" layoutY="16.0" prefHeight="450.0" prefWidth="889.0" AnchorPane.bottomAnchor="69.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="6.0">
+            <AnchorPane fx:id="reportAP" layoutX="7.0" layoutY="16.0" prefHeight="450.0" prefWidth="889.0" visible="false" AnchorPane.bottomAnchor="69.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="6.0">
                <children>
                   <AnchorPane fx:id="rcodcoreporttbl" layoutX="20.0" layoutY="22.0" prefHeight="260.0" prefWidth="862.0" stylesheets="@Style/mainFormDesign.css" AnchorPane.bottomAnchor="184.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="6.0">
                      <styleClass>
@@ -748,7 +748,7 @@
                         </Button>
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="20.0" layoutY="9.0" prefHeight="260.0" prefWidth="862.0" stylesheets="@Style/mainFormDesign.css" visible="false" AnchorPane.bottomAnchor="184.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="6.0">
+                  <AnchorPane fx:id="prtblAP" layoutX="20.0" layoutY="9.0" prefHeight="260.0" prefWidth="862.0" stylesheets="@Style/mainFormDesign.css" visible="false" AnchorPane.bottomAnchor="184.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="6.0">
                      <styleClass>
                         <String fx:value="white-bg" />
                         <String fx:value="shadow" />

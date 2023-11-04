@@ -277,6 +277,29 @@ public class MainAppController implements Initializable {
     @FXML
     private AnchorPane irViewAP;
 
+    @FXML
+    private AnchorPane reportAP;
+
+    @FXML
+    private Button reportbtn;
+    @FXML
+    private AnchorPane rcodcoreporttbl;
+    @FXML
+    private Button rcorbtn;
+
+    @FXML
+    private Button prbtn;
+
+    @FXML
+    private AnchorPane prtblAP;
+    @FXML
+    private AnchorPane purchareview;
+
+    @FXML
+    private Button incentorybtn;
+    @FXML
+    private Button dcorbtn;
+
 
 
     private  Connection connect;
@@ -349,13 +372,64 @@ public class MainAppController implements Initializable {
                      StaffManageBackground.setVisible(false);
                      AdminManageBackground.setVisible(false);
                      irViewAP.setVisible(true);
-                     if (event.getSource()==reportbtn){
-                         reportAP;
-                         if (event.getSource()== dcorbtn){
-                             rcodcoreporttbl;
-                         }
+                     purchareview.setVisible(true);
+                     reportAP.setVisible(false);
+                 }else if(event.getSource()==reportbtn){ // navigate into User Manage page
+                     DCOBackground.setVisible(false);
+                     RCOPaymentPanel.setVisible(false);
+                     RCOManagePanel.setVisible(false);
+                     WEB_VIEW.setVisible(false);
+                     UserManageBackground.setVisible(false);
+                     StaffManageBackground.setVisible(false);
+                     AdminManageBackground.setVisible(false);
+                     purchareview.setVisible(false);
+                     reportAP.setVisible(true);
+                 }else if(event.getSource()==incentorybtn){ // navigate into User Manage page
+                     DCOBackground.setVisible(false);
+                     RCOPaymentPanel.setVisible(false);
+                     RCOManagePanel.setVisible(false);
+                     WEB_VIEW.setVisible(false);
+                     UserManageBackground.setVisible(false);
+                     StaffManageBackground.setVisible(false);
+                     AdminManageBackground.setVisible(false);
+                     purchareview.setVisible(true);
+                     reportAP.setVisible(false);
+                 }else if(event.getSource()==rcorbtn){ // navigate into User Manage page
+                     DCOBackground.setVisible(false);
+                     RCOPaymentPanel.setVisible(false);
+                     RCOManagePanel.setVisible(false);
+                     WEB_VIEW.setVisible(false);
+                     UserManageBackground.setVisible(false);
+                     StaffManageBackground.setVisible(false);
+                     AdminManageBackground.setVisible(false);
+                     purchareview.setVisible(false);
+                     rcodcoreporttbl.setVisible(true);
+                     prtblAP.setVisible(false);
 
-                     }
+                 }
+                 else if(event.getSource()==dcorbtn){ // navigate into User Manage page
+                     DCOBackground.setVisible(false);
+                     RCOPaymentPanel.setVisible(false);
+                     RCOManagePanel.setVisible(false);
+                     WEB_VIEW.setVisible(false);
+                     UserManageBackground.setVisible(false);
+                     StaffManageBackground.setVisible(false);
+                     AdminManageBackground.setVisible(false);
+                     purchareview.setVisible(false);
+                     rcodcoreporttbl.setVisible(true);
+                     prtblAP.setVisible(false);
+
+                 }else if(event.getSource()==prbtn){ // navigate into User Manage page
+                     DCOBackground.setVisible(false);
+                     RCOPaymentPanel.setVisible(false);
+                     RCOManagePanel.setVisible(false);
+                     WEB_VIEW.setVisible(false);
+                     UserManageBackground.setVisible(false);
+                     StaffManageBackground.setVisible(false);
+                     AdminManageBackground.setVisible(false);
+                     purchareview.setVisible(false);
+                     rcodcoreporttbl.setVisible(false);
+                     prtblAP.setVisible(true);
 
                  }
 
