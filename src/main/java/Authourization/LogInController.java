@@ -21,7 +21,29 @@ public class LogInController {
     @FXML
     private AnchorPane Admin_panel;
     @FXML
+    private Label Auname;
+    @FXML
+    private Label Apwd;
+    @FXML
+    private Button Alogin;
+    @FXML
+    private Button Afpwd;
+    @FXML
+    private Button Areg;
+    @FXML
     private AnchorPane User_panel;
+    @FXML
+    private Label Uuname;
+    @FXML
+    private Label Upwd;
+    @FXML
+    private Button Ulogin;
+    @FXML
+    private Button Ufpwd;
+    @FXML
+    private Button Ureg;
+
+
 
 
 
