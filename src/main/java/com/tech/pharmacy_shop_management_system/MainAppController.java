@@ -269,6 +269,14 @@ public class MainAppController implements Initializable {
     @FXML
     private TableColumn<RemoteCustomerOrderMedicineDetails, String> ROC_NAME;
 
+    //Inventory and Report
+
+    @FXML
+    private Button irNavbtn;
+
+    @FXML
+    private AnchorPane irViewAP;
+
 
 
     private  Connection connect;
@@ -332,14 +340,23 @@ public class MainAppController implements Initializable {
                      StaffManageBackground.setVisible(false);
                      AdminManageBackground.setVisible(true);
                  }
-                 else if(event.getSource()==purchasenavbtn){ // navigate into User Manage page
+                 else if(event.getSource()==irNavbtn){ // navigate into User Manage page
                      DCOBackground.setVisible(false);
                      RCOPaymentPanel.setVisible(false);
                      RCOManagePanel.setVisible(false);
                      WEB_VIEW.setVisible(false);
-                     UserManageBackground.setVisible(true);
+                     UserManageBackground.setVisible(false);
                      StaffManageBackground.setVisible(false);
-                     AdminManageBackground.setVisible(true);
+                     AdminManageBackground.setVisible(false);
+                     irViewAP.setVisible(true);
+                     if (event.getSource()==reportbtn){
+                         reportAP;
+                         if (event.getSource()== dcorbtn){
+                             rcodcoreporttbl;
+                         }
+
+                     }
+
                  }
 
           }

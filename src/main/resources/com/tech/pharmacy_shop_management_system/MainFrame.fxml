@@ -34,12 +34,12 @@
                   <Circle fill="#2dea7f" layoutX="108.0" layoutY="99.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
                </children>
             </AnchorPane>
-            <Button layoutX="15.0" layoutY="148.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@Style/mainFormDesign.css" text="Dashboard" />
+            <Button layoutX="15.0" layoutY="148.0" mnemonicParsing="false" onAction="#controlPanel" prefHeight="42.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@Style/mainFormDesign.css" text="Dashboard" />
             <Button fx:id="RCO_BTN" layoutX="15.0" layoutY="204.0" mnemonicParsing="false" onAction="#controlPanel" prefHeight="42.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@Style/mainFormDesign.css" text="RCO Manage" />
             <Button fx:id="RCOPaymentBtn" layoutX="15.0" layoutY="263.0" mnemonicParsing="false" onAction="#controlPanel" prefHeight="42.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@Style/mainFormDesign.css" text="RCO Payment" />
             <Button fx:id="DCOManageButton" layoutX="15.0" layoutY="325.0" mnemonicParsing="false" onAction="#controlPanel" prefHeight="42.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@Style/mainFormDesign.css" text="DCO Manage" />
             <Button fx:id="emailPage" layoutX="16.0" layoutY="387.0" mnemonicParsing="false" onAction="#controlPanel" prefHeight="42.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@Style/mainFormDesign.css" text="Email" />
-            <Button layoutX="17.0" layoutY="447.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@Style/mainFormDesign.css" text="Inventory | Report" />
+            <Button fx:id="irNavbtn" layoutX="17.0" layoutY="447.0" mnemonicParsing="false" onAction="#controlPanel" prefHeight="42.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@Style/mainFormDesign.css" text="Inventory | Report" />
             <Button fx:id="UserManageButton" layoutX="16.0" layoutY="507.0" mnemonicParsing="false" onAction="#controlPanel" prefHeight="42.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@Style/mainFormDesign.css" text="User Manage" />
             <Button fx:id="purchasenavbtn" layoutX="17.0" layoutY="572.0" mnemonicParsing="false" onAction="#controlPanel" prefHeight="42.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@Style/mainFormDesign.css" text="Purchase" />
          </children>
@@ -619,7 +619,7 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="208.0" layoutY="80.0" prefHeight="525.0" prefWidth="916.0" visible="false" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="208.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="80.0">
+      <AnchorPane fx:id="irViewAP" layoutX="208.0" layoutY="80.0" prefHeight="525.0" prefWidth="916.0" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="208.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="80.0">
          <children>
             <AnchorPane fx:id="purchareview" layoutY="6.0" prefHeight="428.0" prefWidth="1103.0" visible="false" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="6.0">
                <children>
@@ -632,12 +632,12 @@
                      <children>
                         <TableView fx:id="inventorytbl" layoutX="17.0" layoutY="20.0" prefHeight="175.0" prefWidth="819.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
                            <columns>
-                              <TableColumn fx:id="ROC_ID2" prefWidth="75.0" text="ID" />
-                              <TableColumn fx:id="ROC_NAME2" prefWidth="75.0" text="Name" />
-                              <TableColumn fx:id="RCO_ADDRESS2" prefWidth="75.0" text="Address" />
-                              <TableColumn fx:id="RCO_CONTACT_NO2" prefWidth="75.0" text="Contact No" />
-                              <TableColumn fx:id="RCO_ITEM2" prefWidth="75.0" text="Item" />
-                              <TableColumn fx:id="RCO_PRICE2" prefWidth="75.0" text="Price" />
+                              <TableColumn fx:id="itblid" prefWidth="75.0" text="ID" />
+                              <TableColumn fx:id="itblname" prefWidth="75.0" text="Name" />
+                              <TableColumn fx:id="itbladdress" prefWidth="75.0" text="Address" />
+                              <TableColumn fx:id="itblcontactno" prefWidth="75.0" text="Contact No" />
+                              <TableColumn fx:id="itblitem" prefWidth="75.0" text="Item" />
+                              <TableColumn fx:id="itblprice" prefWidth="75.0" text="Price" />
                            </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -687,19 +687,19 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <Button fx:id="incentorybtn" layoutX="35.0" layoutY="471.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="98.0" styleClass="btn" stylesheets="@Style/mainFormDesign.css" text="Inventory" AnchorPane.bottomAnchor="17.0">
+            <Button fx:id="incentorybtn" layoutX="35.0" layoutY="471.0" mnemonicParsing="false" onAction="#controlPanel" prefHeight="30.0" prefWidth="98.0" styleClass="btn" stylesheets="@Style/mainFormDesign.css" text="Inventory" AnchorPane.bottomAnchor="17.0">
                <font>
                   <Font size="10.0" />
                </font>
             </Button>
-            <Button fx:id="reportbtn" layoutX="167.0" layoutY="478.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="98.0" styleClass="btn" stylesheets="@Style/mainFormDesign.css" text="Report" AnchorPane.bottomAnchor="17.0">
+            <Button fx:id="reportbtn" layoutX="167.0" layoutY="478.0" mnemonicParsing="false" onAction="#controlPanel" prefHeight="30.0" prefWidth="98.0" styleClass="btn" stylesheets="@Style/mainFormDesign.css" text="Report" AnchorPane.bottomAnchor="17.0">
                <font>
                   <Font size="10.0" />
                </font>
             </Button>
-            <AnchorPane fx:id="purcharebtn1" layoutX="7.0" layoutY="16.0" prefHeight="450.0" prefWidth="889.0" AnchorPane.bottomAnchor="69.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="6.0">
+            <AnchorPane fx:id="reportAP" layoutX="7.0" layoutY="16.0" prefHeight="450.0" prefWidth="889.0" AnchorPane.bottomAnchor="69.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="6.0">
                <children>
-                  <AnchorPane layoutX="20.0" layoutY="22.0" prefHeight="238.0" prefWidth="828.0" stylesheets="@Style/mainFormDesign.css" visible="false" AnchorPane.bottomAnchor="184.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="6.0">
+                  <AnchorPane fx:id="rcodcoreporttbl" layoutX="20.0" layoutY="22.0" prefHeight="260.0" prefWidth="862.0" stylesheets="@Style/mainFormDesign.css" AnchorPane.bottomAnchor="184.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="6.0">
                      <styleClass>
                         <String fx:value="white-bg" />
                         <String fx:value="shadow" />
@@ -726,17 +726,17 @@
                         <String fx:value="radius" />
                      </styleClass>
                      <children>
-                        <Button fx:id="rcorbtn" layoutX="23.0" layoutY="28.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="126.0" styleClass="btn" stylesheets="@Style/mainFormDesign.css" text="RCO Report">
+                        <Button fx:id="rcorbtn" layoutX="23.0" layoutY="28.0" mnemonicParsing="false" onAction="#controlPanel" prefHeight="30.0" prefWidth="126.0" styleClass="btn" stylesheets="@Style/mainFormDesign.css" text="RCO Report">
                            <font>
                               <Font size="10.0" />
                            </font>
                         </Button>
-                        <Button fx:id="dcorbtn" layoutX="179.0" layoutY="28.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="126.0" styleClass="btn" stylesheets="@Style/mainFormDesign.css" text="DCO Report">
+                        <Button fx:id="dcorbtn" layoutX="179.0" layoutY="28.0" mnemonicParsing="false" onAction="#controlPanel" prefHeight="30.0" prefWidth="126.0" styleClass="btn" stylesheets="@Style/mainFormDesign.css" text="DCO Report">
                            <font>
                               <Font size="10.0" />
                            </font>
                         </Button>
-                        <Button fx:id="prbtn" layoutX="333.0" layoutY="28.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="126.0" styleClass="btn" stylesheets="@Style/mainFormDesign.css" text="Purchase Report">
+                        <Button fx:id="prbtn" layoutX="333.0" layoutY="28.0" mnemonicParsing="false" onAction="#controlPanel" prefHeight="30.0" prefWidth="126.0" styleClass="btn" stylesheets="@Style/mainFormDesign.css" text="Purchase Report">
                            <font>
                               <Font size="10.0" />
                            </font>
@@ -748,7 +748,7 @@
                         </Button>
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="20.0" layoutY="9.0" prefHeight="260.0" prefWidth="862.0" stylesheets="@Style/mainFormDesign.css" AnchorPane.bottomAnchor="184.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="6.0">
+                  <AnchorPane layoutX="20.0" layoutY="9.0" prefHeight="260.0" prefWidth="862.0" stylesheets="@Style/mainFormDesign.css" visible="false" AnchorPane.bottomAnchor="184.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="6.0">
                      <styleClass>
                         <String fx:value="white-bg" />
                         <String fx:value="shadow" />
