@@ -3,6 +3,7 @@ package com.tech.pharmacy_shop_management_system;
 import Email.Email;
 import Connection.DatabaseConnection;
 import RemortCustomer.RemoteCustomerOrderMedicineDetails;
+import RemortCustomer.RemoteCustomerOrderShippingDetails;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,6 +16,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebView;
 import javafx.stage.FileChooser;
+import medicine.Medicine;
 
 import java.io.File;
 import java.net.URL;
@@ -79,8 +81,28 @@ public class MainAppController implements Initializable {
     private Button RCO_PLACR_ORDER;
 
 
+    @FXML
+    private TextField RCO_M_ID;
+
+    @FXML
+    private TextField RCO_M_NAME;
+
+    @FXML
+    private TextField RCO_M_PRICE;
+
+    @FXML
+    private Spinner<Integer> RCO_M_QUANTITY;
 
 
+    @FXML
+    private Button RCO_CLEAR_BTN;
+
+    @FXML
+    private Label RCO_TOTAL;
+
+
+
+   // RCO CUSTOMER DETAILS TABLE
     @FXML
     private TableColumn<RemoteCustomerOrderMedicineDetails, String> RCO_ADDRESS;
 
@@ -89,10 +111,11 @@ public class MainAppController implements Initializable {
     private TableColumn<RemoteCustomerOrderMedicineDetails, String> RCO_CONTACT_NO;
 
     @FXML
-    private TableColumn<RemoteCustomerOrderMedicineDetails, String> RCO_ITEM;
+    private TableColumn<RemoteCustomerOrderMedicineDetails, String> RCO_DATE;
+
 
     @FXML
-    private TableColumn<RemoteCustomerOrderMedicineDetails, String> RCO_PRICE;
+    private TableColumn<RemoteCustomerOrderMedicineDetails,Double> RCO_PRICE;
 
     @FXML
     private TableColumn<RemoteCustomerOrderMedicineDetails, String> ROC_ID;
@@ -103,6 +126,22 @@ public class MainAppController implements Initializable {
     @FXML
     private TableColumn<RemoteCustomerOrderMedicineDetails, String> ROC_NAME;
 
+   // MEDICINE DETAILS TABLE PROPERTIES
+    @FXML
+    private TableColumn<RemoteCustomerOrderShippingDetails, String> RCO_MT_ID;
+
+    @FXML
+    private TableColumn<RemoteCustomerOrderShippingDetails, String> RCO_MT_NAME;
+
+    @FXML
+    private TableColumn<RemoteCustomerOrderShippingDetails, Double> RCO_MT_PRICE;
+
+    @FXML
+    private TableColumn<RemoteCustomerOrderShippingDetails, Integer> RCO_MT_QUANTITY;
+
+    @FXML
+    private TableView<RemoteCustomerOrderShippingDetails> TABLE_MT_VIEW;
+
     private  Alert alert;
 
     private  Connection connect;
@@ -110,6 +149,8 @@ public class MainAppController implements Initializable {
     private PreparedStatement prepare;
     private Statement statement;
     private ResultSet result;
+
+    private SpinnerValueFactory<Integer> spin;
 
 
     // This method can help to move through the windows
@@ -124,9 +165,9 @@ public class MainAppController implements Initializable {
                      RCOManagePanel.setVisible(true);
                      WEB_VIEW.setVisible(false);
                      RCOPaymentPanel.setVisible(false);
-                     RCO_M_ADD_BTN.setDisable(true);
-                     RCOrderID();
-                     RCO_PLACR_ORDER.setDisable(true);
+
+
+
               }else if(event.getSource() ==RCOPaymentBtn){ // navigate into remote customer payment page
                      System.out.println("hi");
                      RCOManagePanel.setVisible(false);
@@ -138,7 +179,10 @@ public class MainAppController implements Initializable {
           // get data from rcoshippingdetail table in db.
     public ObservableList<RemoteCustomerOrderMedicineDetails> getData(){
 
-        String sql = "SELECT * FROM rcoshippingdetail";
+        String sql = "SELECT rcoshippingdetail.orderID, rcoshippingdetail.name, " +
+                "rcoshippingdetail.address,rcoshippingdetail.phoneNo,rcoshippingdetail.dateAndTime, " +
+                "SUM(rcomedicinedetail.price) as price FROM rcoshippingdetail INNER JOIN rcomedicinedetail " +
+                "ON rcoshippingdetail.orderID = rcomedicinedetail.RCOID GROUP BY rcoshippingdetail.orderID";
 
 
         ObservableList<RemoteCustomerOrderMedicineDetails> listData = FXCollections.observableArrayList();
@@ -155,8 +199,11 @@ public class MainAppController implements Initializable {
                 remoteCustomerOrderMedicineDetails = new RemoteCustomerOrderMedicineDetails(result.getString("orderID"),
 
                         result.getString("name"),result.getString("address"),
-                        result.getString("phoneNo"),result.getString("dateAndTime"));
-                System.out.println(result.getString("name"));
+                        result.getString("phoneNo"),result.getString("dateAndTime"),
+                        result.getDouble("price"));
+
+
+
 
                 listData.add(remoteCustomerOrderMedicineDetails);
             }
@@ -167,6 +214,68 @@ public class MainAppController implements Initializable {
         return  listData;
     }
 
+    public ObservableList<RemoteCustomerOrderShippingDetails> getMedicineData(){
+
+        String sql = "SELECT * FROM rcomedicinedetail WHERE RCOID = '"+RCO_ADD_ID.getText()+"'";
+
+
+        ObservableList<RemoteCustomerOrderShippingDetails> listData = FXCollections.observableArrayList();
+        connect = DatabaseConnection.ConnectionDB();
+
+        try {
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+
+            RemoteCustomerOrderShippingDetails remoteCustomerOrderShippingDetails;
+
+            while (result.next()){
+
+                remoteCustomerOrderShippingDetails  = new RemoteCustomerOrderShippingDetails(result.getString("RCOID"),
+
+                        result.getString("medicineID"),result.getString("quantity"),
+                        result.getString("medicineName"),result.getDouble("price"));
+
+
+
+
+                listData.add(remoteCustomerOrderShippingDetails);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return  listData;
+    }
+    public  void setQuaitynt() {
+
+        spin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 0);
+        RCO_M_QUANTITY.setValueFactory(spin);
+
+    }
+
+    private double totalPayment;
+    public void menuGetTotal(){
+
+        String total = "SELECT SUM(price) FROM rcomedicinedetail WHERE RCOID =" + RCO_ADD_ID.getText();
+
+        connect = DatabaseConnection.ConnectionDB();
+
+        try {
+            prepare = connect.prepareStatement(total);
+            result = prepare.executeQuery();
+
+            if(result.next()){
+                totalPayment = result.getDouble("SUM(price)");
+                RCO_TOTAL.setText(String.valueOf(totalPayment));
+            }
+
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 
     private ObservableList<RemoteCustomerOrderMedicineDetails> ROCListData;
     public  void ShowData(){ // DISPLAY RCO DETAILS ON THE  FXML TABLE
@@ -176,7 +285,24 @@ public class MainAppController implements Initializable {
         ROC_NAME.setCellValueFactory(new PropertyValueFactory<>("name"));
         RCO_ADDRESS.setCellValueFactory(new PropertyValueFactory<>("address"));
         RCO_CONTACT_NO.setCellValueFactory(new PropertyValueFactory<>("phoneNo"));
+        RCO_DATE.setCellValueFactory(new PropertyValueFactory<>("DateTime"));
+        RCO_PRICE.setCellValueFactory(new PropertyValueFactory<>("price"));
+
         TABLE_VIEW.setItems(ROCListData);
+    }
+
+    private ObservableList<RemoteCustomerOrderShippingDetails> ROCMListData;
+    public  void ShowMedicineData(){ // DISPLAY RCO DETAILS ON THE  FXML TABLE
+
+        ROCMListData = getMedicineData();
+        RCO_MT_ID.setCellValueFactory(new PropertyValueFactory<>("medicineID"));
+        RCO_MT_NAME.setCellValueFactory(new PropertyValueFactory<>("medicineName"));
+        RCO_MT_QUANTITY.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        RCO_MT_PRICE.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+
+
+        TABLE_MT_VIEW.setItems( ROCMListData);
     }
 
     private  int RCO_ID;
@@ -198,7 +324,7 @@ public class MainAppController implements Initializable {
             }else {
                 RCO_ID += 1;
             }
-            RCO_ADD_ID.setText(String.valueOf("00000"+RCO_ID));
+            RCO_ADD_ID.setText(String.valueOf(RCO_ID));
             RemoteCustomerOrderMedicineDetails.RCO_ID = String.valueOf(RCO_ID);
 
 
@@ -241,9 +367,166 @@ public class MainAppController implements Initializable {
                 RCO_ADD_ADDRESS.setDisable(true);
                 RCO_ADD_CONTACT_NO.setDisable(true);
                 RCO_ADD_ID.setDisable(true);
+                ROC_IMAGE_VIEW.setDisable(true);
+                //RCO_CLEAR_BTN.setDisable(true);
+
 
 
             }
+
+    }
+
+    public void  getMedicine(){
+
+        String sql = "SELECT * FROM medicine WHERE medicineID = '"+RCO_M_ID.getText()+"'";
+
+        connect = DatabaseConnection.ConnectionDB();
+
+        try {
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+
+            while (result.next()){
+
+                RCO_M_NAME.setText(result.getString("name"));
+                RCO_M_PRICE.setText(result.getString("price"));
+
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+
+
+
+    int qty;
+    public  void addBtn(){
+
+        qty = RCO_M_QUANTITY.getValue();
+
+        String check = "";
+        String checkAvailable = "SELECT status FROM medicine WHERE medicineID = '"+
+                RCO_M_ID.getText()+"'";
+        connect = DatabaseConnection.ConnectionDB();
+
+        try {
+
+            int checkStockNumber = 0;
+            String checkStock = "SELECT quantity FROM medicine WHERE medicineID= '"+RCO_M_ID.getText()+"'";
+
+            prepare = connect.prepareStatement(checkStock);
+            result = prepare.executeQuery();
+
+            if(result.next()){
+                checkStockNumber = result.getInt("quantity");
+            }
+
+            if(checkStockNumber == 0){
+
+                String updateStock = "UPDATE medicine SET status='Unavailable' WHERE medicineID = '"+RCO_M_ID.getText()+"' ";
+
+                prepare = connect.prepareStatement(updateStock);
+                prepare.executeUpdate();
+            }
+
+            prepare = connect.prepareStatement(checkAvailable);
+            result = prepare.executeQuery();
+
+            if(result.next()){
+                check = result.getString("status");
+                System.out.println(check);
+            }
+            if(!check.equals("Available") || qty == 0){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Message");
+                alert.setHeaderText("Error Alert!");
+                alert.setContentText("Something Wrong!");
+                alert.showAndWait();
+            }else{
+
+
+                if( checkStockNumber < qty){
+
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Out of stock!");
+                    alert.showAndWait();
+
+                }else {
+
+                       // prod_image = prod_image.replace("\\", "\\\\");
+
+                        String insertData = "INSERT INTO rcomedicinedetail " +
+                                "(RCOID,medicineID,quantity,medicineName,price)" +
+                                "VALUES(?,?,?,?,?)";
+
+                        prepare = connect.prepareStatement(insertData);
+                        prepare.setString(1, RCO_ADD_ID.getText());
+                        prepare.setString(2, RCO_M_ID.getText());
+                        prepare.setInt(3,RCO_M_QUANTITY.getValue());
+                        prepare.setString(4, RCO_M_NAME.getText());
+
+                        double price = Double.parseDouble(RCO_M_PRICE.getText());
+                        double totalP = (qty * price );
+
+                        prepare.setDouble(5, totalP);
+
+                        prepare.executeUpdate();
+
+                        int upStock = checkStockNumber - qty;
+
+//                   String updateStock = "UPDATE product SET prod_name = '"
+//                           +card_product_name.getText()+"', type= '"
+//                           + type +"',stock= " +upStock+",price = " + pr
+//                           +",status='"
+//                           + check+"', image='"
+//                           + prod_image+"',date='"+prod_date+"' WHERE prod_id = '"+prodID+"' ";
+
+                        String updateStock = "UPDATE medicine SET quantity= '" + upStock + "' WHERE medicineID = '" +RCO_M_ID.getText()+ "' ";
+
+                        prepare = connect.prepareStatement(updateStock);
+                        prepare.executeUpdate();
+
+
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Information Message");
+                        alert.setHeaderText("Success Alert!");
+                        alert.setContentText("Successfully Added!");
+                        alert.showAndWait();
+
+                        RCO_CLEAR_BTN.setDisable(true);
+
+                        clearRCOMFields();
+                        menuGetTotal();
+                        ShowMedicineData();
+
+                    }
+                }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+//        if(qty == 0){
+//
+//        }
+    }
+
+    public void placeOrder(){
+
+        sendRCOShippingDetails();
+        RCO_ADD_BTN.setDisable(false);
+        RCO_CLEAR_BTN.setDisable(false);
+        RCO_M_ADD_BTN.setDisable(true);
+        RCO_PLACR_ORDER.setDisable(true);
+        RCO_CLEAR_BTN.setDisable(false);
+        RCOrderID();
+        ShowData();
+        ShowMedicineData();
+        RCO_TOTAL.setText("0.00");
 
     }
 
@@ -261,7 +544,7 @@ public class MainAppController implements Initializable {
 
             String path = RemoteCustomerOrderMedicineDetails.path;
             path = path.replace("\\","\\\\");
-            prepare.setString(1,RemoteCustomerOrderMedicineDetails.RCO_ID);
+            prepare.setString(1,RCO_ADD_ID.getText());
             prepare.setString(2,RCO_ADD_NAME.getText());
             prepare.setString(3,RCO_ADD_ADDRESS.getText());
             prepare.setString(4,RCO_ADD_CONTACT_NO.getText());
@@ -276,12 +559,12 @@ public class MainAppController implements Initializable {
             alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Message");
             alert.setHeaderText("Successes Alert ");
-            alert.setContentText("Customer is added..!");
+            alert.setContentText("Order is Successfully Place!");
             alert.showAndWait();
 
 
             clearRCOFields();
-            RCO_ADD_ID.setText("00000"+RemoteCustomerOrderMedicineDetails.RCO_ID);
+            RCO_ADD_ID.setText(RemoteCustomerOrderMedicineDetails.RCO_ID);
 
 
 
@@ -289,6 +572,15 @@ public class MainAppController implements Initializable {
             e.printStackTrace();
         }
 
+    }
+
+    private void clearRCOMFields(){
+
+        RCO_M_ID.setText("");
+        RCO_M_NAME.setText("");
+        RCO_M_PRICE.setText("");
+        setQuaitynt();
+        RCO_PLACR_ORDER.setDisable(false);
     }
 
     public void clearRCOFields(){
@@ -300,6 +592,14 @@ public class MainAppController implements Initializable {
         ROC_IMAGE_VIEW.setImage(image);
         IMAGE_PATH_L.setText("");
 
+        RCO_ADD_BTN.setDisable(false);
+        RCO_M_ADD_BTN.setDisable(true);
+        RCO_ADD_NAME.setDisable(false);
+        RCO_ADD_ADDRESS.setDisable(false);
+        RCO_ADD_CONTACT_NO.setDisable(false);
+        RCO_ADD_ID.setDisable(false);
+        ROC_IMAGE_VIEW.setDisable(false);
+
     }
 
 
@@ -307,6 +607,11 @@ public class MainAppController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         ShowData();
+        setQuaitynt();
+        RCO_M_ADD_BTN.setDisable(true);
+        RCOrderID();
+        RCO_PLACR_ORDER.setDisable(true);
+
 
 
 

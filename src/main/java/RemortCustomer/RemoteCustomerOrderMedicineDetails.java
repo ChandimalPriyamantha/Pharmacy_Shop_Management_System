@@ -9,19 +9,28 @@ public class RemoteCustomerOrderMedicineDetails {
     private String phoneNo;
     private String DateTime;
 
+    private Double price;
+
     public static String RCO_ID;
 
     public static String path;
 
-    public RemoteCustomerOrderMedicineDetails(String orderID, String name, String address, String phoneNo, String dateTime) {
+    public RemoteCustomerOrderMedicineDetails(String orderID, String name, String address, String phoneNo, String dateTime, Double price) {
         this.orderID = orderID;
         this.name = name;
         this.address = address;
         this.phoneNo = phoneNo;
         this.DateTime = dateTime;
+        this.price = price;
     }
 
+    public Double getPrice() {
+        return price;
+    }
 
+    public void setPrice(Double price) {
+        this.price = price;
+    }
 
     public String getOrderID() {
         return orderID;
