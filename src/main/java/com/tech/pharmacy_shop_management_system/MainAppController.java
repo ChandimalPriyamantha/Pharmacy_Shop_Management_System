@@ -17,6 +17,8 @@ import javafx.scene.web.WebView;
 
 import java.net.URL;
 import java.sql.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 
@@ -529,6 +531,55 @@ public class MainAppController implements Initializable {
     }
 
     //Method to calculate change in DCO------------------------------------------------------------------------------------------------------------->End
+
+
+    //method to do the payment in DCO------------------------------------------------------------------>Start
+    public void payment(){
+        Double amount=0.0;
+        String transactionID=null;
+        int quantity=0;
+        try {
+            statement=connect.createStatement();
+            result=statement.executeQuery("select transactionID,price from transaction");
+            while (result.next()){
+                transactionID=result.getString(1);
+                amount=amount+result.getDouble(2);
+
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error in : "+e.getMessage());
+        }
+
+        for(int i=0;i<OrderedMedicineTable.getItems().size();i++){
+            // System.out.println(OrderedMedicineTableName.getCellData(i));
+            quantity=quantity+Integer.valueOf(OrderedMedicineTableQuantity.getCellData(i));
+
+        }
+        LocalDateTime myDateObj = LocalDateTime.now();
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedDate = myDateObj.format(myFormatObj);
+
+        try {
+            prepare = connect.prepareStatement("insert into sales (salesID,type,quantity,dateandTime,amount) values (?,'DCO',?,?,?)");
+            prepare.setString(1,transactionID);
+            prepare.setInt(2,quantity);
+            prepare.setString(3,formattedDate);
+            prepare.setDouble(4,amount);
+
+            prepare.executeUpdate();
+            clearOrderTable();
+        } catch (SQLException e) {
+            System.out.println("Error in : "+e.getMessage());
+        }
+
+
+
+
+
+    }
+
+    //method to do the payment in DCO------------------------------------------------------------------>End
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

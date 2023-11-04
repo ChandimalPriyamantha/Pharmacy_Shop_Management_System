@@ -150,12 +150,7 @@ public class Sales {
 
 
 
-    //method to do the payment in DCO------------------------------------------------------------------>Start
-    public void payment(){
-        
-    }
 
-    //method to do the payment in DCO------------------------------------------------------------------>End
 
 
 

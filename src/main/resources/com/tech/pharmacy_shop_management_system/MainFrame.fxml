@@ -323,7 +323,7 @@
                         <String fx:value="addButton" />
                      </styleClass>
                   </Button>
-                  <Button fx:id="DCOPayButton" layoutX="284.0" layoutY="424.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="140.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Pay" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="40.0">
+                  <Button fx:id="DCOPayButton" layoutX="284.0" layoutY="424.0" mnemonicParsing="false" onAction="#payment" prefHeight="30.0" prefWidth="140.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Pay" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="40.0">
                      <styleClass>
                         <String fx:value="add-btn" />
                         <String fx:value="addButton" />
