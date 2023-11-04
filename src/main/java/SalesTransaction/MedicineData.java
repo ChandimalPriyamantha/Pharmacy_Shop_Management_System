@@ -6,6 +6,10 @@ public class MedicineData {
     private int quantity;
     private double price;
 
+    public MedicineData() {
+
+    }
+
     public MedicineData(String medicineID, String name, int quantity, double price) {
         this.medicineID = medicineID;
         this.name = name;

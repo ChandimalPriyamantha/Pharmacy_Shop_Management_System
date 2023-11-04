@@ -400,11 +400,13 @@ public class MainAppController implements Initializable {
 
         DCOStockMedicineTable.setItems(DCOListMedicine);
     }
-    //Method to load DCO stock medicine details to table ------------------------------------------------------>End
+    //Method to load DCO stock medicine details to table ----------------------------------------------------------->End
 
 
 
-    //Method to autoload text fields in DCO add medicine to order---------------------------------------------->Start
+
+
+    //Method to autoload text fields in DCO add medicine to order--------------------------------------------------->Start
     public void fillDCOTextFields(){
         String id=DCOReadIDTextField.getText();
          String query="select medicineID,name,quantity,price from medicine where medicineID=?";
@@ -432,12 +434,11 @@ public class MainAppController implements Initializable {
             DCOQuantityTextField.setText("");
             //System.out.println("Error in: "+e.getMessage());
         }
-
-
     }
+    //Method to autoload text fields in DCO add medicine to order--------------------------------------------------------->End
 
 
-    //Method to autoload text fields in DCO add medicine to order---------------------------------------------->End
+
 
 
     //Method to show added medicine on table in DCO add medicine to order---------------------------------------------->Start
@@ -462,15 +463,16 @@ public class MainAppController implements Initializable {
                 OrderedMedicineTable.setItems(orderedMedicineList);
                 clearData();
                 getMedicine();
+                calculateTotal();
             }
         }
-
-
-
-
     }
-
     //Method to show added medicine on table in DCO add medicine to order---------------------------------------------->End
+
+
+
+
+
 
     //Method to clear button in DCO to order-------------------------------------------------------------------------->Start
     public void clearData(){
@@ -478,10 +480,55 @@ public class MainAppController implements Initializable {
         DCOTextFieldMedicineName.setText(null);
         DCOQuantityTextField.setText(null);
         DCOPriceTextField.setText(null);
+    }
+    //Method to clear button in DCO to order-------------------------------------------------------------------------->End
+
+
+
+
+    //Method to Calculate total in DCO to order-------------------------------------------------------------------------->Start
+    public void calculateTotal(){
+        double total=0.0;
+        for(int i=0;i<OrderedMedicineTable.getItems().size();i++){
+           // System.out.println(OrderedMedicineTableName.getCellData(i));
+            total=total+(OrderedMedicineTablePrice.getCellData(i)*OrderedMedicineTableQuantity.getCellData(i));
+
+        }
+        DCOTotalLable.setText(String.valueOf(total));
+
 
     }
-    //Method to clear button in DCO to order-------------------------------------------------------------------------->Start
+    //Method to Calculate total in DCO to order-------------------------------------------------------------------------->End
 
+
+
+
+    //Method to clear ordered table and database sales table total in DCO-------------------------------------------------------------------------->Start
+    public void clearOrderTable(){
+        try {
+            statement=connect.createStatement();
+            statement.executeUpdate("delete from transaction where transactionID!=' '");
+        } catch (SQLException e) {
+            System.out.println("Error in : "+e.getMessage());
+        }
+        OrderedMedicineTable.getItems().clear();
+        DCOTotalLable.setText("0.0");
+        DCOChangeLable.setText("0.0");
+        DCOSettledTextField.setText(null);
+    }
+
+    //Method to clear ordered table and database sales table total in DCO-------------------------------------------------------------------------->End
+
+
+
+    //Method to calculate change in DCO------------------------------------------------------------------------------------------------------------->Start
+    public void change(){
+        Double total =Double.valueOf( DCOTotalLable.getText());
+        Double change= Double.valueOf( DCOSettledTextField.getText())-total;
+        DCOChangeLable.setText(String.valueOf(change));
+    }
+
+    //Method to calculate change in DCO------------------------------------------------------------------------------------------------------------->End
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

@@ -1,5 +1,6 @@
 package SalesTransaction;
 
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -7,6 +8,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 import Connection.DatabaseConnection;
 
@@ -23,6 +28,10 @@ public class Sales {
     private static Connection connection;
     private PreparedStatement ps;
     private ResultSet rs;
+
+
+
+
 
     //Method to load medicine stock from database for DCO---------------------------------------------------->Start
     public ObservableList<MedicineData> loadMedicine(){
@@ -52,18 +61,56 @@ public class Sales {
     }
     //Method to load medicine stock from database for DCO---------------------------------------------------->End
 
+
+
+
+
+
     //Method to add medicine to order in DCO-------------------------------------------------------------------------->Start
 
     static ObservableList<MedicineData> addedList = FXCollections.observableArrayList();
     public static ObservableList<MedicineData> addSale(String ID, String name, String quantity, String price){
+        int max=0;
+        PreparedStatement ps = null;
+        ResultSet rs;
+        connection = DatabaseConnection.ConnectionDB();
+        String query = "select salesID from sales";
+        try {
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                if(Integer.valueOf(rs.getString("salesID"))>=max){
+                    max=Integer.valueOf(rs.getString("salesID"));
+                }
+            }
+
+
+            max=max+1;
+
+            LocalDateTime myDateObj = LocalDateTime.now();
+            DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            String formattedDate = myDateObj.format(myFormatObj);
+
+            ps = connection.prepareStatement("insert into transaction (transactionID,medicineID,date,type,price) values (?,?,?,'DCO',?)");
+            ps.setString(1,String.valueOf (max));
+            ps.setString(2,ID);
+            ps.setString(3,formattedDate);
+            ps.setDouble(4,Integer.valueOf(quantity)*Double.valueOf(price));
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("Error in : "+e.getMessage());
+        }
 
         MedicineData medicineData;
         medicineData=new MedicineData(ID,name,Integer.valueOf(quantity),Double.valueOf(price));
         addedList.add(medicineData);
         return addedList;
-
     }
     //Method to add medicine to order in DCO-------------------------------------------------------------------------->End
+
+
+
 
 
     //Method to change quantity of medicine in database when DCO------------------------------------------------------->Start
@@ -92,13 +139,25 @@ public class Sales {
                 ps.executeUpdate();
 
 
-
         } catch (SQLException e) {
             System.out.println("Error in : "+e.getMessage());
         }
         return 1;
     }
-
     //Method to change quantity of medicine in database when DCO------------------------------------------------------->End
+
+
+
+
+
+    //method to the payment in DCO
+
+
+
+
+
+
+
+
 
 }

@@ -317,7 +317,7 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
-                  <Button fx:id="DCORemoveButton" layoutX="64.0" layoutY="462.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="140.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Remove" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="40.0">
+                  <Button fx:id="DCORemoveButton" layoutX="64.0" layoutY="462.0" mnemonicParsing="false" onAction="#clearOrderTable" prefHeight="30.0" prefWidth="140.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Remove" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="40.0">
                      <styleClass>
                         <String fx:value="add-btn" />
                         <String fx:value="addButton" />
@@ -332,7 +332,7 @@
                   <Label layoutX="40.0" layoutY="430.0" prefHeight="25.0" prefWidth="90.0" styleClass="label-DCO" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Change : " AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="15.0" />
                   <Label fx:id="DCOChangeLable" layoutX="50.0" layoutY="440.0" prefHeight="25.0" prefWidth="90.0" styleClass="label-DCO" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="0.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="110.0" />
                   <Label layoutX="50.0" layoutY="440.0" prefHeight="25.0" prefWidth="90.0" styleClass="label-DCO" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Settled :" AnchorPane.bottomAnchor="95.0" AnchorPane.leftAnchor="15.0" />
-                  <TextField fx:id="DCOSettledTextField" layoutX="92.0" layoutY="401.0" promptText="0.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" AnchorPane.bottomAnchor="88.0" AnchorPane.leftAnchor="95.0">
+                  <TextField fx:id="DCOSettledTextField" layoutX="92.0" layoutY="401.0" onKeyReleased="#change" promptText="0.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" AnchorPane.bottomAnchor="88.0" AnchorPane.leftAnchor="95.0">
                      <styleClass>
                         <String fx:value="settled-label" />
                         <String fx:value="textfield" />
