@@ -5,6 +5,9 @@ import Connection.DatabaseConnection;
 import RemortCustomer.RemoteCustomerOrderMedicineDetails;
 import SalesTransaction.MedicineData;
 import SalesTransaction.Sales;
+import User.Admin;
+import User.Staff;
+import User.UserInfo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -71,22 +74,22 @@ public class MainAppController implements Initializable {
     private Button AdminManageSearchButton;
 
     @FXML
-    private TableView<?> AdminManageTable;
+    private TableView<UserInfo> AdminManageTable;
 
     @FXML
-    private TableColumn<?, ?> AdminManageTableContactNo;
+    private TableColumn<UserInfo, String> AdminManageTableContactNo;
 
     @FXML
-    private TableColumn<?, ?> AdminManageTableEmail;
+    private TableColumn<UserInfo,String> AdminManageTableEmail;
 
     @FXML
-    private TableColumn<?, ?> AdminManageTableID;
+    private TableColumn<UserInfo, String> AdminManageTableID;
 
     @FXML
-    private TableColumn<?, ?> AdminManageTableName;
+    private TableColumn<UserInfo, String> AdminManageTableName;
 
     @FXML
-    private TableColumn<?, ?> AdminManageTableSalary;
+    private TableColumn<UserInfo, Double> AdminManageTableSalary;
 
     @FXML
     private Button AdminManageUpdateButton;
@@ -131,25 +134,25 @@ public class MainAppController implements Initializable {
     private Button StaffManageSearchButton;
 
     @FXML
-    private TableView<?> StaffManageTable;
+    private TableView<UserInfo> StaffManageTable;
 
     @FXML
-    private TableColumn<?, ?> StaffManageTableContactNo;
+    private TableColumn<Staff, String> StaffManageTableContactNo;
 
     @FXML
-    private TableColumn<?, ?> StaffManageTableEmail;
+    private TableColumn<Staff, String> StaffManageTableEmail;
 
     @FXML
-    private TableColumn<?, ?> StaffManageTableID;
+    private TableColumn<Staff, String> StaffManageTableID;
 
     @FXML
-    private TableColumn<?, ?> StaffManageTableName;
+    private TableColumn<Staff, String> StaffManageTableName;
 
     @FXML
-    private TableColumn<?, ?> StaffManageTablePosition;
+    private TableColumn<Staff, String> StaffManageTablePosition;
 
     @FXML
-    private TableColumn<?, ?> StaffManageTableSalary;
+    private TableColumn<Staff, Double> StaffManageTableSalary;
 
     @FXML
     private Button StaffManageUpdateButton;
@@ -312,6 +315,8 @@ public class MainAppController implements Initializable {
                      WEB_VIEW.setVisible(false);
                      UserManageBackground.setVisible(false);
                  }else if(event.getSource()==UserManageButton){ // navigate into User Manage page
+                     getStaff();
+
                      DCOBackground.setVisible(false);
                      RCOPaymentPanel.setVisible(false);
                      RCOManagePanel.setVisible(false);
@@ -319,7 +324,9 @@ public class MainAppController implements Initializable {
                      UserManageBackground.setVisible(true);
                      StaffManageBackground.setVisible(true);
                      AdminManageBackground.setVisible(false);
-                 }else if(event.getSource()==UserManageStaffButton){ // navigate into User Manage page
+                 }else if(event.getSource()==UserManageStaffButton){ // navigate into Staff Manage page
+                     getStaff();
+
                      DCOBackground.setVisible(false);
                      RCOPaymentPanel.setVisible(false);
                      RCOManagePanel.setVisible(false);
@@ -327,7 +334,9 @@ public class MainAppController implements Initializable {
                      UserManageBackground.setVisible(true);
                      StaffManageBackground.setVisible(true);
                      AdminManageBackground.setVisible(false);
-                 }else if(event.getSource()==UserManageAdminButton){ // navigate into User Manage page
+                 }else if(event.getSource()==UserManageAdminButton){ // navigate into Admin Manage page
+                     getAdmin();
+
                      DCOBackground.setVisible(false);
                      RCOPaymentPanel.setVisible(false);
                      RCOManagePanel.setVisible(false);
@@ -337,6 +346,30 @@ public class MainAppController implements Initializable {
                      AdminManageBackground.setVisible(true);
                  }else if(event.getSource()==DCOClearButton){ // Functionality to clear DCO
                      clearData();
+
+                 }else if(event.getSource()==AdminManageAddButton){ // Functionality to Add ADMIN User
+                     new Admin().addUser(AdminManageID.getText(),
+                             AdminManageName.getText(),
+                             AdminManageContactNo.getText(),
+                             AdminManagePassword.getText(),
+                             AdminManageSalary.getText(),
+                             AdminManageEmail.getText());
+                     getAdmin();
+                     clearUserData();
+
+                 }else if(event.getSource()==StaffManageAddButton){ // Functionality to Add Staff User
+                     new Staff().addUser(StaffManageID.getText(),
+                             StaffManageName.getText(),
+                             StaffManageContactNo.getText(),
+                             StaffManagePassword.getText(),
+                             StaffManageSalary.getText(),
+                             StaffManageEmail.getText(),
+                             StaffManagePosition.getText());
+                     getStaff();
+                     clearUserData();
+
+                 }else if(event.getSource()==AdminManageClearButton||event.getSource()==StaffManageClearButton){ // Functionality to Clear User manage Text fields
+                     clearUserData();
                  }
 
           }
@@ -408,6 +441,55 @@ public class MainAppController implements Initializable {
 
 
 
+    //Method to load Admin List to table ------------------------------------------------------------------------->start
+    private ObservableList<UserInfo> userList;
+    public void getAdmin(){
+        userList= new UserInfo().loadUser();
+
+        AdminManageTableID.setCellValueFactory((new PropertyValueFactory<>("id")));
+        AdminManageTableName.setCellValueFactory((new PropertyValueFactory<>("name")));
+        AdminManageTableEmail.setCellValueFactory((new PropertyValueFactory<>("email")));
+        AdminManageTableContactNo.setCellValueFactory((new PropertyValueFactory<>("contactNo")));
+        AdminManageTableSalary.setCellValueFactory((new PropertyValueFactory<>("salary")));
+
+
+        AdminManageTable.setItems(userList);
+    }
+
+    //Method to load Admin List to table ------------------------------------------------------------------------->start
+
+
+
+
+
+
+    //Method to load Staff List to table ------------------------------------------------------------------------->start
+    private ObservableList<UserInfo> staffList;
+    public void getStaff(){
+        staffList= new Staff().loadUser();
+
+        StaffManageTableID.setCellValueFactory((new PropertyValueFactory<>("id")));
+        StaffManageTableName.setCellValueFactory((new PropertyValueFactory<>("name")));
+        StaffManageTableEmail.setCellValueFactory((new PropertyValueFactory<>("email")));
+        StaffManageTableContactNo.setCellValueFactory((new PropertyValueFactory<>("contactNo")));
+        StaffManageTableSalary.setCellValueFactory((new PropertyValueFactory<>("salary")));
+        StaffManageTablePosition.setCellValueFactory((new PropertyValueFactory<>("position")));
+
+        StaffManageTable.setItems(staffList);
+    }
+
+
+    //Method to load Staff List to table ------------------------------------------------------------------------->start
+
+
+
+
+
+
+
+
+
+
     //Method to autoload text fields in DCO add medicine to order--------------------------------------------------->Start
     public void fillDCOTextFields(){
         String id=DCOReadIDTextField.getText();
@@ -446,14 +528,25 @@ public class MainAppController implements Initializable {
     //Method to show added medicine on table in DCO add medicine to order---------------------------------------------->Start
     private ObservableList<MedicineData> orderedMedicineList;
     public void loadOrderMedicine(){
+        Alert alert;
 
 
         if(Integer.valueOf(DCOQuantityTextField.getText())==0){
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText("Invalid quantity");
+            alert.setContentText("Quantity is 0... please add a quantity");
+            alert.showAndWait();
             System.out.println("Quantity is 0... please add a quantity.....");  //Need to create a prompt error message to indicate quantity text field is 0.....
         }
         else{
             int updateQty = Sales.changeQuantity(DCOReadIDTextField.getText(),Integer.valueOf(DCOQuantityTextField.getText()));
             if(updateQty==0){
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Message");
+                alert.setHeaderText("Out of Stock");
+                alert.setContentText("This medicine looks like out of stocked");
+                alert.showAndWait();
                 System.out.println("Out of stock........");     //Need to create a prompt error message to indicate medicine is out of stocked
             }else{
                 orderedMedicineList=Sales.addSale(DCOReadIDTextField.getText(),DCOTextFieldMedicineName.getText(),DCOQuantityTextField.getText(),DCOPriceTextField.getText());
@@ -486,6 +579,27 @@ public class MainAppController implements Initializable {
     //Method to clear button in DCO to order-------------------------------------------------------------------------->End
 
 
+
+
+
+
+
+    //Method to clear button in DCO to order-------------------------------------------------------------------------->Start
+    public void clearUserData(){
+        AdminManageID.setText(null);
+        AdminManageName.setText(null);
+        AdminManageContactNo.setText(null);
+        AdminManageEmail.setText(null);
+        AdminManageSalary.setText(null);
+
+        StaffManageID.setText(null);
+        StaffManageName.setText(null);
+        StaffManageEmail.setText(null);
+        StaffManageSalary.setText(null);
+        StaffManageContactNo.setText(null);
+        StaffManagePosition.setText(null);
+    }
+    //Method to clear button in DCO to order-------------------------------------------------------------------------->End
 
 
     //Method to Calculate total in DCO to order-------------------------------------------------------------------------->Start
@@ -573,13 +687,15 @@ public class MainAppController implements Initializable {
             System.out.println("Error in : "+e.getMessage());
         }
 
-
-
-
-
     }
 
     //method to do the payment in DCO------------------------------------------------------------------>End
+
+
+
+
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

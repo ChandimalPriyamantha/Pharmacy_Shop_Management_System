@@ -10,12 +10,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
 
 import Connection.DatabaseConnection;
-
-import static java.lang.System.exit;
+import javafx.scene.control.Alert;
 
 
 public class Sales {
@@ -118,6 +115,7 @@ public class Sales {
         connection = DatabaseConnection.ConnectionDB();
         String query = "SELECT quantity FROM medicine where medicineID=?";
         PreparedStatement ps = null;
+        Alert alert;
 
         try {
             ps = connection.prepareStatement(query);
@@ -128,7 +126,7 @@ public class Sales {
             int availableStock = rs.getInt(1);
             //int requestedQuantity=Integer.valueOf(DCOQuantityTextField.getText());
             if(availableStock<requiredQuantity){
-                System.out.println("There is no enough stock...");          //--------------------------------->Error message.. Need to create a error prompt message
+
                 return 0;
             }
                 availableStock=availableStock-requiredQuantity;

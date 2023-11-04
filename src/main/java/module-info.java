@@ -14,4 +14,6 @@ module com.tech.pharmacy_shop_management_system {
     opens RemortCustomer to javafx.fxml;
     exports SalesTransaction;
     opens SalesTransaction to javafx.fxml;
+    exports User;
+    opens User to javafx.fxml;
 }
