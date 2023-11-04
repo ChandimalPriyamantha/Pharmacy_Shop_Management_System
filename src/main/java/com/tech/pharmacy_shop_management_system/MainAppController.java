@@ -332,6 +332,15 @@ public class MainAppController implements Initializable {
                      StaffManageBackground.setVisible(false);
                      AdminManageBackground.setVisible(true);
                  }
+                 else if(event.getSource()==purchasenavbtn){ // navigate into User Manage page
+                     DCOBackground.setVisible(false);
+                     RCOPaymentPanel.setVisible(false);
+                     RCOManagePanel.setVisible(false);
+                     WEB_VIEW.setVisible(false);
+                     UserManageBackground.setVisible(true);
+                     StaffManageBackground.setVisible(false);
+                     AdminManageBackground.setVisible(true);
+                 }
 
           }
 
