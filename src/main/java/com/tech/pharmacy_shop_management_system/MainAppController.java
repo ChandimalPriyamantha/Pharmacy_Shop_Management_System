@@ -443,14 +443,31 @@ public class MainAppController implements Initializable {
     //Method to show added medicine on table in DCO add medicine to order---------------------------------------------->Start
     private ObservableList<MedicineData> orderedMedicineList;
     public void loadOrderMedicine(){
-        orderedMedicineList=Sales.addSale(DCOReadIDTextField.getText(),DCOTextFieldMedicineName.getText(),DCOQuantityTextField.getText(),DCOPriceTextField.getText());
 
-        OrderedMedicineTableID.setCellValueFactory((new PropertyValueFactory<>("medicineID")));
-        OrderedMedicineTableName.setCellValueFactory((new PropertyValueFactory<>("name")));
-        OrderedMedicineTableQuantity.setCellValueFactory((new PropertyValueFactory<>("quantity")));
-        OrderedMedicineTablePrice.setCellValueFactory((new PropertyValueFactory<>("price")));
-        OrderedMedicineTable.setItems(orderedMedicineList);
-        clearData();
+
+        if(Integer.valueOf(DCOQuantityTextField.getText())==0){
+            System.out.println("Quantity is 0... please add a quantity.....");  //Need to create a prompt error message to indicate quantity text field is 0.....
+        }
+        else{
+            int updateQty = Sales.changeQuantity(DCOReadIDTextField.getText(),Integer.valueOf(DCOQuantityTextField.getText()));
+            if(updateQty==0){
+                System.out.println("Out of stock........");     //Need to create a prompt error message to indicate medicine is out of stocked
+            }else{
+                orderedMedicineList=Sales.addSale(DCOReadIDTextField.getText(),DCOTextFieldMedicineName.getText(),DCOQuantityTextField.getText(),DCOPriceTextField.getText());
+
+                OrderedMedicineTableID.setCellValueFactory((new PropertyValueFactory<>("medicineID")));
+                OrderedMedicineTableName.setCellValueFactory((new PropertyValueFactory<>("name")));
+                OrderedMedicineTableQuantity.setCellValueFactory((new PropertyValueFactory<>("quantity")));
+                OrderedMedicineTablePrice.setCellValueFactory((new PropertyValueFactory<>("price")));
+                OrderedMedicineTable.setItems(orderedMedicineList);
+                clearData();
+                getMedicine();
+            }
+        }
+
+
+
+
     }
 
     //Method to show added medicine on table in DCO add medicine to order---------------------------------------------->End

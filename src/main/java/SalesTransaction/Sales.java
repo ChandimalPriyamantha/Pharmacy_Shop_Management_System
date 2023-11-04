@@ -1,6 +1,5 @@
 package SalesTransaction;
 
-import com.tech.pharmacy_shop_management_system.MainAppController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -57,7 +56,7 @@ public class Sales {
 
     static ObservableList<MedicineData> addedList = FXCollections.observableArrayList();
     public static ObservableList<MedicineData> addSale(String ID, String name, String quantity, String price){
-        changeQuantity(ID,Integer.valueOf(quantity));
+
         MedicineData medicineData;
         medicineData=new MedicineData(ID,name,Integer.valueOf(quantity),Double.valueOf(price));
         addedList.add(medicineData);
@@ -68,39 +67,38 @@ public class Sales {
 
 
     //Method to change quantity of medicine in database when DCO------------------------------------------------------->Start
-    public static void changeQuantity(String id,int requestedQuantity){
+    public static int changeQuantity(String ID,int requiredQuantity){
         connection = DatabaseConnection.ConnectionDB();
         String query = "SELECT quantity FROM medicine where medicineID=?";
         PreparedStatement ps = null;
+
         try {
             ps = connection.prepareStatement(query);
-            ps.setString(1,id);
+            ps.setString(1,ID);
             ResultSet rs = ps.executeQuery();
             rs.next();
-            int availableStock = rs.getInt(1);
 
-            if(availableStock<requestedQuantity){
+            int availableStock = rs.getInt(1);
+            //int requestedQuantity=Integer.valueOf(DCOQuantityTextField.getText());
+            if(availableStock<requiredQuantity){
                 System.out.println("There is no enough stock...");          //--------------------------------->Error message.. Need to create a error prompt message
-                exit(0);
+                return 0;
             }
-            else{
-                availableStock=availableStock-requestedQuantity;
-                query = "update medicine set quantity=? where medicineID=id";
+                availableStock=availableStock-requiredQuantity;
+                String mid=ID;
+                query = "update medicine set quantity=? where medicineID="+"'"+mid+"'";
                 ps = connection.prepareStatement(query);
                 ps.setInt(1,availableStock);
                 ps.executeUpdate();
 
-                new MainAppController().getMedicine();
 
-
-            }
 
         } catch (SQLException e) {
             System.out.println("Error in : "+e.getMessage());
         }
-
+        return 1;
     }
 
-    //Method to change quantity of medicine in database when DCO------------------------------------------------------->Start
+    //Method to change quantity of medicine in database when DCO------------------------------------------------------->End
 
 }
