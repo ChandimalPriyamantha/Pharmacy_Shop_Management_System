@@ -3,12 +3,13 @@
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="960.0" styleClass="main-bg" stylesheets="@Style/mainFormDesign.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tech.pharmacy_shop_management_system.LogIn">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="960.0" styleClass="main-bg" stylesheets="@Style/mainFormDesign.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tech.pharmacy_shop_management_system.LogInController">
    <children>
       <AnchorPane layoutY="21.0" prefHeight="252.0" prefWidth="960.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
@@ -52,19 +53,13 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="aduname" layoutX="44.0" layoutY="115.0" prefHeight="32.0" prefWidth="213.0" text="Username">
+                  <TextField fx:id="aduname" layoutX="44.0" layoutY="115.0" prefHeight="32.0" prefWidth="213.0" promptText="Username">
                      <styleClass>
                         <String fx:value="white-bg" />
                         <String fx:value="user-admin" />
                      </styleClass>
                   </TextField>
-                  <TextField fx:id="adpwd" layoutX="44.0" layoutY="162.0" prefHeight="32.0" prefWidth="213.0" text="Password">
-                     <styleClass>
-                        <String fx:value="white-bg" />
-                        <String fx:value="user-admin" />
-                     </styleClass>
-                  </TextField>
-                  <Button fx:id="alogin" layoutX="44.0" layoutY="204.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="213.0" styleClass="btn" text="LogIn">
+                  <Button fx:id="alogin" layoutX="44.0" layoutY="204.0" mnemonicParsing="false" onAction="#aloginOnAction" prefHeight="32.0" prefWidth="213.0" styleClass="btn" text="LogIn">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -92,6 +87,12 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Button>
+                  <PasswordField fx:id="adpwd" layoutX="45.0" layoutY="159.0" prefHeight="32.0" prefWidth="213.0" promptText="Password">
+                     <styleClass>
+                        <String fx:value="white-bg" />
+                        <String fx:value="user-admin" />
+                     </styleClass>
+                  </PasswordField>
                </children>
             </AnchorPane>
             <Label layoutX="817.0" layoutY="321.0" prefHeight="61.0" prefWidth="50.0" styleClass="pharmacy-icon" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="33.0" />
