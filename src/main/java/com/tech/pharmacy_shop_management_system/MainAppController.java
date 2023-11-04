@@ -1,46 +1,171 @@
 package com.tech.pharmacy_shop_management_system;
 
 import Email.Email;
-import Purchase.Purchase;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.sql.Connection;
-
 
 
 public class MainAppController implements Initializable {
 
     @FXML
+    private Button Clear1;
+
+    @FXML
+    private Button add1;
+
+    @FXML
+    private Button add2;
+
+    @FXML
+    private Button clear2;
+
+    @FXML
+    private TableColumn<?, ?> companyPP;
+
+    @FXML
+    private AnchorPane completePurchase;
+
+    @FXML
+    private AnchorPane completePurchaseTbl;
+
+    @FXML
+    private TableColumn<?, ?> cpCompanyNo;
+
+    @FXML
+    private TextField cpCompanyrno;
+
+    @FXML
+    private TableColumn<?, ?> cpaddresstbl;
+
+    @FXML
+    private Button cpbtn;
+
+    @FXML
+    private TableColumn<?, ?> cpdate;
+
+    @FXML
+    private TableColumn<?, ?> cpid;
+
+    @FXML
+    private TableColumn<?, ?> cpidtbl;
+
+    @FXML
+    private TableColumn<?, ?> cpnametbl;
+
+    @FXML
+    private TableColumn<?, ?> cpqty;
+
+    @FXML
+    private TextField cpsupaddress;
+
+    @FXML
+    private TextField cpsupamount;
+
+    @FXML
+    private CheckBox cpsupcheck;
+
+    @FXML
+    private TextField cpsupcno;
+
+    @FXML
+    private TextField cpsupid;
+
+    @FXML
+    private TextField cpsupname;
+
+    @FXML
+    private Button cpsupupdate;
+
+    @FXML
+    private Button cptblbtn;
+
+    @FXML
+    private TableView<?> cptbldetails;
+
+    @FXML
+    private TableView<?> cptblsummery;
+
+    @FXML
+    private TableColumn<?, ?> datepp;
+
+    @FXML
     private Button emailPage;
 
     @FXML
+    private TableColumn<?, ?> idPP;
+
+    @FXML
+    private AnchorPane placePurchase;
+
+    @FXML
+    private AnchorPane placePurchasetbl;
+
+    @FXML
+    private TextField ppAddress;
+
+    @FXML
+    private TextField ppCmpnyRegNo;
+
+    @FXML
+    private TextField ppContactNo;
+
+    @FXML
+    private TextField ppMedicineID;
+
+    @FXML
+    private TextField ppMedicineName;
+
+    @FXML
+    public TextField ppName;
+
+    @FXML
+    private Spinner<?> ppQty;
+
+    @FXML
+    private Button ppRemove;
+
+    @FXML
+    private TableColumn<?, ?> ppTableId;
+
+    @FXML
+    private TableView<?> ppTbl;
+
+    @FXML
+    private TableColumn<?, ?> ppTbleAddress;
+
+    @FXML
+    private Button ppbtn;
+
+    @FXML
+    public String ppsupplierID;
+
+    @FXML
+    private TableColumn<?, ?> pptblName;
+
+    @FXML
+    private Button pptblPlacePurchase;
+
+    @FXML
+    private AnchorPane purchaseAp;
+
+    @FXML
+    private TableView<?> purchaseTbl;
+
+    @FXML
+    private Button purchasebtn;
+
+    @FXML
+    private TableColumn<?, ?> qtypp;
+
+    @FXML
     private WebView webView;
-
-    @FXML
-    private TableColumn<Purchase, String> pno;
-
-    @FXML
-    private TableColumn<Purchase, String> name;
-
-    @FXML
-    private TableColumn<Purchase, Integer> id;
-
-    @FXML
-    private TableColumn<Purchase, String> addressNo;
-
-    @FXML
-    private TableView<Purchase> purchaseTbl;
-
-    ObservableList<Purchase> listM;
 
     int index = -1;
 
@@ -51,20 +176,15 @@ public class MainAppController implements Initializable {
                     Email email = new  Email(webView);
                     email.emailServer();
                     emailPage.setVisible(false);
+                 } else if (event.getSource()== purchasebtn) {
+
+                     purchaseAp.setVisible(true);
+                     placePurchase.setVisible(true);
+                     placePurchase.setVisible(true);
                  }
           }
 
-          public void displayDetails(){
 
-              id.setCellValueFactory(new PropertyValueFactory<Purchase,Integer>("id"));
-              name.setCellValueFactory(new PropertyValueFactory<Purchase,String>("name"));
-              pno.setCellValueFactory(new PropertyValueFactory<Purchase,String>("pno"));
-              addressNo.setCellValueFactory(new PropertyValueFactory<Purchase,String>("addressNo"));
-
-              listM = Purchase.getData();
-              purchaseTbl.setItems(listM);
-
-          }
 
 
     @Override
@@ -72,7 +192,6 @@ public class MainAppController implements Initializable {
         Email email = new  Email(webView);
         email.emailServer();
 
-        displayDetails();
 
     }
 

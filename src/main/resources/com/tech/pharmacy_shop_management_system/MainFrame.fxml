@@ -42,7 +42,7 @@
             <Button fx:id="emailPage" layoutX="16.0" layoutY="387.0" mnemonicParsing="false" onAction="#controlPanel" prefHeight="42.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@Style/mainFormDesign.css" text="Email" />
             <Button layoutX="17.0" layoutY="447.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@Style/mainFormDesign.css" text="Inventory | Report" />
             <Button layoutX="16.0" layoutY="507.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@Style/mainFormDesign.css" text="User Manage" />
-            <Button layoutX="17.0" layoutY="572.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@Style/mainFormDesign.css" text="Purchase" />
+            <Button fx:id="purchasebtn" layoutX="17.0" layoutY="572.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@Style/mainFormDesign.css" text="Purchase" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="-3.0" layoutY="580.0" prefHeight="22.0" prefWidth="915.0" styleClass="nav-form" stylesheets="@Style/mainFormDesign.css" AnchorPane.bottomAnchor="-5.399999999999999" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="-3.2000000000000455">
@@ -80,9 +80,9 @@
             <WebView fx:id="webView" layoutX="9.0" layoutY="9.0" prefHeight="517.0" prefWidth="896.0" AnchorPane.bottomAnchor="12.600024414062545" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="9.0" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="208.0" layoutY="81.0" prefHeight="547.0" prefWidth="916.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="208.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="81.0">
+      <AnchorPane fx:id="purchaseAp" layoutX="208.0" layoutY="81.0" prefHeight="547.0" prefWidth="916.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="208.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="81.0">
          <children>
-            <AnchorPane layoutX="-2.0" layoutY="-6.0" prefHeight="507.0" prefWidth="512.0" stylesheets="@Style/mainFormDesign694.css" visible="false" AnchorPane.bottomAnchor="46.0" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="406.0" AnchorPane.topAnchor="-6.0">
+            <AnchorPane fx:id="placePurchase" layoutX="-2.0" layoutY="-6.0" prefHeight="507.0" prefWidth="512.0" stylesheets="@Style/mainFormDesign694.css" AnchorPane.bottomAnchor="46.0" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="406.0" AnchorPane.topAnchor="-6.0">
                <children>
                   <AnchorPane layoutX="-2.0" layoutY="228.0" prefHeight="250.0" prefWidth="491.0" stylesheets="@Style/mainFormDesign694.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="23.0">
                      <styleClass>
@@ -102,31 +102,31 @@
                             <RowConstraints maxHeight="46.8000244140625" minHeight="10.0" prefHeight="46.8000244140625" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <TextField prefHeight="26.0" prefWidth="113.0" promptText="Supplier ID" stylesheets="@Style/mainFormDesign694.css">
+                              <TextField fx:id="ppsupplierID" prefHeight="26.0" prefWidth="113.0" promptText="Supplier ID" stylesheets="@Style/mainFormDesign694.css">
                                  <styleClass>
                                     <String fx:value="radius" />
                                     <String fx:value="main-bg" />
                                  </styleClass>
                               </TextField>
-                              <TextField layoutX="10.0" layoutY="19.0" prefHeight="26.0" prefWidth="118.0" promptText="Company Reg No" stylesheets="@Style/mainFormDesign694.css" GridPane.columnIndex="2">
+                              <TextField fx:id="ppCmpnyRegNo" layoutX="10.0" layoutY="19.0" prefHeight="26.0" prefWidth="118.0" promptText="Company Reg No" stylesheets="@Style/mainFormDesign694.css" GridPane.columnIndex="2">
                                  <styleClass>
                                     <String fx:value="radius" />
                                     <String fx:value="main-bg" />
                                  </styleClass>
                               </TextField>
-                              <TextField layoutX="141.0" layoutY="19.0" prefHeight="26.0" prefWidth="118.0" promptText="Name" stylesheets="@Style/mainFormDesign694.css" GridPane.columnIndex="1">
+                              <TextField fx:id="ppName" layoutX="141.0" layoutY="19.0" prefHeight="26.0" prefWidth="118.0" promptText="Name" stylesheets="@Style/mainFormDesign694.css" GridPane.columnIndex="1">
                                  <styleClass>
                                     <String fx:value="radius" />
                                     <String fx:value="main-bg" />
                                  </styleClass>
                               </TextField>
-                              <TextField layoutX="141.0" layoutY="19.0" prefHeight="26.0" prefWidth="118.0" promptText="Contact No" stylesheets="@Style/mainFormDesign694.css" GridPane.rowIndex="1">
+                              <TextField fx:id="ppContactNo" layoutX="141.0" layoutY="19.0" prefHeight="26.0" prefWidth="118.0" promptText="Contact No" stylesheets="@Style/mainFormDesign694.css" GridPane.rowIndex="1">
                                  <styleClass>
                                     <String fx:value="radius" />
                                     <String fx:value="main-bg" />
                                  </styleClass>
                               </TextField>
-                              <TextField layoutX="10.0" layoutY="64.0" prefHeight="26.0" prefWidth="118.0" promptText="Address" stylesheets="@Style/mainFormDesign694.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                              <TextField fx:id="ppAddress" layoutX="10.0" layoutY="64.0" prefHeight="26.0" prefWidth="118.0" promptText="Address" stylesheets="@Style/mainFormDesign694.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <styleClass>
                                     <String fx:value="radius" />
                                     <String fx:value="main-bg" />
@@ -141,13 +141,13 @@
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="86.0" stylesheets="@Style/mainFormDesign694.css" text="Add">
+                                    <Button fx:id="add1" mnemonicParsing="false" prefHeight="30.0" prefWidth="86.0" stylesheets="@Style/mainFormDesign694.css" text="Add">
                                        <styleClass>
                                           <String fx:value="btn" />
                                           <String fx:value="radius" />
                                        </styleClass>
                                     </Button>
-                                    <Button layoutX="10.0" layoutY="17.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="86.0" stylesheets="@Style/mainFormDesign694.css" text="Clear" GridPane.columnIndex="1">
+                                    <Button fx:id="Clear1" layoutX="10.0" layoutY="17.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="86.0" stylesheets="@Style/mainFormDesign694.css" text="Clear" GridPane.columnIndex="1">
                                        <styleClass>
                                           <String fx:value="btn" />
                                           <String fx:value="radius" />
@@ -172,19 +172,19 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <TextField prefHeight="26.0" prefWidth="113.0" promptText="Medicine ID" stylesheets="@Style/mainFormDesign694.css">
+                              <TextField fx:id="ppMedicineID" prefHeight="26.0" prefWidth="113.0" promptText="Medicine ID" stylesheets="@Style/mainFormDesign694.css">
                                  <styleClass>
                                     <String fx:value="radius" />
                                     <String fx:value="main-bg" />
                                  </styleClass>
                               </TextField>
-                              <TextField layoutX="10.0" layoutY="12.0" prefHeight="26.0" prefWidth="113.0" promptText="Medicine Name" stylesheets="@Style/mainFormDesign694.css" GridPane.columnIndex="1">
+                              <TextField fx:id="ppMedicineName" layoutX="10.0" layoutY="12.0" prefHeight="26.0" prefWidth="113.0" promptText="Medicine Name" stylesheets="@Style/mainFormDesign694.css" GridPane.columnIndex="1">
                                  <styleClass>
                                     <String fx:value="radius" />
                                     <String fx:value="main-bg" />
                                  </styleClass>
                               </TextField>
-                              <Spinner prefHeight="26.0" prefWidth="205.0" stylesheets="@Style/mainFormDesign694.css" GridPane.rowIndex="1">
+                              <Spinner fx:id="ppQty" prefHeight="26.0" prefWidth="205.0" stylesheets="@Style/mainFormDesign694.css" GridPane.rowIndex="1">
                                  <styleClass>
                                     <String fx:value="radius" />
                                     <String fx:value="main-bg" />
@@ -199,13 +199,13 @@
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="86.0" stylesheets="@Style/mainFormDesign694.css" text="Add">
+                                    <Button fx:id="add2" mnemonicParsing="false" prefHeight="30.0" prefWidth="86.0" stylesheets="@Style/mainFormDesign694.css" text="Add">
                                        <styleClass>
                                           <String fx:value="btn" />
                                           <String fx:value="radius" />
                                        </styleClass>
                                     </Button>
-                                    <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="86.0" stylesheets="@Style/mainFormDesign694.css" text="Clear" GridPane.columnIndex="1">
+                                    <Button fx:id="clear2" mnemonicParsing="false" prefHeight="30.0" prefWidth="86.0" stylesheets="@Style/mainFormDesign694.css" text="Clear" GridPane.columnIndex="1">
                                        <padding>
                                           <Insets left="5.0" />
                                        </padding>
@@ -224,10 +224,10 @@
                      <children>
                         <TableView fx:id="purchaseTbl" layoutX="14.0" layoutY="16.0" prefHeight="175.0" prefWidth="460.0" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="16.0">
                           <columns>
-                            <TableColumn fx:id="id" prefWidth="75.0" text="ID" />
-                            <TableColumn fx:id="name" prefWidth="75.0" text="name" />
-                              <TableColumn fx:id="addressNo" prefWidth="75.0" text="address" />
-                              <TableColumn fx:id="pno" prefWidth="75.0" text="4n no" />
+                            <TableColumn fx:id="idPP" prefWidth="75.0" text="ID" />
+                            <TableColumn fx:id="datepp" prefWidth="75.0" text="Date" />
+                              <TableColumn fx:id="companyPP" prefWidth="75.0" text="Company" />
+                              <TableColumn fx:id="qtypp" prefWidth="75.0" text="Quantity" />
                           </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -242,42 +242,42 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <Button layoutX="49.0" layoutY="509.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="117.0" stylesheets="@Style/mainFormDesign694.css" text="Place Purchase" AnchorPane.bottomAnchor="7.600000000000023">
+            <Button fx:id="ppbtn" layoutX="49.0" layoutY="509.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="117.0" stylesheets="@Style/mainFormDesign694.css" text="Place Purchase" AnchorPane.bottomAnchor="7.600000000000023">
                <styleClass>
                   <String fx:value="btn" />
                   <String fx:value="radius" />
                </styleClass>
             </Button>
-            <Button layoutX="213.0" layoutY="509.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="152.0" stylesheets="@Style/mainFormDesign694.css" text="Complete Purchases" AnchorPane.bottomAnchor="7.600000000000023">
+            <Button fx:id="cpbtn" layoutX="213.0" layoutY="509.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="152.0" stylesheets="@Style/mainFormDesign694.css" text="Complete Purchases" AnchorPane.bottomAnchor="7.600000000000023">
                <styleClass>
                   <String fx:value="btn" />
                   <String fx:value="radius" />
                </styleClass>
             </Button>
-            <AnchorPane layoutX="468.0" layoutY="6.0" prefHeight="530.0" prefWidth="400.0" stylesheets="@Style/mainFormDesign694.css" visible="false" AnchorPane.bottomAnchor="11.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="6.0">
+            <AnchorPane fx:id="placePurchasetbl" layoutX="468.0" layoutY="6.0" prefHeight="530.0" prefWidth="400.0" stylesheets="@Style/mainFormDesign694.css" AnchorPane.bottomAnchor="11.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="6.0">
                <styleClass>
                   <String fx:value="white-bg" />
                   <String fx:value="shadow" />
                   <String fx:value="radius" />
                </styleClass>
                <children>
-                  <TableView fx:id="purchaseTbl1" layoutX="21.0" layoutY="17.0" prefHeight="439.0" prefWidth="364.0" styleClass="radius" AnchorPane.bottomAnchor="74.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="17.0">
+                  <TableView fx:id="ppTbl" layoutX="21.0" layoutY="17.0" prefHeight="439.0" prefWidth="364.0" styleClass="radius" AnchorPane.bottomAnchor="74.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="17.0">
                      <columns>
-                        <TableColumn fx:id="id1" prefWidth="75.0" text="ID" />
-                        <TableColumn fx:id="name1" prefWidth="75.0" text="name" />
-                        <TableColumn fx:id="addressNo1" prefWidth="75.0" text="address" />
+                        <TableColumn fx:id="ppTableId" prefWidth="75.0" text="ID" />
+                        <TableColumn fx:id="pptblName" prefWidth="75.0" text="name" />
+                        <TableColumn fx:id="ppTbleAddress" prefWidth="75.0" text="address" />
                      </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
-                  <Button layoutX="46.0" layoutY="484.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="117.0" stylesheets="@Style/mainFormDesign694.css" text="Remove" AnchorPane.bottomAnchor="24.600000000000023">
+                  <Button fx:id="ppRemove" layoutX="46.0" layoutY="484.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="117.0" stylesheets="@Style/mainFormDesign694.css" text="Remove" AnchorPane.bottomAnchor="24.600000000000023">
                      <styleClass>
                         <String fx:value="btn" />
                         <String fx:value="radius" />
                      </styleClass>
                   </Button>
-                  <Button layoutX="215.0" layoutY="484.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="117.0" stylesheets="@Style/mainFormDesign694.css" text="Place Purchase" AnchorPane.bottomAnchor="24.600000000000023">
+                  <Button fx:id="pptblPlacePurchase" layoutX="215.0" layoutY="484.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="117.0" stylesheets="@Style/mainFormDesign694.css" text="Place Purchase" AnchorPane.bottomAnchor="24.600000000000023">
                      <styleClass>
                         <String fx:value="btn" />
                         <String fx:value="radius" />
@@ -285,24 +285,24 @@
                   </Button>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="511.0" layoutY="6.0" prefHeight="530.0" prefWidth="400.0" stylesheets="@Style/mainFormDesign694.css" AnchorPane.bottomAnchor="10.600000000000023" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="6.0">
+            <AnchorPane fx:id="completePurchaseTbl" layoutX="511.0" layoutY="6.0" prefHeight="530.0" prefWidth="400.0" stylesheets="@Style/mainFormDesign694.css" visible="false" AnchorPane.bottomAnchor="10.600000000000023" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="6.0">
                <styleClass>
                   <String fx:value="white-bg" />
                   <String fx:value="shadow" />
                   <String fx:value="radius" />
                </styleClass>
                <children>
-                  <TableView fx:id="purchaseTbl11" layoutX="21.0" layoutY="17.0" prefHeight="439.0" prefWidth="364.0" styleClass="radius" AnchorPane.bottomAnchor="74.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="17.0">
+                  <TableView fx:id="cptbldetails" layoutX="21.0" layoutY="17.0" prefHeight="439.0" prefWidth="364.0" styleClass="radius" AnchorPane.bottomAnchor="74.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="17.0">
                      <columns>
-                        <TableColumn fx:id="id11" prefWidth="75.0" text="ID" />
-                        <TableColumn fx:id="name11" prefWidth="75.0" text="name" />
-                        <TableColumn fx:id="addressNo11" prefWidth="75.0" text="address" />
+                        <TableColumn fx:id="cpidtbl" prefWidth="75.0" text="ID" />
+                        <TableColumn fx:id="cpnametbl" prefWidth="75.0" text="name" />
+                        <TableColumn fx:id="cpaddresstbl" prefWidth="75.0" text="address" />
                      </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
-                  <Button layoutX="215.0" layoutY="484.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="152.0" stylesheets="@Style/mainFormDesign694.css" text="Complete Purchase" AnchorPane.bottomAnchor="25.0">
+                  <Button fx:id="cptblbtn" layoutX="215.0" layoutY="484.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="152.0" stylesheets="@Style/mainFormDesign694.css" text="Complete Purchase" AnchorPane.bottomAnchor="25.0">
                      <styleClass>
                         <String fx:value="btn" />
                         <String fx:value="radius" />
@@ -310,7 +310,7 @@
                   </Button>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="-1.0" layoutY="-6.0" prefHeight="507.0" prefWidth="512.0" stylesheets="@Style/mainFormDesign694.css" AnchorPane.bottomAnchor="45.80000000000001" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="405.0" AnchorPane.topAnchor="-6.0">
+            <AnchorPane fx:id="completePurchase" layoutX="-1.0" layoutY="-6.0" prefHeight="507.0" prefWidth="512.0" stylesheets="@Style/mainFormDesign694.css" visible="false" AnchorPane.bottomAnchor="45.80000000000001" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="405.0" AnchorPane.topAnchor="-6.0">
                <children>
                   <AnchorPane layoutX="-2.0" layoutY="228.0" prefHeight="250.0" prefWidth="491.0" stylesheets="@Style/mainFormDesign694.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="23.0">
                      <styleClass>
@@ -330,31 +330,31 @@
                               <RowConstraints maxHeight="46.8000244140625" minHeight="10.0" prefHeight="46.8000244140625" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <TextField prefHeight="40.0" prefWidth="143.0" promptText="Supplier ID" stylesheets="@Style/mainFormDesign694.css">
+                              <TextField fx:id="cpsupid" prefHeight="40.0" prefWidth="143.0" promptText="Supplier ID" stylesheets="@Style/mainFormDesign694.css">
                                  <styleClass>
                                     <String fx:value="radius" />
                                     <String fx:value="main-bg" />
                                  </styleClass>
                               </TextField>
-                              <TextField layoutX="10.0" layoutY="19.0" prefHeight="40.0" prefWidth="118.0" promptText="Company Reg No" stylesheets="@Style/mainFormDesign694.css" GridPane.columnIndex="2">
+                              <TextField fx:id="cpCompanyrno" layoutX="10.0" layoutY="19.0" prefHeight="40.0" prefWidth="118.0" promptText="Company Reg No" stylesheets="@Style/mainFormDesign694.css" GridPane.columnIndex="2">
                                  <styleClass>
                                     <String fx:value="radius" />
                                     <String fx:value="main-bg" />
                                  </styleClass>
                               </TextField>
-                              <TextField layoutX="141.0" layoutY="19.0" prefHeight="40.0" prefWidth="143.0" promptText="Name" stylesheets="@Style/mainFormDesign694.css" GridPane.columnIndex="1">
+                              <TextField fx:id="cpsupname" layoutX="141.0" layoutY="19.0" prefHeight="40.0" prefWidth="143.0" promptText="Name" stylesheets="@Style/mainFormDesign694.css" GridPane.columnIndex="1">
                                  <styleClass>
                                     <String fx:value="radius" />
                                     <String fx:value="main-bg" />
                                  </styleClass>
                               </TextField>
-                              <TextField layoutX="141.0" layoutY="19.0" prefHeight="40.0" prefWidth="118.0" promptText="Contact No" stylesheets="@Style/mainFormDesign694.css" GridPane.rowIndex="1">
+                              <TextField fx:id="cpsupcno" layoutX="141.0" layoutY="19.0" prefHeight="40.0" prefWidth="118.0" promptText="Contact No" stylesheets="@Style/mainFormDesign694.css" GridPane.rowIndex="1">
                                  <styleClass>
                                     <String fx:value="radius" />
                                     <String fx:value="main-bg" />
                                  </styleClass>
                               </TextField>
-                              <TextField layoutX="10.0" layoutY="64.0" prefHeight="40.0" prefWidth="118.0" promptText="Address" stylesheets="@Style/mainFormDesign694.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                              <TextField fx:id="cpsupaddress" layoutX="10.0" layoutY="64.0" prefHeight="40.0" prefWidth="118.0" promptText="Address" stylesheets="@Style/mainFormDesign694.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <styleClass>
                                     <String fx:value="radius" />
                                     <String fx:value="main-bg" />
@@ -372,13 +372,13 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <TextField prefHeight="40.0" prefWidth="113.0" promptText="Amount" stylesheets="@Style/mainFormDesign694.css">
+                              <TextField fx:id="cpsupamount" prefHeight="40.0" prefWidth="113.0" promptText="Amount" stylesheets="@Style/mainFormDesign694.css">
                                  <styleClass>
                                     <String fx:value="radius" />
                                     <String fx:value="main-bg" />
                                  </styleClass>
                               </TextField>
-                              <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="86.0" stylesheets="@Style/mainFormDesign694.css" text="Update" GridPane.columnIndex="1">
+                              <Button fx:id="cpsupupdate" mnemonicParsing="false" prefHeight="30.0" prefWidth="86.0" stylesheets="@Style/mainFormDesign694.css" text="Update" GridPane.columnIndex="1">
                                  <styleClass>
                                     <String fx:value="btn" />
                                     <String fx:value="radius" />
@@ -389,7 +389,7 @@
                               </Button>
                            </children>
                         </GridPane>
-                        <CheckBox layoutX="15.0" layoutY="194.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="418.0" text="I checked whether the purchase is successfully settled." textFill="#2f2e5e">
+                        <CheckBox fx:id="cpsupcheck" layoutX="15.0" layoutY="194.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="418.0" text="I checked whether the purchase is successfully settled." textFill="#2f2e5e">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -398,12 +398,12 @@
                   </AnchorPane>
                   <AnchorPane layoutX="1.0" layoutY="14.0" prefHeight="212.0" prefWidth="491.0" stylesheets="@Style/mainFormDesign694.css" AnchorPane.bottomAnchor="281.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="14.0">
                      <children>
-                        <TableView fx:id="purchaseTbl2" layoutX="14.0" layoutY="16.0" prefHeight="175.0" prefWidth="460.0" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="16.0">
+                        <TableView fx:id="cptblsummery" layoutX="14.0" layoutY="16.0" prefHeight="175.0" prefWidth="460.0" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="16.0">
                            <columns>
-                              <TableColumn fx:id="id2" prefWidth="75.0" text="ID" />
-                              <TableColumn fx:id="name2" prefWidth="75.0" text="name" />
-                              <TableColumn fx:id="addressNo2" prefWidth="75.0" text="address" />
-                              <TableColumn fx:id="pno1" prefWidth="75.0" text="4n no" />
+                              <TableColumn fx:id="cpid" prefWidth="75.0" text="ID" />
+                              <TableColumn fx:id="cpdate" prefWidth="75.0" text="Date" />
+                              <TableColumn fx:id="cpCompanyNo" prefWidth="75.0" text="Company No" />
+                              <TableColumn fx:id="cpqty" prefWidth="75.0" text="Quantity" />
                            </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
