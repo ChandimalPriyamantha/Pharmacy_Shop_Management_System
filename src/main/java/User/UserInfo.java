@@ -121,6 +121,10 @@ public class UserInfo implements User {
 
 
 
+
+
+
+
     //Method to add user ------------------------------------------------------------------------------------------------------->Start
     @Override
     public void addUser(String id,String name,String contactNo,String password,String salary,String email) {
@@ -175,7 +179,7 @@ public class UserInfo implements User {
 
             alert = new Alert(Alert.AlertType.INFORMATION);     //Success alert
             alert.setTitle("Success Message");
-            alert.setHeaderText("Done");
+            alert.setHeaderText("ADDED");
             alert.setContentText("User added successfully");
             alert.showAndWait();
 
@@ -191,12 +195,58 @@ public class UserInfo implements User {
 
 
 
-
-
+    //Method to edit user---------------------------------------------------------->Start
     @Override
-    public void editUser() {
+    public void editUser(String name,String contactNo,String password,String salary,String email,String cID) {
+        if(name.isEmpty()||contactNo.isEmpty()||password.isEmpty()||salary.isEmpty()||email.isEmpty()){
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Fill all fields");
+            alert.setContentText("Please select a user or  fill all the fields");
+            alert.showAndWait();
+            return;
+        }
+
+
+        if(!isValidEmail(email)){
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Email is not valid");
+            alert.setContentText("Please use valid email");
+            alert.showAndWait();
+            return;
+        }
+
+        try {
+            ps = connection.prepareStatement("Update admin set name=?,phoneNumber=?,email=?,salary=?,password=? where userID=?");
+            ps.setString(1,name);
+            ps.setString(2,contactNo);
+            ps.setString(3,email);
+            ps.setDouble(4, Double.parseDouble(salary));
+            ps.setString(5,password);
+            ps.setString(6,cID);
+            ps.executeUpdate();
+
+
+            alert = new Alert(Alert.AlertType.INFORMATION);     //Success alert
+            alert.setTitle("Success Message");
+            alert.setHeaderText("UPDATED");
+            alert.setContentText("User Updated successfully");
+            alert.showAndWait();
+
+        } catch (SQLException e) {
+            System.out.println("Error in: "+e.getMessage());
+        }
+
+
 
     }
+    //Method to edit user---------------------------------------------------------->End
+
+
+
+
+
 
     @Override
     public void deleteUser() {

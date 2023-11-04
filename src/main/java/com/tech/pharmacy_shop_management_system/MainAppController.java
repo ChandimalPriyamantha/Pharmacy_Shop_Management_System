@@ -37,6 +37,8 @@ public class MainAppController implements Initializable {
     @FXML
     private Button UserManageStaffButton;
 
+    public String currentID=null;
+
     //User Manage FXML Variables ----------------------------------------------------------->END
 
     //Admin Manage FXML Variables -------------------------------------------------------->Start
@@ -227,7 +229,7 @@ public class MainAppController implements Initializable {
     @FXML
     private TableColumn<MedicineData, Integer> OrderedMedicineTableQuantity;
 
-    ////DCO Dashboard FXML variables -->END
+    ////DCO Dashboard FXML variables -------------------------------------------------------------------------------------->END
 
     @FXML
     private Button emailPage;
@@ -365,6 +367,27 @@ public class MainAppController implements Initializable {
                              StaffManageSalary.getText(),
                              StaffManageEmail.getText(),
                              StaffManagePosition.getText());
+                     getStaff();
+                     clearUserData();
+
+                 }else if(event.getSource()==AdminManageUpdateButton){ // Functionality to Update Admin User
+                     new Admin().editUser(AdminManageName.getText(),
+                             AdminManageContactNo.getText(),
+                             AdminManagePassword.getText(),
+                             AdminManageSalary.getText(),
+                             AdminManageEmail.getText(),
+                             currentID);
+                     getAdmin();
+                     clearUserData();
+
+                 }else if(event.getSource()==StaffManageUpdateButton){ // Functionality to Update Staff User
+                     new Staff().editUser(StaffManageName.getText(),
+                             StaffManageContactNo.getText(),
+                             StaffManagePassword.getText(),
+                             StaffManageSalary.getText(),
+                             StaffManageEmail.getText(),
+                             StaffManagePosition.getText(),
+                             currentID);
                      getStaff();
                      clearUserData();
 
@@ -586,18 +609,20 @@ public class MainAppController implements Initializable {
 
     //Method to clear button in DCO to order-------------------------------------------------------------------------->Start
     public void clearUserData(){
-        AdminManageID.setText(null);
-        AdminManageName.setText(null);
-        AdminManageContactNo.setText(null);
-        AdminManageEmail.setText(null);
-        AdminManageSalary.setText(null);
+        AdminManageID.setText("");
+        AdminManageName.setText("");
+        AdminManageContactNo.setText("");
+        AdminManageEmail.setText("");
+        AdminManageSalary.setText("");
+        AdminManagePassword.setText("");
 
-        StaffManageID.setText(null);
-        StaffManageName.setText(null);
-        StaffManageEmail.setText(null);
-        StaffManageSalary.setText(null);
-        StaffManageContactNo.setText(null);
-        StaffManagePosition.setText(null);
+        StaffManageID.setText("");
+        StaffManageName.setText("");
+        StaffManageEmail.setText("");
+        StaffManageSalary.setText("");
+        StaffManageContactNo.setText("");
+        StaffManagePosition.setText("");
+        StaffManagePassword.setText("");
     }
     //Method to clear button in DCO to order-------------------------------------------------------------------------->End
 
@@ -690,6 +715,70 @@ public class MainAppController implements Initializable {
     }
 
     //method to do the payment in DCO------------------------------------------------------------------>End
+
+
+
+
+
+
+    //Method to select a Admin---------------------------------------------------------------------------------->Start
+
+    public void selectAdmin(){
+        int index=AdminManageTable.getSelectionModel().getSelectedIndex();
+
+        currentID=AdminManageTableID.getCellData(index);
+
+        AdminManageID.setText(AdminManageTableID.getCellData(index));
+        AdminManageName.setText(AdminManageTableName.getCellData(index));
+        AdminManageContactNo.setText(AdminManageTableContactNo.getCellData(index));
+        AdminManageSalary.setText(String.valueOf(AdminManageTableSalary.getCellData(index)));
+        AdminManageEmail.setText(AdminManageTableEmail.getCellData(index));
+
+        try {
+            prepare=connect.prepareStatement("select password from admin where userID=? ");
+            prepare.setString(1,AdminManageTableID.getCellData(index));
+            result= prepare.executeQuery();
+            result.next();
+            AdminManagePassword.setText(result.getString(1));
+        } catch (SQLException e) {
+            System.out.println("Error in :"+e.getMessage());
+        }
+
+    }
+
+    //Method to select a Admin---------------------------------------------------------------------------------->End
+
+
+
+
+
+
+    //Method to select a Admin---------------------------------------------------------------------------------->Start
+    public void selectStaff(){
+        int index=StaffManageTable.getSelectionModel().getSelectedIndex();
+
+        currentID=StaffManageTableID.getCellData(index);
+
+        StaffManageID.setText(StaffManageTableID.getCellData(index));
+        StaffManageName.setText(StaffManageTableName.getCellData(index));
+        StaffManageContactNo.setText(StaffManageTableContactNo.getCellData(index));
+        StaffManageSalary.setText(String.valueOf(StaffManageTableSalary.getCellData(index)));
+        StaffManageEmail.setText(StaffManageTableEmail.getCellData(index));
+        StaffManagePosition.setText(StaffManageTablePosition.getCellData(index));
+
+        try {
+            prepare=connect.prepareStatement("select password from staff where userID=? ");
+            prepare.setString(1,StaffManageTableID.getCellData(index));
+            result= prepare.executeQuery();
+            result.next();
+            StaffManagePassword.setText(result.getString(1));
+        } catch (SQLException e) {
+            System.out.println("Error in :"+e.getMessage());
+        }
+
+    }
+
+    //Method to select a Admin---------------------------------------------------------------------------------->End
 
 
 

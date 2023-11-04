@@ -62,7 +62,7 @@
                   <Font name="System Bold" size="23.0" />
                </font>
             </Label>
-            <Text fx:id="dateTimeLabel" fill="#2f2e5e" layoutX="580.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="23 September 2023 - 11.48 AM" wrappingWidth="279.5830478668213" AnchorPane.rightAnchor="56.41695213317871">
+            <Text fill="#2f2e5e" layoutX="580.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="23 September 2023 - 11.48 AM" wrappingWidth="279.5830478668213" AnchorPane.rightAnchor="56.41695213317871">
                <font>
                   <Font size="18.0" />
                </font>
@@ -432,7 +432,7 @@
                         <String fx:value="radius" />
                      </styleClass>
                      <children>
-                        <TableView fx:id="AdminManageTable" layoutX="287.0" layoutY="14.0" prefHeight="280.0" prefWidth="896.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="7.0">
+                        <TableView fx:id="AdminManageTable" layoutX="287.0" layoutY="14.0" onMouseClicked="#selectAdmin" prefHeight="280.0" prefWidth="896.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="7.0">
                           <columns>
                             <TableColumn fx:id="AdminManageTableID" prefWidth="75.0" text="ID" />
                             <TableColumn fx:id="AdminManageTableName" prefWidth="75.0" text="Name" />
@@ -466,7 +466,7 @@
                               <String fx:value="textfield" />
                            </styleClass>
                         </TextField>
-                        <Button fx:id="AdminManageUpdateButton" layoutX="185.0" layoutY="96.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="115.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Update" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="140.0">
+                        <Button fx:id="AdminManageUpdateButton" layoutX="185.0" layoutY="96.0" mnemonicParsing="false" onAction="#controlPanel" prefHeight="30.0" prefWidth="115.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Update" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="140.0">
                            <styleClass>
                               <String fx:value="add-btn" />
                               <String fx:value="addButton" />
@@ -528,7 +528,7 @@
                         <String fx:value="radius" />
                      </styleClass>
                      <children>
-                        <TableView fx:id="StaffManageTable" layoutX="287.0" layoutY="14.0" prefHeight="280.0" prefWidth="896.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="7.0">
+                        <TableView fx:id="StaffManageTable" layoutX="287.0" layoutY="14.0" onMouseClicked="#selectStaff" prefHeight="280.0" prefWidth="896.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="7.0">
                            <columns>
                               <TableColumn fx:id="StaffManageTableID" prefWidth="75.0" text="ID" />
                               <TableColumn fx:id="StaffManageTableName" prefWidth="75.0" text="Name" />
@@ -563,7 +563,7 @@
                               <String fx:value="textfield" />
                            </styleClass>
                         </TextField>
-                        <Button fx:id="StaffManageUpdateButton" layoutX="185.0" layoutY="96.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="115.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Update" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="140.0">
+                        <Button fx:id="StaffManageUpdateButton" layoutX="185.0" layoutY="96.0" mnemonicParsing="false" onAction="#controlPanel" prefHeight="30.0" prefWidth="115.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Update" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="140.0">
                            <styleClass>
                               <String fx:value="add-btn" />
                               <String fx:value="addButton" />
