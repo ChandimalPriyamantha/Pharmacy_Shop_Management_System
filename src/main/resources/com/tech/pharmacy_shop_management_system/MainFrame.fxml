@@ -328,13 +328,13 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
-                  <Button fx:id="DCORemoveButton" layoutX="64.0" layoutY="462.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="140.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Remove" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="40.0">
+                  <Button fx:id="DCORemoveButton" layoutX="64.0" layoutY="462.0" mnemonicParsing="false" onAction="#clearOrderTable" prefHeight="30.0" prefWidth="140.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Remove" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="40.0">
                      <styleClass>
                         <String fx:value="add-btn" />
                         <String fx:value="addButton" />
                      </styleClass>
                   </Button>
-                  <Button fx:id="DCOPayButton" layoutX="284.0" layoutY="424.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="140.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Pay" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="40.0">
+                  <Button fx:id="DCOPayButton" layoutX="284.0" layoutY="424.0" mnemonicParsing="false" onAction="#payment" prefHeight="30.0" prefWidth="140.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Pay" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="40.0">
                      <styleClass>
                         <String fx:value="add-btn" />
                         <String fx:value="addButton" />
@@ -343,7 +343,7 @@
                   <Label layoutX="40.0" layoutY="430.0" prefHeight="25.0" prefWidth="90.0" styleClass="label-DCO" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Change : " AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="15.0" />
                   <Label fx:id="DCOChangeLable" layoutX="50.0" layoutY="440.0" prefHeight="25.0" prefWidth="90.0" styleClass="label-DCO" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="0.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="110.0" />
                   <Label layoutX="50.0" layoutY="440.0" prefHeight="25.0" prefWidth="90.0" styleClass="label-DCO" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Settled :" AnchorPane.bottomAnchor="95.0" AnchorPane.leftAnchor="15.0" />
-                  <TextField fx:id="DCOSettledTextField" layoutX="92.0" layoutY="401.0" promptText="0.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" AnchorPane.bottomAnchor="88.0" AnchorPane.leftAnchor="95.0">
+                  <TextField fx:id="DCOSettledTextField" layoutX="92.0" layoutY="401.0" onAction="#getPayButtonFocus" onKeyReleased="#change" promptText="0.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" AnchorPane.bottomAnchor="88.0" AnchorPane.leftAnchor="95.0">
                      <styleClass>
                         <String fx:value="settled-label" />
                         <String fx:value="textfield" />
@@ -380,19 +380,19 @@
                   <String fx:value="radius" />
                </styleClass>
                <children>
-                  <Button fx:id="DCOAddButton" layoutX="14.0" layoutY="161.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="115.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Add" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0">
+                  <Button fx:id="DCOAddButton" layoutX="14.0" layoutY="161.0" mnemonicParsing="false" onAction="#loadOrderMedicine" prefHeight="30.0" prefWidth="115.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Add" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0">
                      <styleClass>
                         <String fx:value="add-btn" />
                         <String fx:value="addButton" />
                      </styleClass>
                   </Button>
-                  <Button fx:id="DCOClearButton" layoutX="234.0" layoutY="123.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="115.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Clear" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="145.0">
+                  <Button fx:id="DCOClearButton" layoutX="234.0" layoutY="123.0" mnemonicParsing="false" onAction="#controlPanel" prefHeight="30.0" prefWidth="115.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Clear" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="145.0">
                      <styleClass>
                         <String fx:value="add-btn" />
                         <String fx:value="addButton" />
                      </styleClass>
                   </Button>
-                  <TextField fx:id="DCOReadIDTextField" layoutX="27.0" layoutY="68.0" prefHeight="30.0" prefWidth="180.0" promptText="Read ID" stylesheets="@Style/DCO%20Styles/DCOstyles.css" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="10.0">
+                  <TextField fx:id="DCOReadIDTextField" layoutX="27.0" layoutY="68.0" onKeyReleased="#fillDCOTextFields" prefHeight="30.0" prefWidth="180.0" promptText="Read ID" stylesheets="@Style/DCO%20Styles/DCOstyles.css" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="10.0">
                      <styleClass>
                         <String fx:value="text-field" />
                         <String fx:value="textfield" />
@@ -404,7 +404,7 @@
                         <String fx:value="textfield" />
                      </styleClass>
                   </TextField>
-                  <TextField fx:id="DCOQuantityTextField" layoutX="37.0" layoutY="78.0" prefHeight="30.0" prefWidth="180.0" promptText="Quantity" stylesheets="@Style/DCO%20Styles/DCOstyles.css" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="210.0">
+                  <TextField fx:id="DCOQuantityTextField" layoutX="37.0" layoutY="78.0" onAction="#getAddButtonFocus" prefHeight="30.0" prefWidth="180.0" promptText="Quantity" stylesheets="@Style/DCO%20Styles/DCOstyles.css" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="210.0">
                      <styleClass>
                         <String fx:value="text-field" />
                         <String fx:value="textfield" />
@@ -420,7 +420,7 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="UserManageBackground" layoutX="393.0" layoutY="173.0" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="203.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="80.0">
+      <AnchorPane fx:id="UserManageBackground" layoutX="393.0" layoutY="173.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="203.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="80.0">
          <children>
             <Button fx:id="UserManageStaffButton" layoutX="14.0" layoutY="516.0" mnemonicParsing="false" onAction="#controlPanel" prefHeight="30.0" prefWidth="115.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Staff" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="10.0">
                <styleClass>
@@ -434,7 +434,7 @@
                   <String fx:value="addButton" />
                </styleClass>
             </Button>
-            <AnchorPane fx:id="AdminManageBackground" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="AdminManageBackground" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <AnchorPane prefHeight="328.0" prefWidth="910.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" AnchorPane.bottomAnchor="170.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="7.0">
                      <styleClass>
@@ -443,7 +443,7 @@
                         <String fx:value="radius" />
                      </styleClass>
                      <children>
-                        <TableView fx:id="AdminManageTable" layoutX="287.0" layoutY="14.0" prefHeight="280.0" prefWidth="896.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="7.0">
+                        <TableView fx:id="AdminManageTable" layoutX="287.0" layoutY="14.0" onMouseClicked="#selectAdmin" prefHeight="280.0" prefWidth="896.0" visible="false" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="7.0">
                           <columns>
                             <TableColumn fx:id="AdminManageTableID" prefWidth="75.0" text="ID" />
                             <TableColumn fx:id="AdminManageTableName" prefWidth="75.0" text="Name" />
@@ -465,7 +465,7 @@
                      </styleClass>
                      <children>
                         <Label ellipsisString="" layoutX="118.0" layoutY="105.0" text="--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                        <Button fx:id="AdminManageAddButton" layoutX="-4.0" layoutY="111.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="115.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Add" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="10.0">
+                        <Button fx:id="AdminManageAddButton" layoutX="-4.0" layoutY="111.0" mnemonicParsing="false" onAction="#controlPanel" onMouseClicked="#getAdmin" prefHeight="30.0" prefWidth="115.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Add" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="10.0">
                            <styleClass>
                               <String fx:value="add-btn" />
                               <String fx:value="addButton" />
@@ -477,25 +477,25 @@
                               <String fx:value="textfield" />
                            </styleClass>
                         </TextField>
-                        <Button fx:id="AdminManageUpdateButton" layoutX="185.0" layoutY="96.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="115.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Update" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="140.0">
+                        <Button fx:id="AdminManageUpdateButton" layoutX="185.0" layoutY="96.0" mnemonicParsing="false" onAction="#controlPanel" prefHeight="30.0" prefWidth="115.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Update" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="140.0">
                            <styleClass>
                               <String fx:value="add-btn" />
                               <String fx:value="addButton" />
                            </styleClass>
                         </Button>
-                        <Button fx:id="AdminManageClearButton" layoutX="195.0" layoutY="106.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="115.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Clear" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="530.0">
+                        <Button fx:id="AdminManageClearButton" layoutX="195.0" layoutY="106.0" mnemonicParsing="false" onAction="#controlPanel" prefHeight="30.0" prefWidth="115.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Clear" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="530.0">
                            <styleClass>
                               <String fx:value="add-btn" />
                               <String fx:value="addButton" />
                            </styleClass>
                         </Button>
-                        <Button fx:id="AdminManageSearchButton" layoutX="195.0" layoutY="106.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="115.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Search" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="400.0">
+                        <Button fx:id="AdminManageSearchButton" layoutX="195.0" layoutY="106.0" mnemonicParsing="false" onAction="#controlPanel" prefHeight="30.0" prefWidth="115.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Search" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="400.0">
                            <styleClass>
                               <String fx:value="add-btn" />
                               <String fx:value="addButton" />
                            </styleClass>
                         </Button>
-                        <Button fx:id="AdminManageDeleteButton" layoutX="195.0" layoutY="106.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="115.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Delete" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="270.0">
+                        <Button fx:id="AdminManageDeleteButton" layoutX="195.0" layoutY="106.0" mnemonicParsing="false" onAction="#controlPanel" prefHeight="30.0" prefWidth="115.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Delete" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="270.0">
                            <styleClass>
                               <String fx:value="add-btn" />
                               <String fx:value="addButton" />
@@ -539,7 +539,7 @@
                         <String fx:value="radius" />
                      </styleClass>
                      <children>
-                        <TableView fx:id="StaffManageTable" layoutX="287.0" layoutY="14.0" prefHeight="280.0" prefWidth="896.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="7.0">
+                        <TableView fx:id="StaffManageTable" layoutX="287.0" layoutY="14.0" onMouseClicked="#selectStaff" prefHeight="280.0" prefWidth="896.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="7.0">
                            <columns>
                               <TableColumn fx:id="StaffManageTableID" prefWidth="75.0" text="ID" />
                               <TableColumn fx:id="StaffManageTableName" prefWidth="75.0" text="Name" />
@@ -562,7 +562,7 @@
                      </styleClass>
                      <children>
                         <Label ellipsisString="" layoutX="118.0" layoutY="105.0" text="--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                        <Button fx:id="StaffManageAddButton" layoutX="-4.0" layoutY="111.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="115.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Add" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="10.0">
+                        <Button fx:id="StaffManageAddButton" layoutX="-4.0" layoutY="111.0" mnemonicParsing="false" onAction="#controlPanel" onMouseClicked="#getStaff" prefHeight="30.0" prefWidth="115.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Add" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="10.0">
                            <styleClass>
                               <String fx:value="add-btn" />
                               <String fx:value="addButton" />
@@ -574,25 +574,25 @@
                               <String fx:value="textfield" />
                            </styleClass>
                         </TextField>
-                        <Button fx:id="StaffManageUpdateButton" layoutX="185.0" layoutY="96.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="115.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Update" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="140.0">
+                        <Button fx:id="StaffManageUpdateButton" layoutX="185.0" layoutY="96.0" mnemonicParsing="false" onAction="#controlPanel" prefHeight="30.0" prefWidth="115.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Update" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="140.0">
                            <styleClass>
                               <String fx:value="add-btn" />
                               <String fx:value="addButton" />
                            </styleClass>
                         </Button>
-                        <Button fx:id="StaffManageClearButton" layoutX="195.0" layoutY="106.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="115.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Clear" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="530.0">
+                        <Button fx:id="StaffManageClearButton" layoutX="195.0" layoutY="106.0" mnemonicParsing="false" onAction="#controlPanel" prefHeight="30.0" prefWidth="115.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Clear" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="530.0">
                            <styleClass>
                               <String fx:value="add-btn" />
                               <String fx:value="addButton" />
                            </styleClass>
                         </Button>
-                        <Button fx:id="StaffManageSearchButton" layoutX="195.0" layoutY="106.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="115.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Search" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="400.0">
+                        <Button fx:id="StaffManageSearchButton" layoutX="195.0" layoutY="106.0" mnemonicParsing="false" onAction="#controlPanel" prefHeight="30.0" prefWidth="115.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Search" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="400.0">
                            <styleClass>
                               <String fx:value="add-btn" />
                               <String fx:value="addButton" />
                            </styleClass>
                         </Button>
-                        <Button fx:id="StaffManageDeleteButton" layoutX="195.0" layoutY="106.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="115.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Delete" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="270.0">
+                        <Button fx:id="StaffManageDeleteButton" layoutX="195.0" layoutY="106.0" mnemonicParsing="false" onAction="#controlPanel" prefHeight="30.0" prefWidth="115.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Delete" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="270.0">
                            <styleClass>
                               <String fx:value="add-btn" />
                               <String fx:value="addButton" />

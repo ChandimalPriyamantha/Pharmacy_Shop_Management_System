@@ -2,9 +2,16 @@ package com.tech.pharmacy_shop_management_system;
 
 import Email.Email;
 import Connection.DatabaseConnection;
-import RemortCustomer.RemoteCustomerOrderMedicineDetails;
+import RemortCustomer.RemoteCustomerOrderMedicineDetails;< Lakindu-3
+import SalesTransaction.MedicineData;
+import SalesTransaction.Sales;
+import User.Admin;
+import User.Staff;
+import User.UserInfo;
+
 import RemortCustomer.RemoteCustomerOrderShippingDetails;
 import SalesTransaction.Sales;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,8 +29,13 @@ import medicine.Medicine;
 import java.io.File;
 import java.net.URL;
 import java.sql.*;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import java.util.Calendar;
 import java.util.HashMap;
+
 import java.util.ResourceBundle;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JasperDesign;
@@ -43,6 +55,8 @@ public class MainAppController implements Initializable {
     private Button UserManageAdminButton;
     @FXML
     private Button UserManageStaffButton;
+
+    public String currentID=null;
 
     //User Manage FXML Variables ----------------------------------------------------------->END
 
@@ -81,22 +95,22 @@ public class MainAppController implements Initializable {
     private Button AdminManageSearchButton;
 
     @FXML
-    private TableView<?> AdminManageTable;
+    private TableView<UserInfo> AdminManageTable;
 
     @FXML
-    private TableColumn<?, ?> AdminManageTableContactNo;
+    private TableColumn<UserInfo, String> AdminManageTableContactNo;
 
     @FXML
-    private TableColumn<?, ?> AdminManageTableEmail;
+    private TableColumn<UserInfo,String> AdminManageTableEmail;
 
     @FXML
-    private TableColumn<?, ?> AdminManageTableID;
+    private TableColumn<UserInfo, String> AdminManageTableID;
 
     @FXML
-    private TableColumn<?, ?> AdminManageTableName;
+    private TableColumn<UserInfo, String> AdminManageTableName;
 
     @FXML
-    private TableColumn<?, ?> AdminManageTableSalary;
+    private TableColumn<UserInfo, Double> AdminManageTableSalary;
 
     @FXML
     private Button AdminManageUpdateButton;
@@ -141,25 +155,25 @@ public class MainAppController implements Initializable {
     private Button StaffManageSearchButton;
 
     @FXML
-    private TableView<?> StaffManageTable;
+    private TableView<UserInfo> StaffManageTable;
 
     @FXML
-    private TableColumn<?, ?> StaffManageTableContactNo;
+    private TableColumn<Staff, String> StaffManageTableContactNo;
 
     @FXML
-    private TableColumn<?, ?> StaffManageTableEmail;
+    private TableColumn<Staff, String> StaffManageTableEmail;
 
     @FXML
-    private TableColumn<?, ?> StaffManageTableID;
+    private TableColumn<Staff, String> StaffManageTableID;
 
     @FXML
-    private TableColumn<?, ?> StaffManageTableName;
+    private TableColumn<Staff, String> StaffManageTableName;
 
     @FXML
-    private TableColumn<?, ?> StaffManageTablePosition;
+    private TableColumn<Staff, String> StaffManageTablePosition;
 
     @FXML
-    private TableColumn<?, ?> StaffManageTableSalary;
+    private TableColumn<Staff, Double> StaffManageTableSalary;
 
     @FXML
     private Button StaffManageUpdateButton;
@@ -188,12 +202,12 @@ public class MainAppController implements Initializable {
 
     @FXML
     private TextField DCOPriceTextField;
-
     @FXML
-    private TextField DCOQuantityTextField;
-
+    private  TextField DCOQuantityTextField;
     @FXML
-    private TextField DCOReadIDTextField;
+    private  TextField DCOReadIDTextField;
+    @FXML
+    private  TextField DCOTextFieldMedicineName;
 
     @FXML
     private Button DCORemoveButton;
@@ -202,42 +216,39 @@ public class MainAppController implements Initializable {
     private TextField DCOSettledTextField;
 
     @FXML
-    private TableView<?> DCOStockMedicineTable;
+    private TableView<MedicineData> DCOStockMedicineTable;
 
     @FXML
-    private TableColumn<?, ?> DCOStockMedicineTableID;
+    private TableColumn<MedicineData, String> DCOStockMedicineTableID;
 
     @FXML
-    private TableColumn<?, ?> DCOStockMedicineTableName;
+    private TableColumn<MedicineData, String> DCOStockMedicineTableName;
 
     @FXML
-    private TableColumn<?, ?> DCOStockMedicineTablePrice;
+    private TableColumn<MedicineData, Double> DCOStockMedicineTablePrice;
 
     @FXML
-    private TableColumn<?, ?> DCOStockMedicineTableStock;
-
-    @FXML
-    private TextField DCOTextFieldMedicineName;
+    private TableColumn<MedicineData, Integer> DCOStockMedicineTableStock;
 
     @FXML
     private Label DCOTotalLable;
 
     @FXML
-    private TableView<?> OrderedMedicineTable;
+    private TableView<MedicineData> OrderedMedicineTable;
 
     @FXML
-    private TableColumn<?, ?> OrderedMedicineTableID;
+    private TableColumn<MedicineData, String> OrderedMedicineTableID;
 
     @FXML
-    private TableColumn<?, ?> OrderedMedicineTableName;
+    private TableColumn<MedicineData, String> OrderedMedicineTableName;
 
     @FXML
-    private TableColumn<?, ?> OrderedMedicineTablePrice;
+    private TableColumn<MedicineData, Double> OrderedMedicineTablePrice;
 
     @FXML
-    private TableColumn<?, ?> OrderedMedicineTableQuantity;
+    private TableColumn<MedicineData, Integer> OrderedMedicineTableQuantity;
 
-    ////DCO Dashboard FXML variables -->END
+    ////DCO Dashboard FXML variables -------------------------------------------------------------------------------------->END
 
     @FXML
     private Button emailPage;
@@ -453,7 +464,7 @@ public class MainAppController implements Initializable {
                      RCOManagePanel.setVisible(true);
                      WEB_VIEW.setVisible(false);
                      RCOPaymentPanel.setVisible(false);
- Chandimal
+
                      ShowData();
                      RCOrderID();
 
@@ -474,12 +485,18 @@ public class MainAppController implements Initializable {
                      DCOBackground.setVisible(false);
                      UserManageBackground.setVisible(false);
                  }else if(event.getSource()==DCOManageButton){ // navigate into Direct customer order page
+                     getMedicine();    //Load stock medicine
+
+
                      DCOBackground.setVisible(true);
                      RCOPaymentPanel.setVisible(false);
                      RCOManagePanel.setVisible(false);
                      WEB_VIEW.setVisible(false);
                      UserManageBackground.setVisible(false);
+                     DCOReadIDTextField.requestFocus();
                  }else if(event.getSource()==UserManageButton){ // navigate into User Manage page
+                     getStaff();
+
                      DCOBackground.setVisible(false);
                      RCOPaymentPanel.setVisible(false);
                      RCOManagePanel.setVisible(false);
@@ -487,7 +504,9 @@ public class MainAppController implements Initializable {
                      UserManageBackground.setVisible(true);
                      StaffManageBackground.setVisible(true);
                      AdminManageBackground.setVisible(false);
-                 }else if(event.getSource()==UserManageStaffButton){ // navigate into User Manage page
+                 }else if(event.getSource()==UserManageStaffButton){ // navigate into Staff Manage page
+                     getStaff();
+
                      DCOBackground.setVisible(false);
                      RCOPaymentPanel.setVisible(false);
                      RCOManagePanel.setVisible(false);
@@ -495,7 +514,9 @@ public class MainAppController implements Initializable {
                      UserManageBackground.setVisible(true);
                      StaffManageBackground.setVisible(true);
                      AdminManageBackground.setVisible(false);
-                 }else if(event.getSource()==UserManageAdminButton){ // navigate into User Manage page
+                 }else if(event.getSource()==UserManageAdminButton){ // navigate into Admin Manage page
+                     getAdmin();
+
                      DCOBackground.setVisible(false);
                      RCOPaymentPanel.setVisible(false);
                      RCOManagePanel.setVisible(false);
@@ -503,6 +524,74 @@ public class MainAppController implements Initializable {
                      UserManageBackground.setVisible(true);
                      StaffManageBackground.setVisible(false);
                      AdminManageBackground.setVisible(true);
+
+                 }else if(event.getSource()==DCOClearButton){ // Functionality to clear DCO
+                     clearData();
+
+                 }else if(event.getSource()==AdminManageAddButton){ // Functionality to Add ADMIN User
+                     new Admin().addUser(AdminManageID.getText(),
+                             AdminManageName.getText(),
+                             AdminManageContactNo.getText(),
+                             AdminManagePassword.getText(),
+                             AdminManageSalary.getText(),
+                             AdminManageEmail.getText());
+                     getAdmin();
+                     clearUserData();
+
+                 }else if(event.getSource()==StaffManageAddButton){ // Functionality to Add Staff User
+                     new Staff().addUser(StaffManageID.getText(),
+                             StaffManageName.getText(),
+                             StaffManageContactNo.getText(),
+                             StaffManagePassword.getText(),
+                             StaffManageSalary.getText(),
+                             StaffManageEmail.getText(),
+                             StaffManagePosition.getText());
+                     getStaff();
+                     clearUserData();
+
+                 }else if(event.getSource()==AdminManageUpdateButton){ // Functionality to Update Admin User
+                     new Admin().editUser(AdminManageName.getText(),
+                             AdminManageContactNo.getText(),
+                             AdminManagePassword.getText(),
+                             AdminManageSalary.getText(),
+                             AdminManageEmail.getText(),
+                             currentID);
+                     getAdmin();
+                     clearUserData();
+
+                 }else if(event.getSource()==StaffManageUpdateButton){ // Functionality to Update Staff User
+                     new Staff().editUser(StaffManageName.getText(),
+                             StaffManageContactNo.getText(),
+                             StaffManagePassword.getText(),
+                             StaffManageSalary.getText(),
+                             StaffManageEmail.getText(),
+                             StaffManagePosition.getText(),
+                             currentID);
+                     getStaff();
+                     clearUserData();
+
+                 }else if(event.getSource()==AdminManageDeleteButton){ // Functionality to delete Admin User
+                     new Admin().deleteUser(currentID);
+                     getAdmin();
+                     clearUserData();
+
+                 }else if(event.getSource()==StaffManageDeleteButton){ // Functionality to delete Staff User
+                     new Staff().deleteUser(currentID);
+                     getStaff();
+                     clearUserData();
+
+                 }else if(event.getSource()==AdminManageSearchButton){ // Functionality to Search ADMIN User
+                     searchAdmin(AdminManageID.getText());
+                     clearUserData();
+
+                 }else if(event.getSource()==StaffManageSearchButton){ // Functionality to Search Staff User
+                     searchStaff(StaffManageID.getText());
+                     clearUserData();
+
+                 }else if(event.getSource()==AdminManageClearButton||event.getSource()==StaffManageClearButton){ // Functionality to Clear User manage Text fields
+                     clearUserData();
+                     getAdmin();
+                     getStaff();
 
                  }
 
@@ -1223,6 +1312,532 @@ public class MainAppController implements Initializable {
         getShippingDetails();
 
     }
+
+    //Method to load DCO stock medicine details to table ------------------------------------------------------>start
+    private ObservableList<MedicineData> DCOListMedicine;
+    public void getMedicine(){
+        DCOListMedicine= new Sales().loadMedicine();
+
+        DCOStockMedicineTableID.setCellValueFactory((new PropertyValueFactory<>("medicineID")));
+        DCOStockMedicineTableName.setCellValueFactory((new PropertyValueFactory<>("name")));
+        DCOStockMedicineTableStock.setCellValueFactory((new PropertyValueFactory<>("quantity")));
+        DCOStockMedicineTablePrice.setCellValueFactory((new PropertyValueFactory<>("price")));
+
+        DCOStockMedicineTable.setItems(DCOListMedicine);
+    }
+    //Method to load DCO stock medicine details to table ----------------------------------------------------------->End
+
+
+
+
+
+    //Method to load Admin List to table ------------------------------------------------------------------------->start
+    private ObservableList<UserInfo> userList;
+    public void getAdmin(){
+        userList= new UserInfo().loadUser();
+
+        AdminManageTableID.setCellValueFactory((new PropertyValueFactory<>("id")));
+        AdminManageTableName.setCellValueFactory((new PropertyValueFactory<>("name")));
+        AdminManageTableEmail.setCellValueFactory((new PropertyValueFactory<>("email")));
+        AdminManageTableContactNo.setCellValueFactory((new PropertyValueFactory<>("contactNo")));
+        AdminManageTableSalary.setCellValueFactory((new PropertyValueFactory<>("salary")));
+
+
+        AdminManageTable.setItems(userList);
+    }
+
+    //Method to load Admin List to table ------------------------------------------------------------------------->End
+
+
+
+
+
+    //Method to load search Admin List to table ------------------------------------------------------------------------->start
+    private ObservableList<UserInfo> serchAdminList;
+    public void searchAdmin(String id){
+        Alert alert;
+        if((AdminManageID.getText()).isEmpty()){
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Fill an Admin ID");
+            alert.setContentText(null);
+            alert.showAndWait();
+            return;
+        }
+        AdminManageTable.getItems().clear();
+        serchAdminList= new UserInfo().searchUser(id);
+
+        AdminManageTableID.setCellValueFactory((new PropertyValueFactory<>("id")));
+        AdminManageTableName.setCellValueFactory((new PropertyValueFactory<>("name")));
+        AdminManageTableEmail.setCellValueFactory((new PropertyValueFactory<>("email")));
+        AdminManageTableContactNo.setCellValueFactory((new PropertyValueFactory<>("contactNo")));
+        AdminManageTableSalary.setCellValueFactory((new PropertyValueFactory<>("salary")));
+
+
+        AdminManageTable.setItems(serchAdminList);
+    }
+
+    //Method to load Search Admin List to table ------------------------------------------------------------------------->End
+
+
+
+    //Method to load search Admin List to table ------------------------------------------------------------------------->start
+    private ObservableList<UserInfo> searchStaffList;
+    public void searchStaff(String id){
+        Alert alert;
+        if((StaffManageID.getText()).isEmpty()){
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Fill an Staff ID");
+            alert.setContentText(null);
+            alert.showAndWait();
+            return;
+        }
+        StaffManageTable.getItems().clear();
+        searchStaffList= new Staff().searchUser(id);
+
+        StaffManageTableID.setCellValueFactory((new PropertyValueFactory<>("id")));
+        StaffManageTableName.setCellValueFactory((new PropertyValueFactory<>("name")));
+        StaffManageTableEmail.setCellValueFactory((new PropertyValueFactory<>("email")));
+        StaffManageTableContactNo.setCellValueFactory((new PropertyValueFactory<>("contactNo")));
+        StaffManageTableSalary.setCellValueFactory((new PropertyValueFactory<>("salary")));
+        StaffManageTablePosition.setCellValueFactory((new PropertyValueFactory<>("position")));
+
+        StaffManageTable.setItems(searchStaffList);
+    }
+
+    //Method to load Search Admin List to table ------------------------------------------------------------------------->End
+
+
+
+
+
+
+    //Method to load Staff List to table ------------------------------------------------------------------------->start
+    private ObservableList<UserInfo> staffList;
+    public void getStaff(){
+        staffList= new Staff().loadUser();
+
+        StaffManageTableID.setCellValueFactory((new PropertyValueFactory<>("id")));
+        StaffManageTableName.setCellValueFactory((new PropertyValueFactory<>("name")));
+        StaffManageTableEmail.setCellValueFactory((new PropertyValueFactory<>("email")));
+        StaffManageTableContactNo.setCellValueFactory((new PropertyValueFactory<>("contactNo")));
+        StaffManageTableSalary.setCellValueFactory((new PropertyValueFactory<>("salary")));
+        StaffManageTablePosition.setCellValueFactory((new PropertyValueFactory<>("position")));
+
+        StaffManageTable.setItems(staffList);
+    }
+
+
+    //Method to load Staff List to table ------------------------------------------------------------------------->End
+
+
+
+
+
+
+
+
+
+
+    //Method to autoload text fields in DCO add medicine to order--------------------------------------------------->Start
+    public void fillDCOTextFields(){
+        String id=DCOReadIDTextField.getText();
+         String query="select medicineID,name,quantity,price from medicine where medicineID=?";
+         connect=DatabaseConnection.ConnectionDB();
+
+        try {
+            prepare = connect.prepareStatement(query);
+            prepare.setString(1,id);
+            result = prepare.executeQuery();
+            if (result==null){
+                DCOTextFieldMedicineName.setText(null);
+                DCOPriceTextField.setText("0.0");
+                DCOQuantityTextField.setText("0");
+
+            }
+            else{
+                result.next();
+                DCOTextFieldMedicineName.setText(result.getString("name"));
+                DCOPriceTextField.setText(String.valueOf(result.getDouble("price")));
+                DCOQuantityTextField.setText("0");
+                DCOQuantityTextField.requestFocus();
+            }
+        } catch (SQLException e) {
+            DCOTextFieldMedicineName.setText("");
+            DCOPriceTextField.setText("");
+            DCOQuantityTextField.setText("");
+            //System.out.println("Error in: "+e.getMessage());
+        }
+    }
+    //Method to autoload text fields in DCO add medicine to order--------------------------------------------------------->End
+
+
+
+
+
+    //Method to show added medicine on table in DCO add medicine to order---------------------------------------------->Start
+    private ObservableList<MedicineData> orderedMedicineList;
+    public void loadOrderMedicine(){
+        Alert alert;
+        if((DCOReadIDTextField.getText()).isEmpty()||(DCOTextFieldMedicineName.getText()).isEmpty()||(DCOPriceTextField.getText()).isEmpty()||(DCOQuantityTextField.getText()).isEmpty()){
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText("Some fields are empty");
+            alert.setContentText("Please fill them");
+            alert.showAndWait(); // prompt error message to indicate  text field is empty.....
+            return;
+        }
+
+
+
+        int j=OrderedMedicineTable.getItems().size();
+        int i;
+        for(i=0;i<j;i++){
+            if((OrderedMedicineTableID.getCellData(i)).equals(DCOReadIDTextField.getText())){
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Message");
+                alert.setHeaderText("Medicine is already added to the order");
+                alert.setContentText(null);
+                alert.showAndWait(); // prompt error message to indicate quantity text field is 0.....
+                return;
+            }
+        }
+
+
+        if(Integer.valueOf(DCOQuantityTextField.getText())==0){
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText("Invalid quantity");
+            alert.setContentText("Quantity is 0... please add a quantity");
+            alert.showAndWait(); // prompt error message to indicate quantity text field is 0.....
+            return;
+        }
+
+            int updateQty = Sales.changeQuantity(DCOReadIDTextField.getText(),Integer.valueOf(DCOQuantityTextField.getText()));
+            if(updateQty!=-1){
+                alert = new Alert(Alert.AlertType.ERROR);       //error message to indicate medicine is out of stocked
+                alert.setTitle("Error Message");
+                alert.setHeaderText("Out of Stock");
+                alert.setContentText("There is only "+updateQty+" stocks available in this medicine");
+                alert.showAndWait();
+                return;
+
+            }
+                orderedMedicineList=Sales.addSale(DCOReadIDTextField.getText(),DCOTextFieldMedicineName.getText(),DCOQuantityTextField.getText(),DCOPriceTextField.getText());
+
+                OrderedMedicineTableID.setCellValueFactory((new PropertyValueFactory<>("medicineID")));
+                OrderedMedicineTableName.setCellValueFactory((new PropertyValueFactory<>("name")));
+                OrderedMedicineTableQuantity.setCellValueFactory((new PropertyValueFactory<>("quantity")));
+                OrderedMedicineTablePrice.setCellValueFactory((new PropertyValueFactory<>("price")));
+                OrderedMedicineTable.setItems(orderedMedicineList);
+                clearData();
+                getMedicine();
+                calculateTotal();
+                DCOReadIDTextField.requestFocus();
+
+    }
+    //Method to show added medicine on table in DCO add medicine to order---------------------------------------------->End
+
+
+
+
+
+
+    //Method to clear button in DCO to order-------------------------------------------------------------------------->Start
+    public void clearData(){
+        DCOReadIDTextField.setText(null);
+        DCOTextFieldMedicineName.setText(null);
+        DCOQuantityTextField.setText(null);
+        DCOPriceTextField.setText(null);
+    }
+    //Method to clear button in DCO to order-------------------------------------------------------------------------->End
+
+
+
+
+
+
+
+    //Method to clear button in DCO to order-------------------------------------------------------------------------->Start
+    public void clearUserData(){
+        AdminManageID.setText("");
+        AdminManageName.setText("");
+        AdminManageContactNo.setText("");
+        AdminManageEmail.setText("");
+        AdminManageSalary.setText("");
+        AdminManagePassword.setText("");
+
+        StaffManageID.setText("");
+        StaffManageName.setText("");
+        StaffManageEmail.setText("");
+        StaffManageSalary.setText("");
+        StaffManageContactNo.setText("");
+        StaffManagePosition.setText("");
+        StaffManagePassword.setText("");
+    }
+    //Method to clear button in DCO to order-------------------------------------------------------------------------->End
+
+
+    //Method to Calculate total in DCO to order-------------------------------------------------------------------------->Start
+    public void calculateTotal(){
+        double total=0.0;
+        for(int i=0;i<OrderedMedicineTable.getItems().size();i++){
+           // System.out.println(OrderedMedicineTableName.getCellData(i));
+            total=total+(OrderedMedicineTablePrice.getCellData(i)*OrderedMedicineTableQuantity.getCellData(i));
+
+        }
+        DCOTotalLable.setText(String.valueOf(total));
+
+
+    }
+    //Method to Calculate total in DCO to order-------------------------------------------------------------------------->End
+
+
+
+
+    //Method to clear ordered table and database sales table total in DCO-------------------------------------------------------------------------->Start
+    public void clearOrderTable(){
+
+        int j=OrderedMedicineTable.getItems().size();
+        int i;
+
+        for(i=0;i<j;i++){
+            int itemQty=Integer.valueOf(OrderedMedicineTableQuantity.getCellData(i));
+            String id=OrderedMedicineTableID.getCellData(i);
+            int availableQty=0;
+            try {
+                prepare=connect.prepareStatement("select quantity from medicine where medicineID=?");
+                prepare.setString(1,id);
+                result=prepare.executeQuery();
+                result.next();
+                availableQty= result.getInt(1);
+
+                prepare=connect.prepareStatement("update medicine set quantity=? where medicineID=?");
+                prepare.setInt(1,(availableQty+itemQty));
+                prepare.setString(2,id);
+                prepare.executeUpdate();
+
+            } catch (SQLException e) {
+                System.out.println("Error in : "+e.getMessage());
+            }
+
+
+        }
+
+
+
+        try {
+            statement=connect.createStatement();
+            statement.executeUpdate("delete from transaction where transactionID!=' '");
+        } catch (SQLException e) {
+            System.out.println("Error in : "+e.getMessage());
+        }
+        OrderedMedicineTable.getItems().clear();
+        getMedicine();
+        DCOTotalLable.setText("0.0");
+        DCOChangeLable.setText("0.0");
+        DCOSettledTextField.setText(null);
+    }
+
+    //Method to clear ordered table and database sales table total in DCO-------------------------------------------------------------------------->End
+
+
+
+    //Method to calculate change in DCO------------------------------------------------------------------------------------------------------------->Start
+    public void change(){
+        Double total =Double.valueOf( DCOTotalLable.getText());
+        Double settled=Double.valueOf( DCOSettledTextField.getText());
+        try {
+            Double change = settled - total;
+            DCOChangeLable.setText(String.valueOf(change));
+        }catch (Exception e){
+            System.out.println("Error in :"+e.getMessage());
+        }
+
+    }
+
+    //Method to calculate change in DCO------------------------------------------------------------------------------------------------------------->End
+
+
+    //method to do the payment in DCO------------------------------------------------------------------>Start
+    public void payment(){
+        Double amount=0.0;
+        String settledString=DCOSettledTextField.getText();
+        Double change=Double.valueOf(DCOChangeLable.getText());
+        Double total=Double.valueOf(DCOTotalLable.getText());
+        String transactionID=null;
+        int quantity=0;
+
+
+        if(settledString==null||settledString.isEmpty()){
+            Alert alert;
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Settled amount is 0");
+            alert.setContentText("Set a settle balance");
+            alert.showAndWait();
+            return;
+        }
+
+        if(total==0){
+            Alert alert;
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Total is 0");
+            alert.setContentText("Add items to the order");
+            alert.showAndWait();
+            return;
+        }
+
+        try {
+            statement=connect.createStatement();
+            result=statement.executeQuery("select transactionID,price from transaction");
+            while (result.next()){
+                transactionID=result.getString(1);
+                amount=amount+result.getDouble(2);
+
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error in : "+e.getMessage());
+        }
+
+        if(change<0){
+            Alert alert;
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("Settled amount is less than the total amount");
+            alert.showAndWait();
+            return;
+        }
+
+
+
+
+
+
+
+        for(int i=0;i<OrderedMedicineTable.getItems().size();i++){
+            // System.out.println(OrderedMedicineTableName.getCellData(i));
+            quantity=quantity+Integer.valueOf(OrderedMedicineTableQuantity.getCellData(i));
+
+        }
+        LocalDateTime myDateObj = LocalDateTime.now();
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedDate = myDateObj.format(myFormatObj);
+
+        try {
+            prepare = connect.prepareStatement("insert into sales (salesID,type,quantity,dateandTime,amount) values (?,'DCO',?,?,?)");
+            prepare.setString(1,transactionID);
+            prepare.setInt(2,quantity);
+            prepare.setString(3,formattedDate);
+            prepare.setDouble(4,amount);
+
+            prepare.executeUpdate();
+            Alert alert;
+            alert = new Alert(Alert.AlertType.INFORMATION);     //Success alert
+            alert.setTitle("Success Message");
+            alert.setHeaderText("Successful");
+            alert.setContentText("Payment done successfully");
+            alert.showAndWait();
+
+            clearOrderTable();
+        } catch (SQLException e) {
+            System.out.println("Error in : "+e.getMessage());
+        }
+
+    }
+
+    //method to do the payment in DCO------------------------------------------------------------------>End
+
+
+
+
+
+
+    //Method to select a Admin---------------------------------------------------------------------------------->Start
+
+    public void selectAdmin(){
+        int index=AdminManageTable.getSelectionModel().getSelectedIndex();
+
+        currentID=AdminManageTableID.getCellData(index);
+
+        AdminManageID.setText(AdminManageTableID.getCellData(index));
+        AdminManageName.setText(AdminManageTableName.getCellData(index));
+        AdminManageContactNo.setText(AdminManageTableContactNo.getCellData(index));
+        AdminManageSalary.setText(String.valueOf(AdminManageTableSalary.getCellData(index)));
+        AdminManageEmail.setText(AdminManageTableEmail.getCellData(index));
+
+        try {
+            prepare=connect.prepareStatement("select password from admin where userID=? ");
+            prepare.setString(1,AdminManageTableID.getCellData(index));
+            result= prepare.executeQuery();
+            result.next();
+            AdminManagePassword.setText(result.getString(1));
+        } catch (SQLException e) {
+            System.out.println("Error in :"+e.getMessage());
+        }
+
+    }
+
+    //Method to select a Admin---------------------------------------------------------------------------------->End
+
+
+
+
+
+
+    //Method to select a Admin---------------------------------------------------------------------------------->Start
+    public void selectStaff(){
+        int index=StaffManageTable.getSelectionModel().getSelectedIndex();
+
+        currentID=StaffManageTableID.getCellData(index);
+
+        StaffManageID.setText(StaffManageTableID.getCellData(index));
+        StaffManageName.setText(StaffManageTableName.getCellData(index));
+        StaffManageContactNo.setText(StaffManageTableContactNo.getCellData(index));
+        StaffManageSalary.setText(String.valueOf(StaffManageTableSalary.getCellData(index)));
+        StaffManageEmail.setText(StaffManageTableEmail.getCellData(index));
+        StaffManagePosition.setText(StaffManageTablePosition.getCellData(index));
+
+        try {
+            prepare=connect.prepareStatement("select password from staff where userID=? ");
+            prepare.setString(1,StaffManageTableID.getCellData(index));
+            result= prepare.executeQuery();
+            result.next();
+            StaffManagePassword.setText(result.getString(1));
+        } catch (SQLException e) {
+            System.out.println("Error in :"+e.getMessage());
+        }
+
+    }
+
+    //Method to select a Admin---------------------------------------------------------------------------------->End
+
+
+    //Method to get Add button focus--------------------------------------->Start
+    public void getAddButtonFocus(){
+        DCOAddButton.requestFocus();
+    }
+
+    //Method to get Add button focus--------------------------------------->Start
+
+
+
+
+    //Method to get pay button focus--------------------------------------->Start
+    public void getPayButtonFocus(){
+        DCOPayButton.requestFocus();
+    }
+
+    //Method to get pay button focus--------------------------------------->Start
+
+
+
+
+
 
 
     @Override
