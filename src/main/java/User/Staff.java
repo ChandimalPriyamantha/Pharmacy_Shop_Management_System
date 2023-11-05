@@ -271,45 +271,6 @@ public class Staff extends UserInfo {
         }
     }
     //Method to delete user---------------------------------------------------------->End
-
-
-
-    //Method to search Staff results list from the database--------------------------------------------------------------------------------->END
-    @Override
-    public ObservableList<UserInfo> searchUser(String id) {
-        ObservableList<UserInfo> searchList = null;
-        try {
-            ps = connection.prepareStatement("select userID,name,email,phoneNumber,salary,position from staff where userId=?");
-            ps.setString(1,id);
-            rs = ps.executeQuery();
-
-            searchList = FXCollections.observableArrayList();
-            Staff staffInfo;
-
-            while (rs.next()) {
-                staffInfo = new Staff(rs.getString("userID"),
-                        rs.getString("name"),
-                        rs.getString("email"),
-                        rs.getString("phoneNumber"),
-                        rs.getDouble("salary"),
-                        rs.getString("position"));
-
-                searchList.add(staffInfo);
-            }
-
-        } catch (SQLException e) {
-            System.out.println("Error in: " + e.getMessage());
-
-        }
-        return searchList;
-
-    }
-    //Method to search User list from the database--------------------------------------------------------------------------------->END
-
-
-
-
-
 }
 
 

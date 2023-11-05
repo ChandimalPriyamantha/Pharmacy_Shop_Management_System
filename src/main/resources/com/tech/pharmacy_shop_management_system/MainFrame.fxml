@@ -297,7 +297,7 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="DCOBackground" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="203.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="80.0">
+      <AnchorPane fx:id="DCOBackground" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="203.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="80.0">
          <children>
             <AnchorPane layoutX="529.0" layoutY="170.0" prefHeight="531.0" prefWidth="412.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="7.0">
                <styleClass>
@@ -409,7 +409,7 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="UserManageBackground" layoutX="393.0" layoutY="173.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="203.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="80.0">
+      <AnchorPane fx:id="UserManageBackground" layoutX="393.0" layoutY="173.0" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="203.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="80.0">
          <children>
             <Button fx:id="UserManageStaffButton" layoutX="14.0" layoutY="516.0" mnemonicParsing="false" onAction="#controlPanel" prefHeight="30.0" prefWidth="115.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Staff" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="10.0">
                <styleClass>
@@ -423,7 +423,7 @@
                   <String fx:value="addButton" />
                </styleClass>
             </Button>
-            <AnchorPane fx:id="AdminManageBackground" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="AdminManageBackground" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <AnchorPane prefHeight="328.0" prefWidth="910.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" AnchorPane.bottomAnchor="170.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="7.0">
                      <styleClass>
@@ -478,7 +478,7 @@
                               <String fx:value="addButton" />
                            </styleClass>
                         </Button>
-                        <Button fx:id="AdminManageSearchButton" layoutX="195.0" layoutY="106.0" mnemonicParsing="false" onAction="#controlPanel" prefHeight="30.0" prefWidth="115.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Search" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="400.0">
+                        <Button fx:id="AdminManageSearchButton" layoutX="195.0" layoutY="106.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="115.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Search" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="400.0">
                            <styleClass>
                               <String fx:value="add-btn" />
                               <String fx:value="addButton" />
@@ -575,7 +575,7 @@
                               <String fx:value="addButton" />
                            </styleClass>
                         </Button>
-                        <Button fx:id="StaffManageSearchButton" layoutX="195.0" layoutY="106.0" mnemonicParsing="false" onAction="#controlPanel" prefHeight="30.0" prefWidth="115.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Search" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="400.0">
+                        <Button fx:id="StaffManageSearchButton" layoutX="195.0" layoutY="106.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="115.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Search" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="400.0">
                            <styleClass>
                               <String fx:value="add-btn" />
                               <String fx:value="addButton" />

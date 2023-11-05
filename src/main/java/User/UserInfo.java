@@ -115,35 +115,7 @@ public class UserInfo implements User {
 
 
 
-    //Method to search User results list from the database--------------------------------------------------------------------------------->END
-    public ObservableList<UserInfo> searchUser(String id) {
-        ObservableList<UserInfo> searchList = null;
-        try {
-            ps = connection.prepareStatement("select userID,name,email,phoneNumber,salary from admin where userId=?");
-            ps.setString(1,id);
-            rs = ps.executeQuery();
 
-            searchList = FXCollections.observableArrayList();
-            UserInfo userInfo;
-
-            while (rs.next()) {
-                userInfo = new UserInfo(rs.getString("userID"),
-                        rs.getString("name"),
-                        rs.getString("email"),
-                        rs.getString("phoneNumber"),
-                        rs.getDouble("salary"));
-
-                searchList.add(userInfo);
-            }
-
-        } catch (SQLException e) {
-            System.out.println("Error in: " + e.getMessage());
-
-        }
-        return searchList;
-
-    }
-    //Method to search User list from the database--------------------------------------------------------------------------------->END
 
 
 

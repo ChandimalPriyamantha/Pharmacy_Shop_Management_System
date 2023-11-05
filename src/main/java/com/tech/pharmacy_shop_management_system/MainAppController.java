@@ -401,18 +401,8 @@ public class MainAppController implements Initializable {
                      getStaff();
                      clearUserData();
 
-                 }else if(event.getSource()==AdminManageSearchButton){ // Functionality to Search ADMIN User
-                     searchAdmin(AdminManageID.getText());
-                     clearUserData();
-
-                 }else if(event.getSource()==StaffManageSearchButton){ // Functionality to Search Staff User
-                     searchStaff(StaffManageID.getText());
-                     clearUserData();
-
                  }else if(event.getSource()==AdminManageClearButton||event.getSource()==StaffManageClearButton){ // Functionality to Clear User manage Text fields
                      clearUserData();
-                     getAdmin();
-                     getStaff();
                  }
 
           }
@@ -499,67 +489,7 @@ public class MainAppController implements Initializable {
         AdminManageTable.setItems(userList);
     }
 
-    //Method to load Admin List to table ------------------------------------------------------------------------->End
-
-
-
-
-
-    //Method to load search Admin List to table ------------------------------------------------------------------------->start
-    private ObservableList<UserInfo> serchAdminList;
-    public void searchAdmin(String id){
-        Alert alert;
-        if((AdminManageID.getText()).isEmpty()){
-            alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Fill an Admin ID");
-            alert.setContentText(null);
-            alert.showAndWait();
-            return;
-        }
-        AdminManageTable.getItems().clear();
-        serchAdminList= new UserInfo().searchUser(id);
-
-        AdminManageTableID.setCellValueFactory((new PropertyValueFactory<>("id")));
-        AdminManageTableName.setCellValueFactory((new PropertyValueFactory<>("name")));
-        AdminManageTableEmail.setCellValueFactory((new PropertyValueFactory<>("email")));
-        AdminManageTableContactNo.setCellValueFactory((new PropertyValueFactory<>("contactNo")));
-        AdminManageTableSalary.setCellValueFactory((new PropertyValueFactory<>("salary")));
-
-
-        AdminManageTable.setItems(serchAdminList);
-    }
-
-    //Method to load Search Admin List to table ------------------------------------------------------------------------->End
-
-
-
-    //Method to load search Admin List to table ------------------------------------------------------------------------->start
-    private ObservableList<UserInfo> searchStaffList;
-    public void searchStaff(String id){
-        Alert alert;
-        if((StaffManageID.getText()).isEmpty()){
-            alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Fill an Staff ID");
-            alert.setContentText(null);
-            alert.showAndWait();
-            return;
-        }
-        StaffManageTable.getItems().clear();
-        searchStaffList= new Staff().searchUser(id);
-
-        StaffManageTableID.setCellValueFactory((new PropertyValueFactory<>("id")));
-        StaffManageTableName.setCellValueFactory((new PropertyValueFactory<>("name")));
-        StaffManageTableEmail.setCellValueFactory((new PropertyValueFactory<>("email")));
-        StaffManageTableContactNo.setCellValueFactory((new PropertyValueFactory<>("contactNo")));
-        StaffManageTableSalary.setCellValueFactory((new PropertyValueFactory<>("salary")));
-        StaffManageTablePosition.setCellValueFactory((new PropertyValueFactory<>("position")));
-
-        StaffManageTable.setItems(searchStaffList);
-    }
-
-    //Method to load Search Admin List to table ------------------------------------------------------------------------->End
+    //Method to load Admin List to table ------------------------------------------------------------------------->start
 
 
 
@@ -582,7 +512,7 @@ public class MainAppController implements Initializable {
     }
 
 
-    //Method to load Staff List to table ------------------------------------------------------------------------->End
+    //Method to load Staff List to table ------------------------------------------------------------------------->start
 
 
 
@@ -614,7 +544,6 @@ public class MainAppController implements Initializable {
                 DCOTextFieldMedicineName.setText(result.getString("name"));
                 DCOPriceTextField.setText(String.valueOf(result.getDouble("price")));
                 DCOQuantityTextField.setText("0");
-                DCOQuantityTextField.requestFocus();
             }
         } catch (SQLException e) {
             DCOTextFieldMedicineName.setText("");
@@ -668,11 +597,11 @@ public class MainAppController implements Initializable {
         }
 
             int updateQty = Sales.changeQuantity(DCOReadIDTextField.getText(),Integer.valueOf(DCOQuantityTextField.getText()));
-            if(updateQty!=-1){
+            if(updateQty==0){
                 alert = new Alert(Alert.AlertType.ERROR);       //error message to indicate medicine is out of stocked
                 alert.setTitle("Error Message");
                 alert.setHeaderText("Out of Stock");
-                alert.setContentText("There is only "+updateQty+" stocks available in this medicine");
+                alert.setContentText("This medicine looks like out of stocked");
                 alert.showAndWait();
                 return;
 
@@ -970,14 +899,6 @@ public class MainAppController implements Initializable {
     //Method to select a Admin---------------------------------------------------------------------------------->End
 
 
-
-
-    //Method to read barcode--------------------------------------------------------------------------------->Start
-    public void scan(){
-        Linear barcode =new Linear();
-    }
-
-    //Method to read barcode--------------------------------------------------------------------------------->Start
 
 
 
