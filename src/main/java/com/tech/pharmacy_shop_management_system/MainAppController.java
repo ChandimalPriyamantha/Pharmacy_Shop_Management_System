@@ -562,6 +562,29 @@ public class MainAppController implements Initializable {
     private ObservableList<MedicineData> orderedMedicineList;
     public void loadOrderMedicine(){
         Alert alert;
+        if((DCOReadIDTextField.getText()).isEmpty()||(DCOTextFieldMedicineName.getText()).isEmpty()||(DCOPriceTextField.getText()).isEmpty()||(DCOQuantityTextField.getText()).isEmpty()){
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText("Some fields are empty");
+            alert.setContentText("Please fill them");
+            alert.showAndWait(); // prompt error message to indicate  text field is empty.....
+            return;
+        }
+
+
+
+        int j=OrderedMedicineTable.getItems().size();
+        int i;
+        for(i=0;i<j;i++){
+            if((OrderedMedicineTableID.getCellData(i)).equals(DCOReadIDTextField.getText())){
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Message");
+                alert.setHeaderText("Medicine is already added to the order");
+                alert.setContentText(null);
+                alert.showAndWait(); // prompt error message to indicate quantity text field is 0.....
+                return;
+            }
+        }
 
 
         if(Integer.valueOf(DCOQuantityTextField.getText())==0){
@@ -657,6 +680,35 @@ public class MainAppController implements Initializable {
 
     //Method to clear ordered table and database sales table total in DCO-------------------------------------------------------------------------->Start
     public void clearOrderTable(){
+
+        int j=OrderedMedicineTable.getItems().size();
+        int i;
+
+        for(i=0;i<j;i++){
+            int itemQty=Integer.valueOf(OrderedMedicineTableQuantity.getCellData(i));
+            String id=OrderedMedicineTableID.getCellData(i);
+            int availableQty=0;
+            try {
+                prepare=connect.prepareStatement("select quantity from medicine where medicineID=?");
+                prepare.setString(1,id);
+                result=prepare.executeQuery();
+                result.next();
+                availableQty= result.getInt(1);
+
+                prepare=connect.prepareStatement("update medicine set quantity=? where medicineID=?");
+                prepare.setInt(1,(availableQty+itemQty));
+                prepare.setString(2,id);
+                prepare.executeUpdate();
+
+            } catch (SQLException e) {
+                System.out.println("Error in : "+e.getMessage());
+            }
+
+
+        }
+
+
+
         try {
             statement=connect.createStatement();
             statement.executeUpdate("delete from transaction where transactionID!=' '");
@@ -664,6 +716,7 @@ public class MainAppController implements Initializable {
             System.out.println("Error in : "+e.getMessage());
         }
         OrderedMedicineTable.getItems().clear();
+        getMedicine();
         DCOTotalLable.setText("0.0");
         DCOChangeLable.setText("0.0");
         DCOSettledTextField.setText(null);
