@@ -12,7 +12,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import java.io.IOException;
 import java.sql.*;
 
@@ -55,9 +56,15 @@ public class LogInController {
     private Button Ulogin;
     @FXML
     private Button Ufpwd;
-    @FXML
-    private Button Ureg;
 
+    @FXML
+    private AnchorPane adminPin_panel;
+    @FXML
+    private TextField txtpin;
+    @FXML
+    private Button btnauth;
+    @FXML
+    private Button btnfpin;
     @FXML
     private AnchorPane adreg_panel;
     @FXML
@@ -65,37 +72,30 @@ public class LogInController {
     @FXML
     private PasswordField adregpwd;
     @FXML
-    private ComboBox adregcom;
+    private ComboBox<String> adregcom;
     @FXML
     private TextField adans;
     @FXML
     private Button adregbtn;
     @FXML
     private Button adlogbtn;
-    @FXML
-    private AnchorPane ureg_panel;
-    @FXML
-    private TextField streguname;
-    @FXML
-    private PasswordField stregpwd;
-    @FXML
-    private ComboBox stregcom;
-    @FXML
-    private TextField stans;
-    @FXML
-    private Button stregbtn;
-    @FXML
-    private Button stlogbtn;
+
 
     @FXML
     public void controlPanel(ActionEvent event){
         if(event.getSource()==adminbtn){
             Admin_panel.setVisible(true);
             User_panel.setVisible(false);
+            adminPin_panel.setVisible(false);
+            adreg_panel.setVisible(false);
+
         }
         else if(event.getSource()==userbtn){
             User_panel.setVisible(true);
             Admin_panel.setVisible(false);
+            adminPin_panel.setVisible(false);
+            adreg_panel.setVisible(false);
+
         }
     }
     @FXML
@@ -189,11 +189,77 @@ public class LogInController {
     }
 
     @FXML
-    public void controlpanel(ActionEvent event){
+    public void controlpanelreg(ActionEvent event){
         if(event.getSource()==areg){
             Admin_panel.setVisible(false);
+            adminPin_panel.setVisible(true);
+        }
+        else{
+            showAlert("Error...");
+        }
+    }
+
+    @FXML
+    public void btnauthonAction(ActionEvent event){
+        String pin="1234";
+        String input_pin=txtpin.getText();
+        if(input_pin.isEmpty()){
+            showAlert("Please fill the fields...!");
+        }
+        else {
+            if (input_pin.equals(pin)) {
+                showAlert("Verification Success...Click To Continue...!");
+                adreg_panel.setVisible(true);
+            }
+            else{
+                showAlert("Verification UnSuccess...Cannot be register...!");
+                txtpin.setText(" ");
+            }
+        }
+    }
+    public void initialize() {
+        // Initialize the ComboBox with a list of questions
+        ObservableList<String> questions = FXCollections.observableArrayList(
+                "What is your favorite color?",
+                "What is your mother's maiden name?",
+                "What is the name of your first pet?",
+                "What is your favourite movie?"
+        );
+
+        adregcom.setItems(questions);
+    }
+    @FXML
+    public void adregbtnOnaction(ActionEvent event){
+        connect=DatabaseConnection.ConnectionDB();
+
+        String userID=adreguname.getText();
+        String pwd=adregpwd.getText();
+        String ans=adans.getText();
+        try{
+            String sql="Insert into admin(userID,password,answer) values('"+userID+"','"+pwd+"','"+ans+"')";
+            PreparedStatement preparedStatement = connect.prepareStatement(sql);
+            preparedStatement.setString(2, userID);
+            preparedStatement.setString(8, pwd);
+            preparedStatement.setString(9,ans);
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            if (rowsAffected > 0) {
+                // Data was successfully inserted
+                showAlert("Registered successfully!");
+                Admin_panel.setVisible(true);
+                adreg_panel.setVisible(false);
+
+            } else {
+                showAlert("Failed to register. Please check the input values and try again.");
+                adreguname.clear();
+                adregpwd.clear();
+            }
 
         }
+        catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
 

@@ -26,6 +26,7 @@ CREATE TABLE IF NOT EXISTS `pharmacyDB`.`admin` (
   `joinDate` DATE NULL,
   `salary` DOUBLE NULL,
   `password` VARCHAR(250) NULL,
+  'answer' VARCHAR(250) NULL,
   PRIMARY KEY (`serialID`, `userID`))
 ENGINE = InnoDB;
 

@@ -12,7 +12,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="960.0" styleClass="main-bg" stylesheets="@Style/mainFormDesign.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tech.pharmacy_shop_management_system.LogInController">
    <children>
-      <AnchorPane layoutY="21.0" prefHeight="252.0" prefWidth="960.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <AnchorPane fx:id="title_button_tab" layoutY="21.0" prefHeight="252.0" prefWidth="960.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
             <AnchorPane layoutX="23.0" layoutY="28.0" prefHeight="44.0" prefWidth="702.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="250.0">
                <styleClass>
@@ -79,7 +79,7 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Button fx:id="areg" layoutX="84.0" layoutY="303.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="135.0" text="Click to Register" underline="true">
+                  <Button fx:id="areg" layoutX="84.0" layoutY="303.0" mnemonicParsing="false" onAction="#controlpanelreg" prefHeight="22.0" prefWidth="135.0" text="Click to Register" underline="true">
                      <styleClass>
                         <String fx:value="radius" />
                         <String fx:value="white-bg" />
@@ -130,21 +130,12 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Label layoutX="64.0" layoutY="284.0" prefHeight="20.0" prefWidth="198.0" text="If you don't have an account,">
+                  <Label layoutX="54.0" layoutY="284.0" prefHeight="20.0" prefWidth="208.0" text="Password is forgot, Click To">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Button fx:id="Ufpwd" layoutX="83.0" layoutY="244.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="135.0" text="Forgot Password" underline="true">
-                     <styleClass>
-                        <String fx:value="radius" />
-                        <String fx:value="white-bg" />
-                     </styleClass>
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="Ureg" layoutX="84.0" layoutY="304.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="135.0" text="Click to Register" underline="true">
+                  <Button fx:id="Ufpwd" layoutX="83.0" layoutY="304.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="135.0" text="Forgot Password" underline="true">
                      <styleClass>
                         <String fx:value="radius" />
                         <String fx:value="white-bg" />
@@ -174,7 +165,7 @@
             <Text fill="WHITE" layoutX="2.0" layoutY="15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------Solution by #MaxGroup | Version 1.0.0-------------------------------" wrappingWidth="1342.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-382.0" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="43.0" layoutY="180.0" prefHeight="392.0" prefWidth="895.0" visible="false" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="150.0">
+      <AnchorPane fx:id="adminPin_panel" layoutX="43.0" layoutY="180.0" prefHeight="392.0" prefWidth="895.0" visible="false" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="150.0">
          <styleClass>
             <String fx:value="white-bg" />
             <String fx:value="radius" />
@@ -189,8 +180,12 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="66.0" layoutY="146.0" prefHeight="37.0" prefWidth="197.0" promptText="Username" />
-                  <Button layoutX="66.0" layoutY="253.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="197.0" styleClass="btn" text="Authorization">
+                  <TextField fx:id="txtpin" layoutX="66.0" layoutY="146.0" prefHeight="37.0" prefWidth="197.0" promptText="Username">
+                     <styleClass>
+                        <String fx:value="white-bg" />
+                        <String fx:value="user-admin" />
+                     </styleClass></TextField>
+                  <Button fx:id="btnauth" layoutX="66.0" layoutY="253.0" mnemonicParsing="false" onAction="#btnauthonAction" prefHeight="30.0" prefWidth="197.0" styleClass="btn" text="Authorization">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -200,7 +195,7 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Button fx:id="areg1" layoutX="99.0" layoutY="311.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="135.0" text="Forgot PIN" underline="true">
+                  <Button fx:id="btnfpin" layoutX="99.0" layoutY="311.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="135.0" text="Forgot PIN" underline="true">
                      <styleClass>
                         <String fx:value="radius" />
                         <String fx:value="white-bg" />
@@ -234,11 +229,11 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <PasswordField layoutX="68.0" layoutY="132.0" prefHeight="32.0" prefWidth="197.0" promptText="Password" />
-                  <TextField layoutX="68.0" layoutY="92.0" prefHeight="32.0" prefWidth="197.0" promptText="Username" />
-                  <ComboBox layoutX="68.0" layoutY="171.0" prefHeight="30.0" prefWidth="197.0" promptText="Question" />
-                  <TextField layoutX="68.0" layoutY="213.0" prefHeight="32.0" prefWidth="197.0" promptText="Answer" />
-                  <Button layoutX="66.0" layoutY="253.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="197.0" styleClass="btn" text="Register">
+                  <PasswordField fx:id="adregpwd" layoutX="68.0" layoutY="132.0" prefHeight="32.0" prefWidth="197.0" promptText="Password" />
+                  <TextField fx:id="adreguname" layoutX="68.0" layoutY="92.0" prefHeight="32.0" prefWidth="197.0" promptText="Username" />
+                  <ComboBox fx:id="adregcom" layoutX="68.0" layoutY="171.0" prefHeight="30.0" prefWidth="197.0" promptText="Question" />
+                  <TextField fx:id="adans" layoutX="68.0" layoutY="213.0" prefHeight="32.0" prefWidth="197.0" promptText="Answer" />
+                  <Button fx:id="adregbtn" layoutX="66.0" layoutY="253.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="197.0" styleClass="btn" text="Register">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -248,7 +243,7 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Button fx:id="areg2" layoutX="99.0" layoutY="311.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="135.0" text="Click to Log In" underline="true">
+                  <Button fx:id="adlogbtn" layoutX="99.0" layoutY="311.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="135.0" text="Click to Log In" underline="true">
                      <styleClass>
                         <String fx:value="radius" />
                         <String fx:value="white-bg" />
@@ -261,54 +256,6 @@
             </AnchorPane>
             <Label layoutX="810.0" layoutY="321.0" prefHeight="44.0" prefWidth="50.0" styleClass="pharmacy-icon" AnchorPane.bottomAnchor="27.0" AnchorPane.rightAnchor="35.0" />
             <Label layoutX="781.0" layoutY="365.0" text="Admin Panel" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="6.0">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="53.0" layoutY="190.0" prefHeight="392.0" prefWidth="895.0" visible="false" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="150.0">
-         <styleClass>
-            <String fx:value="white-bg" />
-            <String fx:value="radius" />
-            <String fx:value="shadow" />
-         </styleClass>
-         <children>
-            <AnchorPane layoutX="304.0" layoutY="26.0" prefHeight="341.0" prefWidth="316.0" styleClass="user-admin" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="500.0">
-               <children>
-                  <Label layoutX="8.0" layoutY="8.0" prefHeight="78.0" prefWidth="89.0" styleClass="reg-icon" />
-                  <Label layoutX="111.0" layoutY="34.0" text="User Registration" textFill="#2f2e5e">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <PasswordField layoutX="68.0" layoutY="132.0" prefHeight="32.0" prefWidth="197.0" promptText="Password" />
-                  <TextField layoutX="68.0" layoutY="92.0" prefHeight="32.0" prefWidth="197.0" promptText="Username" />
-                  <ComboBox layoutX="68.0" layoutY="171.0" prefHeight="30.0" prefWidth="197.0" promptText="Question" />
-                  <TextField layoutX="68.0" layoutY="213.0" prefHeight="32.0" prefWidth="197.0" promptText="Answer" />
-                  <Button layoutX="66.0" layoutY="253.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="197.0" styleClass="btn" text="Register">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Button>
-                  <Label layoutX="63.0" layoutY="291.0" prefHeight="20.0" prefWidth="208.0" text="If you already have an account,">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="areg11" layoutX="99.0" layoutY="311.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="135.0" text="Click to Log In" underline="true">
-                     <styleClass>
-                        <String fx:value="radius" />
-                        <String fx:value="white-bg" />
-                     </styleClass>
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Button>
-               </children>
-            </AnchorPane>
-            <Label layoutX="810.0" layoutY="321.0" prefHeight="44.0" prefWidth="50.0" styleClass="pharmacy-icon" AnchorPane.bottomAnchor="27.0" AnchorPane.rightAnchor="35.0" />
-            <Label layoutX="781.0" layoutY="365.0" text="User  Panel" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="6.0">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
