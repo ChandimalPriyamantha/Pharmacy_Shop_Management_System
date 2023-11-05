@@ -676,8 +676,14 @@ public class MainAppController implements Initializable {
     //Method to calculate change in DCO------------------------------------------------------------------------------------------------------------->Start
     public void change(){
         Double total =Double.valueOf( DCOTotalLable.getText());
-        Double change= Double.valueOf( DCOSettledTextField.getText())-total;
-        DCOChangeLable.setText(String.valueOf(change));
+        Double settled=Double.valueOf( DCOSettledTextField.getText());
+        try {
+            Double change = settled - total;
+            DCOChangeLable.setText(String.valueOf(change));
+        }catch (Exception e){
+            System.out.println("Error in :"+e.getMessage());
+        }
+
     }
 
     //Method to calculate change in DCO------------------------------------------------------------------------------------------------------------->End
@@ -686,8 +692,33 @@ public class MainAppController implements Initializable {
     //method to do the payment in DCO------------------------------------------------------------------>Start
     public void payment(){
         Double amount=0.0;
+        String settledString=DCOSettledTextField.getText();
+        Double change=Double.valueOf(DCOChangeLable.getText());
+        Double total=Double.valueOf(DCOTotalLable.getText());
         String transactionID=null;
         int quantity=0;
+
+
+        if(settledString.isEmpty()){
+            Alert alert;
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Settled amount is 0");
+            alert.setContentText("Set a settle balance");
+            alert.showAndWait();
+            return;
+        }
+
+        if(total==0){
+            Alert alert;
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Total is 0");
+            alert.setContentText("Add items to the order");
+            alert.showAndWait();
+            return;
+        }
+
         try {
             statement=connect.createStatement();
             result=statement.executeQuery("select transactionID,price from transaction");
@@ -700,6 +731,22 @@ public class MainAppController implements Initializable {
         } catch (SQLException e) {
             System.out.println("Error in : "+e.getMessage());
         }
+
+        if(change<0){
+            Alert alert;
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("Settled amount is less than the total amount");
+            alert.showAndWait();
+            return;
+        }
+
+
+
+
+
+
 
         for(int i=0;i<OrderedMedicineTable.getItems().size();i++){
             // System.out.println(OrderedMedicineTableName.getCellData(i));
@@ -718,6 +765,13 @@ public class MainAppController implements Initializable {
             prepare.setDouble(4,amount);
 
             prepare.executeUpdate();
+            Alert alert;
+            alert = new Alert(Alert.AlertType.INFORMATION);     //Success alert
+            alert.setTitle("Success Message");
+            alert.setHeaderText("Successful");
+            alert.setContentText("Payment done successfully");
+            alert.showAndWait();
+
             clearOrderTable();
         } catch (SQLException e) {
             System.out.println("Error in : "+e.getMessage());
