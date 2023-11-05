@@ -214,7 +214,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="adreg_panel" layoutX="43.0" layoutY="180.0" prefHeight="392.0" prefWidth="895.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="150.0">
+      <AnchorPane fx:id="adreg_panel" layoutX="43.0" layoutY="180.0" prefHeight="392.0" prefWidth="895.0" visible="false" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="150.0">
          <styleClass>
             <String fx:value="white-bg" />
             <String fx:value="radius" />
@@ -233,7 +233,7 @@
                   <TextField fx:id="adreguname" layoutX="68.0" layoutY="92.0" prefHeight="32.0" prefWidth="197.0" promptText="Username" />
                   <ComboBox fx:id="adregcom" layoutX="68.0" layoutY="171.0" prefHeight="30.0" prefWidth="197.0" promptText="Question" />
                   <TextField fx:id="adans" layoutX="68.0" layoutY="213.0" prefHeight="32.0" prefWidth="197.0" promptText="Answer" />
-                  <Button fx:id="adregbtn" layoutX="66.0" layoutY="253.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="197.0" styleClass="btn" text="Register">
+                  <Button fx:id="adregbtn" layoutX="66.0" layoutY="253.0" mnemonicParsing="false" onAction="#adregbtnOnaction" prefHeight="30.0" prefWidth="197.0" styleClass="btn" text="Register">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -260,6 +260,48 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="adminfpwd" layoutX="40.0" layoutY="172.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="410.0" prefWidth="895.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="170.0">
+         <styleClass>
+            <String fx:value="white-bg" />
+            <String fx:value="shadow" />
+            <String fx:value="radius" />
+         </styleClass>
+         <children>
+            <Label layoutX="817.0" layoutY="321.0" prefHeight="61.0" prefWidth="50.0" styleClass="pharmacy-icon" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="33.0" />
+            <Label layoutX="783.0" layoutY="375.0" prefHeight="27.0" prefWidth="117.0" text="Admin Panel" textFill="#2f2e5e" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <AnchorPane layoutX="450.0" layoutY="29.0" prefHeight="350.0" prefWidth="316.0" styleClass="user-admin" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="500.0">
+               <children>
+                  <Label layoutX="8.0" layoutY="8.0" prefHeight="78.0" prefWidth="89.0" styleClass="reg-icon" />
+                  <Label layoutX="97.0" layoutY="34.0" text="Admin Forgot Password" textFill="#2f2e5e">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="adnewpwd" layoutX="68.0" layoutY="132.0" prefHeight="32.0" prefWidth="197.0" promptText="New Password" />
+                  <TextField fx:id="adfpwdun" layoutX="68.0" layoutY="92.0" prefHeight="32.0" prefWidth="197.0" promptText="Username" />
+                  <Button fx:id="adupdate" layoutX="68.0" layoutY="240.0" mnemonicParsing="false" onAction="#adregbtnOnaction" prefHeight="30.0" prefWidth="197.0" styleClass="btn" text="Update">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="adlogbtn1" layoutX="99.0" layoutY="292.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="135.0" text="Click to Log In" underline="true">
+                     <styleClass>
+                        <String fx:value="radius" />
+                        <String fx:value="white-bg" />
+                     </styleClass>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <PasswordField fx:id="adcpwd" layoutX="68.0" layoutY="172.0" prefHeight="32.0" prefWidth="197.0" promptText="Confirm Password" />
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>

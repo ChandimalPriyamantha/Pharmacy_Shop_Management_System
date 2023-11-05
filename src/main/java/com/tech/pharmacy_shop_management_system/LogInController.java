@@ -2,7 +2,6 @@ package com.tech.pharmacy_shop_management_system;
 
 import Connection.DatabaseConnection;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.event.ActionEvent;
@@ -79,6 +78,18 @@ public class LogInController {
     private Button adregbtn;
     @FXML
     private Button adlogbtn;
+    @FXML
+    private AnchorPane adminfpwd;
+    @FXML
+    private TextField adfpwdun;
+    @FXML
+    private PasswordField adnewpwd;
+
+    @FXML
+    private PasswordField adcpwd;
+
+    @FXML
+    private Button adupdate;
 
 
     @FXML
@@ -165,8 +176,10 @@ public class LogInController {
             result = prepare.executeQuery();
 
             if (result.next()) {
-                if (userun.isEmpty() || userpwd.isEmpty()) {
-                    showAlert("Please fill out all the fields...!");
+                if (userun.isEmpty()){
+                    if(userpwd.isEmpty()){
+                        showAlert("Please fill out all the fields...!");
+                    }
                 }
                 else {
                     showAlert("You are logged in successfully....!");
@@ -176,7 +189,8 @@ public class LogInController {
                         e.printStackTrace();
                     }
                 }
-            } else {
+            }
+            else {
                 showAlert("Username or Password is incorrect. Please try again...");
                 Uuname.setText(" ");
                 Upwd.setText(" ");
@@ -236,32 +250,70 @@ public class LogInController {
         String pwd=adregpwd.getText();
         String ans=adans.getText();
         try{
-            String sql="Insert into admin(userID,password,answer) values('"+userID+"','"+pwd+"','"+ans+"')";
-            PreparedStatement preparedStatement = connect.prepareStatement(sql);
-            preparedStatement.setString(2, userID);
-            preparedStatement.setString(8, pwd);
-            preparedStatement.setString(9,ans);
-            int rowsAffected = preparedStatement.executeUpdate();
-
-            if (rowsAffected > 0) {
-                // Data was successfully inserted
-                showAlert("Registered successfully!");
-                Admin_panel.setVisible(true);
-                adreg_panel.setVisible(false);
-
-            } else {
-                showAlert("Failed to register. Please check the input values and try again.");
-                adreguname.clear();
-                adregpwd.clear();
+            if(userID.isEmpty()){
+                if(pwd.isEmpty()){
+                    if(ans.isEmpty()){
+                        showAlert("Please fill out the fields...!");
+                    }
+                }
             }
+            else{
+                String sql1="select userID,password from admin where userID='"+userID+"' AND password='"+pwd+"'";
+                prepare = connect.prepareStatement(sql1);
+                result = prepare.executeQuery();
 
-        }
-        catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+                if(result.next()){
+                    showAlert("Username or Password is already exit...!");
+                    adreguname.clear();
+                    adregpwd.clear();
+                    adans.clear();
+                }
+                else{
+                    String sql2="Insert into admin(userID,password,answer) values('"+userID+"','"+pwd+"','"+ans+"')";
+                    PreparedStatement preparedStatement = connect.prepareStatement(sql2);
+                    //preparedStatement.execute();
 
+                    int rowsAffected = preparedStatement.executeUpdate();
+
+                    if (rowsAffected > 0) {
+                        // Data was successfully inserted
+                        showAlert("Registered successfully...Click to Log In!");
+                        Admin_panel.setVisible(true);
+                        adreg_panel.setVisible(false);
+                        adminPin_panel.setVisible(false);
+
+                    } else {
+                        showAlert("Failed to register. Please check the input values and try again.");
+                        adreguname.clear();
+                        adregpwd.clear();
+                        adans.clear();
+                    }
+                    preparedStatement.close();
+                    connect.close();
+                }
+
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("An SQL error occurred. Please check the console for details.");
+        }
+    }
+    @FXML
+    public void controlPaneladfpwd(ActionEvent event){
+        if(event.getSource()==afpwd){
+            Admin_panel.setVisible(false);
+            adminfpwd.setVisible(true);
+        }
     }
 
+//    @FXML
+//    public void updateOnAction(ActionEvent event){
+//        connect=DatabaseConnection.ConnectionDB();
+//        String un=adfpwdun.getText();
+//        String pwd=
+//
+//    }
 
 }
 
