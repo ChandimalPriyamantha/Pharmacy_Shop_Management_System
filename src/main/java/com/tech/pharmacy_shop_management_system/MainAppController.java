@@ -102,7 +102,7 @@ public class MainAppController implements Initializable {
     private TableColumn<?, ?> idPP;
 
     @FXML
-    private AnchorPane placePurchase;
+    private AnchorPane placePurchaseAP;
 
     @FXML
     private AnchorPane placePurchasetbl;
@@ -167,6 +167,9 @@ public class MainAppController implements Initializable {
     @FXML
     private WebView webView;
 
+    @FXML
+    private AnchorPane completePurchaseAP;
+
     int index = -1;
 
 
@@ -176,12 +179,31 @@ public class MainAppController implements Initializable {
                     Email email = new  Email(webView);
                     email.emailServer();
                     emailPage.setVisible(false);
-                 } else if (event.getSource()== purchasebtn) {
+                 }else if (event.getSource()== purchasebtn) {
 
                      purchaseAp.setVisible(true);
-                     placePurchase.setVisible(true);
-                     placePurchase.setVisible(true);
+                     placePurchasetbl.setVisible(true);
+                     placePurchaseAP.setVisible(true);
+                     completePurchaseTbl.setVisible(false);
+                     completePurchaseAP.setVisible(false);
                  }
+                 else if (event.getSource()== cpbtn) {
+
+                     //purchaseAp.setVisible(true);
+                     placePurchasetbl.setVisible(false);
+                     placePurchaseAP.setVisible(false);
+                     completePurchaseTbl.setVisible(true);
+                     completePurchaseAP.setVisible(true);
+                 }
+                 else if (event.getSource()== ppbtn) {
+
+                     //purchaseAp.setVisible(true);
+                     placePurchasetbl.setVisible(true);
+                     placePurchaseAP.setVisible(true);
+                     completePurchaseTbl.setVisible(false);
+                     completePurchaseAP.setVisible(false);
+                 }
+
           }
 
 
@@ -189,8 +211,7 @@ public class MainAppController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Email email = new  Email(webView);
-        email.emailServer();
+
 
 
     }

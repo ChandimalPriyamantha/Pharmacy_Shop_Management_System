@@ -21,7 +21,5 @@ public class MainApp extends Application {
 
     public static void main(String[] args) {
         launch();
-        PlacePurchase pp=new PlacePurchase();
-        pp.getData();
     }
 }

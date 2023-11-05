@@ -42,7 +42,7 @@
             <Button fx:id="emailPage" layoutX="16.0" layoutY="387.0" mnemonicParsing="false" onAction="#controlPanel" prefHeight="42.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@Style/mainFormDesign.css" text="Email" />
             <Button layoutX="17.0" layoutY="447.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@Style/mainFormDesign.css" text="Inventory | Report" />
             <Button layoutX="16.0" layoutY="507.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@Style/mainFormDesign.css" text="User Manage" />
-            <Button fx:id="purchasebtn" layoutX="17.0" layoutY="572.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@Style/mainFormDesign.css" text="Purchase" />
+            <Button fx:id="purchasebtn" layoutX="17.0" layoutY="572.0" mnemonicParsing="false" onAction="#controlPanel" prefHeight="42.0" prefWidth="167.0" styleClass="nav-btn" stylesheets="@Style/mainFormDesign.css" text="Purchase" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="-3.0" layoutY="580.0" prefHeight="22.0" prefWidth="915.0" styleClass="nav-form" stylesheets="@Style/mainFormDesign.css" AnchorPane.bottomAnchor="-5.399999999999999" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="-3.2000000000000455">
@@ -80,9 +80,9 @@
             <WebView fx:id="webView" layoutX="9.0" layoutY="9.0" prefHeight="517.0" prefWidth="896.0" AnchorPane.bottomAnchor="12.600024414062545" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="9.0" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="purchaseAp" layoutX="208.0" layoutY="81.0" prefHeight="547.0" prefWidth="916.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="208.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="81.0">
+      <AnchorPane fx:id="purchaseAp" layoutX="208.0" layoutY="81.0" prefHeight="547.0" prefWidth="916.0" visible="false" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="208.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="81.0">
          <children>
-            <AnchorPane fx:id="placePurchase" layoutX="-2.0" layoutY="-6.0" prefHeight="507.0" prefWidth="512.0" stylesheets="@Style/mainFormDesign694.css" AnchorPane.bottomAnchor="46.0" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="406.0" AnchorPane.topAnchor="-6.0">
+            <AnchorPane fx:id="placePurchaseAP" layoutX="-2.0" layoutY="-6.0" prefHeight="507.0" prefWidth="512.0" stylesheets="@Style/mainFormDesign694.css" AnchorPane.bottomAnchor="46.0" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="406.0" AnchorPane.topAnchor="-6.0">
                <children>
                   <AnchorPane layoutX="-2.0" layoutY="228.0" prefHeight="250.0" prefWidth="491.0" stylesheets="@Style/mainFormDesign694.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="23.0">
                      <styleClass>
@@ -102,7 +102,7 @@
                             <RowConstraints maxHeight="46.8000244140625" minHeight="10.0" prefHeight="46.8000244140625" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <TextField fx:id="ppsupplierID" prefHeight="26.0" prefWidth="113.0" promptText="Supplier ID" stylesheets="@Style/mainFormDesign694.css">
+                              <TextField fx:id="ppsupplierIDtxt" prefHeight="26.0" prefWidth="113.0" promptText="Supplier ID" stylesheets="@Style/mainFormDesign694.css">
                                  <styleClass>
                                     <String fx:value="radius" />
                                     <String fx:value="main-bg" />
@@ -242,13 +242,13 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <Button fx:id="ppbtn" layoutX="49.0" layoutY="509.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="117.0" stylesheets="@Style/mainFormDesign694.css" text="Place Purchase" AnchorPane.bottomAnchor="7.600000000000023">
+            <Button fx:id="ppbtn" layoutX="49.0" layoutY="509.0" mnemonicParsing="false" onAction="#controlPanel" prefHeight="30.0" prefWidth="117.0" stylesheets="@Style/mainFormDesign694.css" text="Place Purchase" AnchorPane.bottomAnchor="7.600000000000023">
                <styleClass>
                   <String fx:value="btn" />
                   <String fx:value="radius" />
                </styleClass>
             </Button>
-            <Button fx:id="cpbtn" layoutX="213.0" layoutY="509.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="152.0" stylesheets="@Style/mainFormDesign694.css" text="Complete Purchases" AnchorPane.bottomAnchor="7.600000000000023">
+            <Button fx:id="cpbtn" layoutX="213.0" layoutY="509.0" mnemonicParsing="false" onAction="#controlPanel" prefHeight="30.0" prefWidth="152.0" stylesheets="@Style/mainFormDesign694.css" text="Complete Purchases" AnchorPane.bottomAnchor="7.600000000000023">
                <styleClass>
                   <String fx:value="btn" />
                   <String fx:value="radius" />
@@ -310,7 +310,7 @@
                   </Button>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="completePurchase" layoutX="-1.0" layoutY="-6.0" prefHeight="507.0" prefWidth="512.0" stylesheets="@Style/mainFormDesign694.css" visible="false" AnchorPane.bottomAnchor="45.80000000000001" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="405.0" AnchorPane.topAnchor="-6.0">
+            <AnchorPane fx:id="completePurchaseAP" layoutX="-1.0" layoutY="-6.0" prefHeight="507.0" prefWidth="512.0" stylesheets="@Style/mainFormDesign694.css" visible="false" AnchorPane.bottomAnchor="45.80000000000001" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="405.0" AnchorPane.topAnchor="-6.0">
                <children>
                   <AnchorPane layoutX="-2.0" layoutY="228.0" prefHeight="250.0" prefWidth="491.0" stylesheets="@Style/mainFormDesign694.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="23.0">
                      <styleClass>
