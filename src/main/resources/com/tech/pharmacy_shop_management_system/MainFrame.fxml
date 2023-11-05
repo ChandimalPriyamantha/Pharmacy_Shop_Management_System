@@ -297,7 +297,7 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="DCOBackground" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="203.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="80.0">
+      <AnchorPane fx:id="DCOBackground" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="203.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="80.0">
          <children>
             <AnchorPane layoutX="529.0" layoutY="170.0" prefHeight="531.0" prefWidth="412.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="7.0">
                <styleClass>
