@@ -697,7 +697,7 @@
                   <Font size="10.0" />
                </font>
             </Button>
-            <AnchorPane fx:id="reportAP" layoutX="7.0" layoutY="16.0" prefHeight="450.0" prefWidth="889.0" visible="false" AnchorPane.bottomAnchor="69.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="6.0">
+            <AnchorPane fx:id="reportAP" layoutX="7.0" layoutY="16.0" prefHeight="450.0" prefWidth="889.0" AnchorPane.bottomAnchor="69.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="6.0">
                <children>
                   <AnchorPane fx:id="rcodcoreporttbl" layoutX="20.0" layoutY="22.0" prefHeight="260.0" prefWidth="862.0" stylesheets="@Style/mainFormDesign.css" AnchorPane.bottomAnchor="184.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="6.0">
                      <styleClass>
