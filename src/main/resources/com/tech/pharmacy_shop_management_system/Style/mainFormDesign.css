@@ -23,12 +23,13 @@
 
 .text-field{
 
-    -fx-background-color: #D9D9D9 ;
-    -fx-border-color: #ffffff;
+    -fx-background-color: #e5e0e0;
+    -fx-border-color: #9f9b9b;
     -fx-border-width: 1 1 1 1px;
     -fx-text-fill: #101010;
     -fx-font-size: 14px;
     -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
 
 
 }
@@ -158,7 +159,10 @@
 
 .btn:hover{
 
-    -fx-background-color: linear-gradient(to bottom right, #0f6789, #399a8f);
+    -fx-background-color: linear-gradient(to bottom right, #ffffff, #ececec);
+    -fx-text-fill:  #2F2E5E;
+    -fx-border-color:  #2F2E5E;
+    -fx-border-radius: 10px;
 }
 
 .ComBtn{
