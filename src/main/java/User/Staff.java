@@ -251,6 +251,26 @@ public class Staff extends UserInfo {
 
     }
     //Method to Update Staff---------------------------------------------------------->End
+
+    //Method to delete user---------------------------------------------------------->Start
+    public void deleteUser(String cID) {
+        try {
+            ps = connection.prepareStatement("delete from staff where userID=?");
+            ps.setString(1,cID);
+            ps.executeUpdate();
+
+
+            alert = new Alert(Alert.AlertType.INFORMATION);     //Success alert
+            alert.setTitle("Success Message");
+            alert.setHeaderText("DELETED");
+            alert.setContentText("User has deleted successfully");
+            alert.showAndWait();
+
+        } catch (SQLException e) {
+            System.out.println("Error in: "+e.getMessage());
+        }
+    }
+    //Method to delete user---------------------------------------------------------->End
 }
 
 

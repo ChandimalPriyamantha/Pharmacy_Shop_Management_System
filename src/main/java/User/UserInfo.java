@@ -195,7 +195,7 @@ public class UserInfo implements User {
 
 
 
-    //Method to edit user---------------------------------------------------------->Start
+    //Method to update user---------------------------------------------------------->Start
     @Override
     public void editUser(String name,String contactNo,String password,String salary,String email,String cID) {
         if(name.isEmpty()||contactNo.isEmpty()||password.isEmpty()||salary.isEmpty()||email.isEmpty()){
@@ -241,17 +241,31 @@ public class UserInfo implements User {
 
 
     }
-    //Method to edit user---------------------------------------------------------->End
+    //Method to update user---------------------------------------------------------->End
 
 
 
 
+    //Method to delete user---------------------------------------------------------->Start
+    public void deleteUser(String cID) {
+        try {
+            ps = connection.prepareStatement("delete from admin where userID=?");
+            ps.setString(1,cID);
+            ps.executeUpdate();
 
 
-    @Override
-    public void deleteUser() {
+            alert = new Alert(Alert.AlertType.INFORMATION);     //Success alert
+            alert.setTitle("Success Message");
+            alert.setHeaderText("DELETED");
+            alert.setContentText("User has deleted successfully");
+            alert.showAndWait();
 
+        } catch (SQLException e) {
+            System.out.println("Error in: "+e.getMessage());
+        }
     }
+    //Method to delete user---------------------------------------------------------->End
+
 
 
 

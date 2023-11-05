@@ -391,6 +391,16 @@ public class MainAppController implements Initializable {
                      getStaff();
                      clearUserData();
 
+                 }else if(event.getSource()==AdminManageDeleteButton){ // Functionality to delete Admin User
+                     new Admin().deleteUser(currentID);
+                     getAdmin();
+                     clearUserData();
+
+                 }else if(event.getSource()==StaffManageDeleteButton){ // Functionality to delete Staff User
+                     new Staff().deleteUser(currentID);
+                     getStaff();
+                     clearUserData();
+
                  }else if(event.getSource()==AdminManageClearButton||event.getSource()==StaffManageClearButton){ // Functionality to Clear User manage Text fields
                      clearUserData();
                  }
@@ -559,19 +569,20 @@ public class MainAppController implements Initializable {
             alert.setTitle("Error Message");
             alert.setHeaderText("Invalid quantity");
             alert.setContentText("Quantity is 0... please add a quantity");
-            alert.showAndWait();
-            System.out.println("Quantity is 0... please add a quantity.....");  //Need to create a prompt error message to indicate quantity text field is 0.....
+            alert.showAndWait(); // prompt error message to indicate quantity text field is 0.....
+            return;
         }
-        else{
+
             int updateQty = Sales.changeQuantity(DCOReadIDTextField.getText(),Integer.valueOf(DCOQuantityTextField.getText()));
             if(updateQty==0){
-                alert = new Alert(Alert.AlertType.ERROR);
+                alert = new Alert(Alert.AlertType.ERROR);       //error message to indicate medicine is out of stocked
                 alert.setTitle("Error Message");
                 alert.setHeaderText("Out of Stock");
                 alert.setContentText("This medicine looks like out of stocked");
                 alert.showAndWait();
-                System.out.println("Out of stock........");     //Need to create a prompt error message to indicate medicine is out of stocked
-            }else{
+                return;
+
+            }
                 orderedMedicineList=Sales.addSale(DCOReadIDTextField.getText(),DCOTextFieldMedicineName.getText(),DCOQuantityTextField.getText(),DCOPriceTextField.getText());
 
                 OrderedMedicineTableID.setCellValueFactory((new PropertyValueFactory<>("medicineID")));
@@ -582,8 +593,8 @@ public class MainAppController implements Initializable {
                 clearData();
                 getMedicine();
                 calculateTotal();
-            }
-        }
+
+
     }
     //Method to show added medicine on table in DCO add medicine to order---------------------------------------------->End
 
