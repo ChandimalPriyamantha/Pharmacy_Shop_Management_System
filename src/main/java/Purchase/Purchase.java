@@ -1,23 +1,43 @@
 package Purchase;
 
 
-import Connection.DatabaseConnection;
-import com.tech.pharmacy_shop_management_system.MainAppController;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import javafx.fxml.FXML;
 public class Purchase {
     private String ppsupplierIDtxt;
     private String ppName = null;
     private String ppCmpnyRegNo = null;
     private String ppContactNo = null;
     private String ppAddress = null;
-    private  Connection connection;
-    private PreparedStatement ps;
-    private ResultSet rs;
+
+    private String medicineID;
+    private String MediName;
+
+    private  int quantity;
+
+    public Purchase(String MedicineID, String Name, int quantity) {
+        this.medicineID=MedicineID;
+        this.MediName=Name;
+        this.quantity=quantity;
+
+
+    }
+
+    public String getMedicineID() {
+        return medicineID;
+    }
+
+    public void setMedicineID(String medicineID) {
+        this.medicineID = medicineID;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+
 
 
     public String getPpsupplierIDtxt() {
@@ -60,32 +80,7 @@ public class Purchase {
         this.ppAddress = ppAddress;
     }
 
-    public void addSupdata(String id){
-        System.out.println("HI");
 
-        connection = DatabaseConnection.ConnectionDB();
-        String qry = "select supplierName,companyRegistrationNumber,phoneNumber,address from purchasesupplier where supplierID=?";
-        PreparedStatement ps = null;
-
-        try {
-            ps = connection.prepareStatement(qry);
-            ps.setString(1,id);
-            rs=ps.executeQuery();
-
-            while(rs.next())
-            {
-                ppName=rs.getString("supplierName");
-                ppCmpnyRegNo=rs.getString("companyRegistrationNumber");
-                ppContactNo=rs.getString("phoneNumber");
-                ppAddress=rs.getString("address");
-                System.out.println(rs.getString("address"));
-
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-        //System.out.println(ppName);
 
 
 
@@ -96,4 +91,4 @@ public class Purchase {
 
 
 
-}
+

@@ -3,10 +3,14 @@ package com.tech.pharmacy_shop_management_system;
 import Connection.DatabaseConnection;
 import Email.Email;
 import Purchase.Purchase;
+import RemortCustomer.RemoteCustomerOrderMedicineDetails;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebView;
 
@@ -93,7 +97,7 @@ public class MainAppController implements Initializable {
     private Button cptblbtn;
 
     @FXML
-    private TableView<?> cptbldetails;
+    private TableView<Purchase> cptbldetails;
 
     @FXML
     private TableView<?> cptblsummery;
@@ -141,13 +145,13 @@ public class MainAppController implements Initializable {
     private Button ppRemove;
 
     @FXML
-    private TableColumn<?, ?> ppTableId;
+    private TableColumn<Purchase, String> ppTableId;
 
     @FXML
     private TableView<?> ppTbl;
 
     @FXML
-    private TableColumn<?, ?> ppTbleAddress;
+    private TableColumn<Purchase, Integer> ppTbleQuantity;
 
     @FXML
     private Button ppbtn;
@@ -156,7 +160,7 @@ public class MainAppController implements Initializable {
     private TextField ppsupplierIDtxt;
 
     @FXML
-    private TableColumn<?, ?> pptblName;
+    private TableColumn<Purchase, String> pptblName;
 
     @FXML
     private Button pptblPlacePurchase;
@@ -165,7 +169,7 @@ public class MainAppController implements Initializable {
     private AnchorPane purchaseAp;
 
     @FXML
-    private TableView<?> purchaseTbl;
+    private TableView<Purchase> purchaseTbl;
 
     @FXML
     private Button purchasebtn;
@@ -179,7 +183,8 @@ public class MainAppController implements Initializable {
     @FXML
     private AnchorPane completePurchaseAP;
 
-    
+    private SpinnerValueFactory<Integer> spin;
+
     int index = -1;
 
 
@@ -230,16 +235,18 @@ public class MainAppController implements Initializable {
 //      }
 
     //   add supplier for purchase
+
+    String supid;
     public void addSupdata() {
 //        System.out.println("HI");
-        String id= ppsupplierIDtxt.getText();
+        supid= ppsupplierIDtxt.getText();
         connection = DatabaseConnection.ConnectionDB();
         String qry = "select supplierName,companyRegistrationNumber,phoneNumber,address from purchasesupplier where supplierID=?";
         PreparedStatement ps = null;
 
         try {
             ps = connection.prepareStatement(qry);
-            ps.setString(1, id);
+            ps.setString(1, supid);
             rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -253,12 +260,17 @@ public class MainAppController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
+
+
     }
 
+    String medicineID;
     //add medicine for purchase
     public void addMedicine()
     {
-        String medicineID=ppMedicineID.getText();
+
+        medicineID=ppMedicineID.getText();
         String sql="SELECT name FROM pharmacydb.medicine where medicineID=?";
         connection = DatabaseConnection.ConnectionDB();
         PreparedStatement ps = null;
@@ -279,10 +291,87 @@ public class MainAppController implements Initializable {
 
     }
 
+    int quantity;
+    public void setQnty(){
+              spin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0,100,0);
+              ppQty.setValueFactory(spin);
+
+
+
+    }
+
+    // add data into purchasemedcine table----------------------------------------------------
+
+    public void addMedicinePurchases()
+    {
+        quantity = spin.getValue();
+        connection = DatabaseConnection.ConnectionDB();
+        String sql="INSERT INTO purchasemedicine (supplierID,medicineID,quantity) VALUES (?,?,?)";
+        try {
+            PreparedStatement ps =connection.prepareStatement(sql);
+            ps.setString(1,supid);
+            ps.setString(2,medicineID);
+            ps.setInt(3,quantity);
+            ps.executeUpdate();
+
+            ShowpurchaseData();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+
+    // view purchase medicine table for place purchases----------------------------------------------------
+
+    public static  ObservableList<Purchase>  getpurchaseMedicine()
+    {
+
+        String sql2="SELECT purchasemedicine.medicineID,medicine.name,purchasemedicine.quantity FROM pharmacydb.purchasemedicine inner join medicine on purchasemedicine.medicineID=medicine.medicineID";
+        Connection connection = DatabaseConnection.ConnectionDB();
+        ObservableList<Purchase> list= FXCollections.observableArrayList();
+        PreparedStatement prs= null;
+        
+        try {
+            prs = connection.prepareStatement(sql2);
+            ResultSet rs=prs.executeQuery();
+
+            Purchase purchase;
+            
+            while(rs.next())
+            {
+                purchase=new Purchase(rs.getString("purchasemedicine.medicineID"),rs.getString("medicine.name"),rs.getInt("purchasemedicine.quantity"));
+
+                list.add(purchase);
+
+
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return list;
+    }
+
+    private ObservableList<Purchase> viewpurchasemedicinceData;
+    public  void ShowpurchaseData(){
+
+        viewpurchasemedicinceData = getpurchaseMedicine();
+
+        ppTableId.setCellValueFactory(new PropertyValueFactory<Purchase,String>("medicineID"));
+        pptblName.setCellValueFactory(new PropertyValueFactory<Purchase,String>("Name"));
+        ppTbleQuantity.setCellValueFactory(new PropertyValueFactory<Purchase,Integer>("quantity"));
+
+        cptbldetails.setItems(viewpurchasemedicinceData);
+    }
+
+
+    //-------------------------------------------------------------------------------------------------------------
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-
+        setQnty();
 
     }
 
