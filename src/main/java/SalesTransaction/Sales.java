@@ -127,7 +127,7 @@ public class Sales {
             //int requestedQuantity=Integer.valueOf(DCOQuantityTextField.getText());
             if(availableStock<requiredQuantity){
 
-                return 0;
+                return availableStock;
             }
                 availableStock=availableStock-requiredQuantity;
                 String mid=ID;
@@ -140,7 +140,7 @@ public class Sales {
         } catch (SQLException e) {
             System.out.println("Error in : "+e.getMessage());
         }
-        return 1;
+        return -1;
     }
     //Method to change quantity of medicine in database when DCO------------------------------------------------------->End
 
