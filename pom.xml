@@ -16,6 +16,22 @@
   <dependencies>
     <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-web -->
 
+    <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+    <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+    <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>8.0.21</version>
+    </dependency>
+
+    <dependency>
+      <groupId>net.sf.jasperreports</groupId>
+      <artifactId>jasperreports</artifactId>
+      <version>6.20.5</version>
+    </dependency>
+
+
 
     <dependency>
       <groupId>org.openjfx</groupId>
