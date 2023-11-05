@@ -332,7 +332,7 @@
                   <Label layoutX="40.0" layoutY="430.0" prefHeight="25.0" prefWidth="90.0" styleClass="label-DCO" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Change : " AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="15.0" />
                   <Label fx:id="DCOChangeLable" layoutX="50.0" layoutY="440.0" prefHeight="25.0" prefWidth="90.0" styleClass="label-DCO" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="0.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="110.0" />
                   <Label layoutX="50.0" layoutY="440.0" prefHeight="25.0" prefWidth="90.0" styleClass="label-DCO" stylesheets="@Style/DCO%20Styles/DCOstyles.css" text="Settled :" AnchorPane.bottomAnchor="95.0" AnchorPane.leftAnchor="15.0" />
-                  <TextField fx:id="DCOSettledTextField" layoutX="92.0" layoutY="401.0" onKeyReleased="#change" promptText="0.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" AnchorPane.bottomAnchor="88.0" AnchorPane.leftAnchor="95.0">
+                  <TextField fx:id="DCOSettledTextField" layoutX="92.0" layoutY="401.0" onAction="#getPayButtonFocus" onKeyReleased="#change" promptText="0.0" stylesheets="@Style/DCO%20Styles/DCOstyles.css" AnchorPane.bottomAnchor="88.0" AnchorPane.leftAnchor="95.0">
                      <styleClass>
                         <String fx:value="settled-label" />
                         <String fx:value="textfield" />
@@ -393,7 +393,7 @@
                         <String fx:value="textfield" />
                      </styleClass>
                   </TextField>
-                  <TextField fx:id="DCOQuantityTextField" layoutX="37.0" layoutY="78.0" prefHeight="30.0" prefWidth="180.0" promptText="Quantity" stylesheets="@Style/DCO%20Styles/DCOstyles.css" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="210.0">
+                  <TextField fx:id="DCOQuantityTextField" layoutX="37.0" layoutY="78.0" onAction="#getAddButtonFocus" prefHeight="30.0" prefWidth="180.0" promptText="Quantity" stylesheets="@Style/DCO%20Styles/DCOstyles.css" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="210.0">
                      <styleClass>
                         <String fx:value="text-field" />
                         <String fx:value="textfield" />
@@ -432,7 +432,7 @@
                         <String fx:value="radius" />
                      </styleClass>
                      <children>
-                        <TableView fx:id="AdminManageTable" layoutX="287.0" layoutY="14.0" onMouseClicked="#selectAdmin" prefHeight="280.0" prefWidth="896.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="7.0">
+                        <TableView fx:id="AdminManageTable" layoutX="287.0" layoutY="14.0" onMouseClicked="#selectAdmin" prefHeight="280.0" prefWidth="896.0" visible="false" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="7.0">
                           <columns>
                             <TableColumn fx:id="AdminManageTableID" prefWidth="75.0" text="ID" />
                             <TableColumn fx:id="AdminManageTableName" prefWidth="75.0" text="Name" />

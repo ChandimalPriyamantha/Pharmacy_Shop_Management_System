@@ -308,14 +308,15 @@ public class MainAppController implements Initializable {
                      DCOBackground.setVisible(false);
                      UserManageBackground.setVisible(false);
                  }else if(event.getSource()==DCOManageButton){ // navigate into Direct customer order page
-
                      getMedicine();    //Load stock medicine
+
 
                      DCOBackground.setVisible(true);
                      RCOPaymentPanel.setVisible(false);
                      RCOManagePanel.setVisible(false);
                      WEB_VIEW.setVisible(false);
                      UserManageBackground.setVisible(false);
+                     DCOReadIDTextField.requestFocus();
                  }else if(event.getSource()==UserManageButton){ // navigate into User Manage page
                      getStaff();
 
@@ -687,7 +688,7 @@ public class MainAppController implements Initializable {
                 clearData();
                 getMedicine();
                 calculateTotal();
-
+                DCOReadIDTextField.requestFocus();
 
     }
     //Method to show added medicine on table in DCO add medicine to order---------------------------------------------->End
@@ -823,7 +824,7 @@ public class MainAppController implements Initializable {
         int quantity=0;
 
 
-        if(settledString.isEmpty()){
+        if(settledString==null||settledString.isEmpty()){
             Alert alert;
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -969,6 +970,23 @@ public class MainAppController implements Initializable {
 
     //Method to select a Admin---------------------------------------------------------------------------------->End
 
+
+    //Method to get Add button focus--------------------------------------->Start
+    public void getAddButtonFocus(){
+        DCOAddButton.requestFocus();
+    }
+
+    //Method to get Add button focus--------------------------------------->Start
+
+
+
+
+    //Method to get pay button focus--------------------------------------->Start
+    public void getPayButtonFocus(){
+        DCOPayButton.requestFocus();
+    }
+
+    //Method to get pay button focus--------------------------------------->Start
 
 
 
