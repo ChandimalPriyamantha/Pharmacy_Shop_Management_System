@@ -9,11 +9,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.net.URL;
+import java.io.IOException;
 import java.sql.*;
-import java.util.ResourceBundle;
+
 
 public class LogInController {
 
@@ -36,7 +41,7 @@ public class LogInController {
     @FXML
     private TextField aduname;
     @FXML
-    private PasswordField adpwd;
+    private PasswordField passwordField;
     @FXML
     private Button alogin;
     @FXML
@@ -57,40 +62,72 @@ public class LogInController {
     private Button Ureg;
 
     @FXML
-    protected void aloginOnAction(ActionEvent event) {
-      //  Stage stage=
+    public void controlPanel(ActionEvent event){
+        if(event.getSource()==adminbtn){
+            Admin_panel.setVisible(true);
+            User_panel.setVisible(false);
+        }
+        else if(event.getSource()==userbtn){
+            User_panel.setVisible(true);
+            Admin_panel.setVisible(false);
+        }
+    }
+    @FXML
+    public void aloginOnAction(ActionEvent event) {
         connect=DatabaseConnection.ConnectionDB();
 
         String adun=aduname.getText();
-        PasswordField password=new PasswordField();
-        String apwd=password.getText();
+        //PasswordField passwordField=new PasswordField();
+        String apwd=passwordField.getText();
         try {
-            if (adun.isEmpty() || apwd.isEmpty()) {
-                System.out.println("Please fill out all the fields...!");
-            }
-            else {
-                String sql = "select userID,password from admin where userID=? and password=?";
-                prepare = connect.prepareStatement(sql);
-                prepare.setString(1, adun);
-                prepare.setString(2, apwd);
-                result = prepare.executeQuery();
+            String sql = "select userID,password from admin where userID='"+adun+"' and password='"+apwd+"'";
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
 
-
-                if (result.next()) {
-                    System.out.println("You are logged in successfully....!");
-                } else {
-                        System.out.println("Username or Password is incorrect. Please try again...");
-                        aduname.setText(" ");
-                        adpwd.setText(" ");
+            if (result.next()) {
+                if (adun.isEmpty() || apwd.isEmpty()) {
+                   showAlert("Please fill out all the fields...!");
+                }
+                else {
+                    showAlert("You are logged in successfully....!");
+                    try {
+                        gotoMainFrame(event);
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
                 }
-
+            } else {
+                showAlert("Username or Password is incorrect. Please try again...");
+                aduname.setText(" ");
+                passwordField.setText(" ");
             }
+         }
         catch(SQLException e){
             e.printStackTrace();
             System.out.println("An SQL error occurred. Please check the console for details.");
         }
         }
+
+    public void showAlert(String message) {
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    public void gotoMainFrame(ActionEvent event) throws IOException {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("MainFrame.fxml"));
+            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            Scene mainFrame = new Scene(root);
+            stage.setScene(mainFrame);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }
 
 

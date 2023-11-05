@@ -39,7 +39,7 @@
             <Button layoutX="863.0" layoutY="96.0" mnemonicParsing="false" styleClass="btn" text="User" AnchorPane.rightAnchor="51.0" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="33.0" layoutY="170.0" prefHeight="392.0" prefWidth="895.0" visible="false" AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="170.0">
+      <AnchorPane layoutX="33.0" layoutY="170.0" prefHeight="392.0" prefWidth="895.0" AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="170.0">
          <styleClass>
             <String fx:value="white-bg" />
             <String fx:value="radius" />
@@ -49,26 +49,23 @@
             <AnchorPane layoutX="304.0" layoutY="26.0" prefHeight="341.0" prefWidth="316.0" styleClass="user-admin" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="500.0">
                <children>
                   <Label layoutX="8.0" layoutY="8.0" prefHeight="78.0" prefWidth="89.0" styleClass="reg-icon" />
-                  <Label layoutX="111.0" layoutY="34.0" text="Admin Registration" textFill="#2f2e5e">
+                  <Label layoutX="141.0" layoutY="34.0" text="Required PIN" textFill="#2f2e5e">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <PasswordField layoutX="68.0" layoutY="132.0" prefHeight="32.0" prefWidth="197.0" promptText="Password" />
-                  <TextField layoutX="68.0" layoutY="92.0" prefHeight="32.0" prefWidth="197.0" promptText="Username" />
-                  <ComboBox layoutX="68.0" layoutY="171.0" prefHeight="30.0" prefWidth="197.0" promptText="Question" />
-                  <TextField layoutX="68.0" layoutY="213.0" prefHeight="32.0" prefWidth="197.0" promptText="Answer" />
-                  <Button layoutX="66.0" layoutY="253.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="197.0" styleClass="btn" text="Register">
+                  <TextField layoutX="66.0" layoutY="146.0" prefHeight="37.0" prefWidth="197.0" promptText="Username" />
+                  <Button layoutX="66.0" layoutY="253.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="197.0" styleClass="btn" text="Authorization">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Label layoutX="63.0" layoutY="291.0" prefHeight="20.0" prefWidth="208.0" text="If you already have an account,">
+                  <Label layoutX="63.0" layoutY="291.0" prefHeight="20.0" prefWidth="208.0" text="If the PIN is forgotten, Click To ">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Button fx:id="areg" layoutX="99.0" layoutY="311.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="135.0" text="Click to Log In" underline="true">
+                  <Button fx:id="areg" layoutX="99.0" layoutY="311.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="135.0" text="Forgot PIN" underline="true">
                      <styleClass>
                         <String fx:value="radius" />
                         <String fx:value="white-bg" />
@@ -87,7 +84,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="43.0" layoutY="180.0" prefHeight="392.0" prefWidth="895.0" AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="170.0">
+      <AnchorPane layoutX="43.0" layoutY="180.0" prefHeight="392.0" prefWidth="895.0" visible="false" AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="170.0">
          <styleClass>
             <String fx:value="white-bg" />
             <String fx:value="radius" />
