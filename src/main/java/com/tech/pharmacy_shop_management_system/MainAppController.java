@@ -1,6 +1,8 @@
 package com.tech.pharmacy_shop_management_system;
 
+import Connection.DatabaseConnection;
 import Email.Email;
+import Purchase.Purchase;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -9,6 +11,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebView;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 
@@ -108,13 +114,13 @@ public class MainAppController implements Initializable {
     private AnchorPane placePurchasetbl;
 
     @FXML
-    private TextField ppAddress;
+    public TextField ppAddress;
 
     @FXML
-    private TextField ppCmpnyRegNo;
+    public TextField ppCmpnyRegNo;
 
     @FXML
-    private TextField ppContactNo;
+    public TextField ppContactNo;
 
     @FXML
     private TextField ppMedicineID;
@@ -126,8 +132,11 @@ public class MainAppController implements Initializable {
     public TextField ppName;
 
     @FXML
-    private Spinner<?> ppQty;
+    private Spinner<Integer> ppQty;
 
+
+    @FXML
+    private Spinner<Integer> testSpinner;
     @FXML
     private Button ppRemove;
 
@@ -144,7 +153,7 @@ public class MainAppController implements Initializable {
     private Button ppbtn;
 
     @FXML
-    public String ppsupplierID;
+    private TextField ppsupplierIDtxt;
 
     @FXML
     private TableColumn<?, ?> pptblName;
@@ -170,7 +179,13 @@ public class MainAppController implements Initializable {
     @FXML
     private AnchorPane completePurchaseAP;
 
+    
     int index = -1;
+
+
+    private Connection connection;
+    private PreparedStatement ps;
+    private ResultSet rs;
 
 
     // This method can help to move through the windows
@@ -186,6 +201,8 @@ public class MainAppController implements Initializable {
                      placePurchaseAP.setVisible(true);
                      completePurchaseTbl.setVisible(false);
                      completePurchaseAP.setVisible(false);
+
+
                  }
                  else if (event.getSource()== cpbtn) {
 
@@ -194,6 +211,8 @@ public class MainAppController implements Initializable {
                      placePurchaseAP.setVisible(false);
                      completePurchaseTbl.setVisible(true);
                      completePurchaseAP.setVisible(true);
+
+
                  }
                  else if (event.getSource()== ppbtn) {
 
@@ -206,8 +225,59 @@ public class MainAppController implements Initializable {
 
           }
 
+//      public void textMethod(){
+//          System.out.println("Hi");
+//      }
+
+    //   add supplier for purchase
+    public void addSupdata() {
+//        System.out.println("HI");
+        String id= ppsupplierIDtxt.getText();
+        connection = DatabaseConnection.ConnectionDB();
+        String qry = "select supplierName,companyRegistrationNumber,phoneNumber,address from purchasesupplier where supplierID=?";
+        PreparedStatement ps = null;
+
+        try {
+            ps = connection.prepareStatement(qry);
+            ps.setString(1, id);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                ppName.setText(rs.getString("supplierName"));
+                ppCmpnyRegNo.setText(rs.getString("companyRegistrationNumber"));
+                ppContactNo.setText(rs.getString("phoneNumber"));
+                ppAddress.setText(rs.getString("address"));
 
 
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    //add medicine for purchase
+    public void addMedicine()
+    {
+        String medicineID=ppMedicineID.getText();
+        String sql="SELECT name FROM pharmacydb.medicine where medicineID=?";
+        connection = DatabaseConnection.ConnectionDB();
+        PreparedStatement ps = null;
+
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, medicineID);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                ppMedicineName.setText(rs.getString("name"));
+
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

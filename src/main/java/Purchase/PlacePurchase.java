@@ -5,7 +5,7 @@ import RemortCustomer.RemoteCustomerOrderMedicineDetails;
 import com.tech.pharmacy_shop_management_system.MainAppController;
 
 import java.sql.*;
-
+import javafx.fxml.FXML;
 
 public class PlacePurchase {
 

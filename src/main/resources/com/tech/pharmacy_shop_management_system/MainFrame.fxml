@@ -80,7 +80,7 @@
             <WebView fx:id="webView" layoutX="9.0" layoutY="9.0" prefHeight="517.0" prefWidth="896.0" AnchorPane.bottomAnchor="12.600024414062545" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="9.0" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="purchaseAp" layoutX="208.0" layoutY="81.0" prefHeight="547.0" prefWidth="916.0" visible="false" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="208.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="81.0">
+      <AnchorPane fx:id="purchaseAp" layoutX="208.0" layoutY="81.0" prefHeight="547.0" prefWidth="916.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="208.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="81.0">
          <children>
             <AnchorPane fx:id="placePurchaseAP" layoutX="-2.0" layoutY="-6.0" prefHeight="507.0" prefWidth="512.0" stylesheets="@Style/mainFormDesign694.css" AnchorPane.bottomAnchor="46.0" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="406.0" AnchorPane.topAnchor="-6.0">
                <children>
@@ -102,7 +102,7 @@
                             <RowConstraints maxHeight="46.8000244140625" minHeight="10.0" prefHeight="46.8000244140625" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <TextField fx:id="ppsupplierIDtxt" prefHeight="26.0" prefWidth="113.0" promptText="Supplier ID" stylesheets="@Style/mainFormDesign694.css">
+                              <TextField fx:id="ppsupplierIDtxt" onKeyReleased="#addSupdata" prefHeight="26.0" prefWidth="113.0" promptText="Supplier ID" stylesheets="@Style/mainFormDesign694.css">
                                  <styleClass>
                                     <String fx:value="radius" />
                                     <String fx:value="main-bg" />
@@ -172,7 +172,7 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <TextField fx:id="ppMedicineID" prefHeight="26.0" prefWidth="113.0" promptText="Medicine ID" stylesheets="@Style/mainFormDesign694.css">
+                              <TextField fx:id="ppMedicineID" onKeyReleased="#addMedicine" prefHeight="26.0" prefWidth="113.0" promptText="Medicine ID" stylesheets="@Style/mainFormDesign694.css">
                                  <styleClass>
                                     <String fx:value="radius" />
                                     <String fx:value="main-bg" />
@@ -216,6 +216,7 @@
                                     </Button>
                                  </children>
                               </GridPane>
+                              <Spinner fx:id="testSpinner" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                            </children>
                         </GridPane>
                      </children>
