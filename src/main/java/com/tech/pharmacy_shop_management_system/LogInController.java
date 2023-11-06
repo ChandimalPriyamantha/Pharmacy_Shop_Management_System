@@ -19,20 +19,23 @@ import java.sql.*;
 
 public class LogInController {
 
+    //Database access
     private  Connection connect;
 
     private PreparedStatement prepare;
     private Statement statement;
     private ResultSet result;
+
+
+    //main board access
     @FXML
     private AnchorPane title_button_tab;
-
     @FXML
     private Button adminbtn;
-
     @FXML
     private Button userbtn;
 
+    //Admin login
     @FXML
     private AnchorPane Admin_panel;
     @FXML
@@ -42,9 +45,11 @@ public class LogInController {
     @FXML
     private Button alogin;
     @FXML
-    private Button afpwd;
+    private Button afwd;
     @FXML
     private Button areg;
+
+    //User login
     @FXML
     private AnchorPane User_panel;
     @FXML
@@ -53,17 +58,18 @@ public class LogInController {
     private PasswordField Upwd;
     @FXML
     private Button Ulogin;
-    @FXML
-    private Button Ufpwd;
 
+
+    //Admin authorization
     @FXML
     private AnchorPane adminPin_panel;
     @FXML
-    private TextField txtpin;
+    private PasswordField txtpin;
     @FXML
     private Button btnauth;
-    @FXML
-    private Button btnfpin;
+
+
+    //Admin register
     @FXML
     private AnchorPane adreg_panel;
     @FXML
@@ -78,16 +84,26 @@ public class LogInController {
     private Button adregbtn;
     @FXML
     private Button adlogbtn;
+
+
+    //Admin forgot password verification
     @FXML
     private AnchorPane adminfpwd;
     @FXML
     private TextField adfpwdun;
     @FXML
-    private PasswordField adnewpwd;
+    private ComboBox<String> adqus;
+    @FXML
+    private TextField ans;
+    @FXML
+    private Button adverifybtn;
 
+
+    //Admin password configuration
+    @FXML
+    private PasswordField adnewpwd;
     @FXML
     private PasswordField adcpwd;
-
     @FXML
     private Button adupdate;
 
@@ -114,36 +130,38 @@ public class LogInController {
         connect=DatabaseConnection.ConnectionDB();
 
         String adun=aduname.getText();
-        //PasswordField passwordField=new PasswordField();
         String apwd=passwordField.getText();
-        try {
-            String sql = "select userID,password from admin where userID='"+adun+"' and password='"+apwd+"'";
-            prepare = connect.prepareStatement(sql);
-            result = prepare.executeQuery();
 
-            if (result.next()) {
-                if (adun.isEmpty() || apwd.isEmpty()) {
-                   showAlert("Please fill out all the fields...!");
-                }
-                else {
-                    showAlert("You are logged in successfully....!");
-                    try {
-                        gotoMainFrame(event);
-                    } catch (IOException e) {
-                        e.printStackTrace();
+        if (adun.isEmpty() || apwd.isEmpty()) {
+            showAlert("Please fill out all the fields...!");
+        }
+        else {
+            try {
+                String sql = "select userID,password from admin ";//where userID='"+adun+"' and password='"+apwd+"'";
+                prepare = connect.prepareStatement(sql);
+                result = prepare.executeQuery();
+
+                if (result.next()) {
+                    if (result.getString("userID").equals(adun) || result.getString("password").equals(apwd)) {
+                        showAlert("Username or Password is incorrect. Please try again...");
+                        aduname.clear();
+                        passwordField.clear();
+                    } else {
+                        showAlert("You are logged in successfully....!");
+                        try {
+                            gotoMainFrame(event);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
-            } else {
-                showAlert("Username or Password is incorrect. Please try again...");
-                aduname.setText(" ");
-                passwordField.setText(" ");
             }
-         }
-        catch(SQLException e){
-            e.printStackTrace();
-            System.out.println("An SQL error occurred. Please check the console for details.");
+            catch(SQLException e){
+                e.printStackTrace();
+                System.out.println("An SQL error occurred. Please check the console for details.");
+            }
         }
-        }
+    }
 
     public void showAlert(String message) {
         Alert alert = new Alert(AlertType.INFORMATION);
@@ -213,6 +231,7 @@ public class LogInController {
         }
     }
 
+    //Admin authorization
     @FXML
     public void btnauthonAction(ActionEvent event){
         String pin="1234";
@@ -227,7 +246,7 @@ public class LogInController {
             }
             else{
                 showAlert("Verification UnSuccess...Cannot be register...!");
-                txtpin.setText(" ");
+                txtpin.clear();
             }
         }
     }
@@ -241,7 +260,11 @@ public class LogInController {
         );
 
         adregcom.setItems(questions);
+        adqus.setItems(questions);
+
     }
+
+    //Admin registration
     @FXML
     public void adregbtnOnaction(ActionEvent event){
         connect=DatabaseConnection.ConnectionDB();
@@ -258,39 +281,42 @@ public class LogInController {
                 }
             }
             else{
-                String sql1="select userID,password from admin where userID='"+userID+"' AND password='"+pwd+"'";
+                String sql1="select userID,password from admin"; //where userID='"+userID+"' AND password='"+pwd+"'";
                 prepare = connect.prepareStatement(sql1);
                 result = prepare.executeQuery();
 
                 if(result.next()){
-                    showAlert("Username or Password is already exit...!");
-                    adreguname.clear();
-                    adregpwd.clear();
-                    adans.clear();
-                }
-                else{
-                    String sql2="Insert into admin(userID,password,answer) values('"+userID+"','"+pwd+"','"+ans+"')";
-                    PreparedStatement preparedStatement = connect.prepareStatement(sql2);
-                    //preparedStatement.execute();
-
-                    int rowsAffected = preparedStatement.executeUpdate();
-
-                    if (rowsAffected > 0) {
-                        // Data was successfully inserted
-                        showAlert("Registered successfully...Click to Log In!");
-                        Admin_panel.setVisible(true);
-                        adreg_panel.setVisible(false);
-                        adminPin_panel.setVisible(false);
-
-                    } else {
-                        showAlert("Failed to register. Please check the input values and try again.");
+                    if (result.getString("userID").equals(userID)){
+                        showAlert("Username is already exit...!");
                         adreguname.clear();
                         adregpwd.clear();
                         adans.clear();
+                        return ;
                     }
-                    preparedStatement.close();
-                    connect.close();
+                    else{
+                        String sql2="Insert into admin(userID,password,answer) values('"+userID+"','"+pwd+"','"+ans+"')";
+                        PreparedStatement preparedStatement = connect.prepareStatement(sql2);
+                        //preparedStatement.execute();
+
+                        int rowsAffected = preparedStatement.executeUpdate();
+
+                        if (rowsAffected > 0) {
+                            // Data was successfully inserted
+                            showAlert("Registered successfully...Click to Log In!");
+                            Admin_panel.setVisible(true);
+                            adreg_panel.setVisible(false);
+                            adminPin_panel.setVisible(false);
+
+                        } else {
+                            showAlert("Failed to register. Please check the input values and try again.");
+                            adreguname.clear();
+                            adregpwd.clear();
+                            adans.clear();
+                        }
+                        preparedStatement.close();
+                    }
                 }
+                connect.close();
 
             }
         }
@@ -300,20 +326,102 @@ public class LogInController {
         }
     }
     @FXML
-    public void controlPaneladfpwd(ActionEvent event){
-        if(event.getSource()==afpwd){
+    public void controlpanelfpwd(ActionEvent event){
+        if(event.getSource()==afwd){
             Admin_panel.setVisible(false);
             adminfpwd.setVisible(true);
         }
     }
 
-//    @FXML
-//    public void updateOnAction(ActionEvent event){
-//        connect=DatabaseConnection.ConnectionDB();
-//        String un=adfpwdun.getText();
-//        String pwd=
-//
-//    }
+    //Verification
+    @FXML
+    public void adverifybtnOnAction(ActionEvent event){
+        connect=DatabaseConnection.ConnectionDB();
+        String un=adfpwdun.getText();
+        String answer=ans.getText();
+
+        try{
+            String sql="select userID,answer from admin where userID='"+un+"' AND answer='"+answer+"'";
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+
+            if(un.isEmpty()){
+                if(answer.isEmpty()){
+                    showAlert("Please fill out the fields...!");
+                }
+            }
+            else{
+                if(result.next()){
+                    showAlert("You are able to update your password...Click to continue...!");
+                    adfpwdun.setDisable(true);
+                    adqus.setDisable(true);
+                    ans.setDisable(true);
+                    adverifybtn.setDisable(true);
+                    adnewpwd.setDisable(false);
+                    adcpwd.setDisable(false);
+                    adupdate.setDisable(false);
+                }
+                else{
+                    showAlert("You are unable to update password. Please verify your userID and QA..!");
+                    adfpwdun.clear();
+                    ans.clear();
+                }
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("An SQL error occurred. Please check the console for details.");
+        }
+
+    }
+
+    //Password updation
+    @FXML
+    public void adupdatebtnOnAction(ActionEvent event){
+        String npwd=adnewpwd.getText();
+        String cpwd=adcpwd.getText();
+
+        if(npwd.isEmpty()){
+            if(cpwd.isEmpty()){
+                showAlert("Please fill out the fields...!");
+            }
+        }
+        else{
+            if(npwd.equals(cpwd)){
+                try {
+                    String sql = "Update admin set password='" + cpwd + "' where userID='" + adfpwdun.getText() + "' AND answer='" + ans.getText() + "'";
+                    PreparedStatement preparedStatement = connect.prepareStatement(sql);
+
+                    int rowsAffected = preparedStatement.executeUpdate();
+
+                    if (rowsAffected > 0) {
+                        // Data was successfully inserted
+                        showAlert("Password Updated Successfully...Click to Log In!");
+                        Admin_panel.setVisible(true);
+                        adminfpwd.setVisible(false);
+
+                    }
+                    else{
+                        showAlert("Cannot be update the password...Try again!");
+                        adnewpwd.clear();
+                        adcpwd.clear();
+                    }
+                    preparedStatement.close();
+                    connect.close();
+                }
+                catch (SQLException e){
+                    e.printStackTrace();
+                    System.out.println("An SQL error occurred. Please check the console for details.");
+                }
+            }
+            else{
+                showAlert("Passwords do not match...! ");
+                adnewpwd.clear();
+                adcpwd.clear();
+            }
+        }
+    }
+
 
 }
 
