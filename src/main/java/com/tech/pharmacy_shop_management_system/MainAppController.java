@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebView;
+import medicine.Medicine;
 
 import java.net.URL;
 import java.sql.*;
@@ -272,33 +273,130 @@ public class MainAppController implements Initializable {
     //Inventory and Report
 
     @FXML
+    private Button dcorbtn;
+
+    @FXML
+    private Button iaddbtn;
+
+    @FXML
+    private Button iclearbtn;
+
+    @FXML
+    private Button ideletebtn;
+
+    @FXML
+    private TextField iedate;
+
+    @FXML
+    private TextField imanufacture;
+
+    @FXML
+    private TextField imname;
+
+    @FXML
+    private Button incentorybtn;
+
+    @FXML
+    private TableView<Medicine> inventorytbl;
+
+    @FXML
+    private AnchorPane inventorytblAP;
+
+    @FXML
+    private TextField iprice;
+
+    @FXML
     private Button irNavbtn;
 
     @FXML
     private AnchorPane irViewAP;
 
     @FXML
-    private AnchorPane reportAP;
+    private TextField irid;
 
     @FXML
-    private Button reportbtn;
+    private TextField istoke;
+
     @FXML
-    private AnchorPane rcodcoreporttbl;
+    private TableColumn<Medicine, Integer> itblquantity;
+
     @FXML
-    private Button rcorbtn;
+    private TableColumn<Medicine, String> itblManufacturer;
+
+    @FXML
+    private TableColumn<Medicine, String> itblid;
+
+    @FXML
+    private TableColumn<Medicine, String> itblexpireDate;
+
+    @FXML
+    private TableColumn<Medicine, String> itblname;
+
+    @FXML
+    private TableColumn<Medicine, Double> itblprice;
+
+    @FXML
+    private Button iupdatebtn;
 
     @FXML
     private Button prbtn;
 
     @FXML
+    private TableColumn<?, ?> prdate;
+
+    @FXML
+    private TableColumn<?, ?> prid;
+
+    @FXML
+    private Button printbtnreport;
+
+    @FXML
+    private TableColumn<?, ?> prpurchase;
+
+    @FXML
+    private TableColumn<?, ?> prqnty;
+
+    @FXML
+    private TableColumn<?, ?> prsupplierid;
+
+    @FXML
+    private TableView<?> prtbl;
+
+    @FXML
     private AnchorPane prtblAP;
+
     @FXML
     private AnchorPane purchareview;
 
     @FXML
-    private Button incentorybtn;
+    private Button purchasenavbtn;
+
     @FXML
-    private Button dcorbtn;
+    private TableColumn<?, ?> rcodcodate;
+
+    @FXML
+    private TableColumn<?, ?> rcodcoid;
+
+    @FXML
+    private TableColumn<?, ?> rcodcoqnty;
+
+    @FXML
+    private AnchorPane rcodcoreporttbl;
+
+    @FXML
+    private TableColumn<?, ?> rcodcosales;
+
+    @FXML
+    private TableView<?> rcodcotbl;
+
+    @FXML
+    private Button rcorbtn;
+
+    @FXML
+    private AnchorPane reportAP;
+
+    @FXML
+    private Button reportbtn;
 
 
 
@@ -466,6 +564,40 @@ public class MainAppController implements Initializable {
         return  listData;
     }
 
+    //tg706-medicine
+    public ObservableList<Medicine> getMedicineData(){
+
+        String sql = "SELECT * FROM medicine";
+
+
+        ObservableList<Medicine> listMedicineData = FXCollections.observableArrayList();
+        connect = DatabaseConnection.ConnectionDB();
+
+        try {
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+
+            Medicine medicinetable;
+
+            while (result.next()){
+
+                medicinetable = new Medicine(
+                        result.getString("medicineID"),
+                        result.getString("name"),
+                        result.getString("quantity"),
+                        result.getString("manufacturer"),
+                        result.getString("expireDate"),
+                        result.getString("price"));
+
+                listMedicineData.add(medicinetable);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return  listMedicineData;
+    }
+//tg706-end
 
 
     private ObservableList<RemoteCustomerOrderMedicineDetails> ROCListData;
@@ -485,10 +617,31 @@ public class MainAppController implements Initializable {
     }
 
 
+    //tg706-medicine-view-start
+    private ObservableList<Medicine> MedicinesDatas;
+    public  void ShowMedicineData(){
+
+        MedicinesDatas = getMedicineData();
+
+        itblid.setCellValueFactory(new PropertyValueFactory<>("medicineID"));
+        itblname.setCellValueFactory(new PropertyValueFactory<>("medicineName"));
+        itblquantity.setCellValueFactory(new PropertyValueFactory<>("medicineQuantity"));
+        itblManufacturer.setCellValueFactory(new PropertyValueFactory<>("medicineManufacturer"));
+        itblexpireDate.setCellValueFactory(new PropertyValueFactory<>("medicineExpireDate"));
+        itblprice.setCellValueFactory(new PropertyValueFactory<>("medicinePrice"));
+
+
+
+
+        inventorytbl.setItems(MedicinesDatas);
+    }
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         ShowData();
+        ShowMedicineData();
 
     }
 }

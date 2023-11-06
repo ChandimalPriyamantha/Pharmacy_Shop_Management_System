@@ -12,4 +12,6 @@ module com.tech.pharmacy_shop_management_system {
     exports com.tech.pharmacy_shop_management_system;
     exports RemortCustomer;
     opens RemortCustomer to javafx.fxml;
+    exports medicine;
+    opens medicine to javafx.fxml;
 }
