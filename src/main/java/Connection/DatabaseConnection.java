@@ -13,8 +13,6 @@ public class DatabaseConnection {
     private static String pw = "";
 
 
-
-
     private Connection myCon = null;
 
     public static Connection ConnectionDB(){

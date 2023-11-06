@@ -1,4 +1,4 @@
 package User;
 
-public class Admin extends UserInfo {
+public class Admin {
 }
