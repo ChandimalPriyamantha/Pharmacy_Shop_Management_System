@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Invoice" pageWidth="419" pageHeight="595" columnWidth="379" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a222c4fb-feab-48be-8136-a0dd750c45fa">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="phamacyDB"/>
+	<parameter name="getTotal" class="java.lang.String"/>
+	<parameter name="getReceipt" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT rcoshippingdetail.orderID, 
+rcoshippingdetail.name, rcoshippingdetail.address,
+rcoshippingdetail.phoneNo, rcoshippingdetail.dateAndTime,
+rcomedicinedetail.medicineID, rcomedicinedetail.medicineName, rcomedicinedetail.quantity, 
+rcomedicinedetail.price as price 
+FROM rcoshippingdetail
+INNER JOIN rcomedicinedetail ON rcoshippingdetail.orderID = rcomedicinedetail.RCOID WHERE rcoshippingdetail.orderID = $P{getReceipt}]]>
+	</queryString>
+	<field name="orderID" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="orderID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="rcoshippingdetail"/>
+	</field>
+	<field name="name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="rcoshippingdetail"/>
+	</field>
+	<field name="address" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="address"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="rcoshippingdetail"/>
+	</field>
+	<field name="phoneNo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="phoneNo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="rcoshippingdetail"/>
+	</field>
+	<field name="dateAndTime" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="dateAndTime"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="rcoshippingdetail"/>
+	</field>
+	<field name="medicineID" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="medicineID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="rcomedicinedetail"/>
+	</field>
+	<field name="medicineName" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="medicineName"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="rcomedicinedetail"/>
+	</field>
+	<field name="quantity" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="quantity"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="rcomedicinedetail"/>
+	</field>
+	<field name="price" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="price"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="rcomedicinedetail"/>
+	</field>
+	<group name="orderID">
+		<groupExpression><![CDATA[$F{orderID}]]></groupExpression>
+	</group>
+	<group name="name">
+		<groupExpression><![CDATA[$F{name}]]></groupExpression>
+	</group>
+	<group name="address">
+		<groupExpression><![CDATA[$F{address}]]></groupExpression>
+	</group>
+	<group name="phoneNo">
+		<groupExpression><![CDATA[$F{phoneNo}]]></groupExpression>
+	</group>
+	<group name="dateAndTime">
+		<groupExpression><![CDATA[$F{dateAndTime}]]></groupExpression>
+	</group>
+	<group name="medicineID">
+		<groupExpression><![CDATA[$F{medicineID}]]></groupExpression>
+	</group>
+	<group name="medicineName">
+		<groupExpression><![CDATA[$F{medicineName}]]></groupExpression>
+	</group>
+	<group name="quantity">
+		<groupExpression><![CDATA[$F{quantity}]]></groupExpression>
+	</group>
+	<group name="price">
+		<groupExpression><![CDATA[$F{price}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="64" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="162" height="30" uuid="2d51d452-4720-4417-aa3c-31b8c09d3af2"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[MEDICINE INVOICE]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="94" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="70" height="20" uuid="64966689-26a1-42db-b55a-5ca99249d9a9"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Order ID :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="70" y="0" width="100" height="20" uuid="dce06240-29a2-472a-86ee-89e7a56dbcb2"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{orderID}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="20" width="100" height="20" uuid="01a37b34-6e06-4a28-8ab8-193414dc67d9"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Customer Name :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="20" width="280" height="20" uuid="704e9633-c3f5-49d5-93b5-7f1b47d650ff"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="40" width="70" height="20" uuid="5ead309d-100c-47bd-af49-13f3ceba07cc"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Address :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="70" y="40" width="310" height="20" uuid="d067c865-524b-4d07-a5f3-033585762317"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{address}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="61" width="70" height="20" uuid="4cd57998-400b-47c9-b83e-4a90dffea209"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Contact No:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="70" y="61" width="110" height="20" uuid="918eaf1c-617f-47f3-9116-25088824755c"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{phoneNo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="170" y="0" width="70" height="20" uuid="5a57035b-3b75-4bfd-b9b3-ecc53a7a0699"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Order Date :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="240" y="0" width="138" height="20" uuid="9c9ccc68-2892-44a5-8a04-50d85f0df5f0"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dateAndTime}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="88" width="379" height="1" uuid="4420db67-cfcf-4f89-addf-db3544de7803"/>
+			</line>
+			<staticText>
+				<reportElement x="180" y="60" width="70" height="20" uuid="062eabff-5707-4448-8fdf-d40d9c43a3d0"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Total : LKR]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="250" y="60" width="128" height="20" uuid="03d6bd4d-55e9-4346-b156-b4ed08762151"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{getTotal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="20" width="130" height="24" uuid="643880e9-c958-4666-bbeb-b6c56e9a241a"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Medicine Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="130" y="20" width="100" height="24" uuid="da48831b-a6cb-427a-8c88-5eb941da0612"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Quantity]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="230" y="20" width="130" height="24" uuid="09962d8d-c615-45d2-961e-48afa4111426"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Price (LKR)]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="27" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="130" height="20" uuid="74beacb5-17c7-4b70-9062-820fd38f027c"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{medicineName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="130" y="0" width="100" height="20" uuid="17aa8271-0475-4ca6-b211-d6650057b2b4"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{quantity}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="230" y="0" width="130" height="20" uuid="6d0a0977-bd80-4705-aba9-1ba62c4c161d"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{price}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="35" splitType="Stretch">
+			<line>
+				<reportElement x="1" y="0" width="379" height="1" uuid="b0f7c7e5-bff0-41f9-98e7-b9ddc30bf9f0"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="5" width="378" height="30" uuid="245bc905-1bd9-469f-9141-22f066f77325"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[MEDICINE INVOICE FOR OFFICE USE]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="130" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="70" height="20" uuid="77bda492-a016-45d6-b40b-04d48ea941c4"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Order ID :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="70" y="0" width="100" height="20" uuid="1f165ae6-9e24-4d86-932b-81c2236eab4e"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{orderID}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="20" width="100" height="20" uuid="e2297731-2aa2-485b-afa3-d51fc6ff786e"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Customer Name :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="20" width="280" height="20" uuid="f85edc07-0638-46d0-8b6c-1baa341e7183"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="40" width="70" height="20" uuid="347ea2a6-05d2-4b05-844b-fe1baa335b10"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Address :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="70" y="40" width="310" height="20" uuid="395fbc44-0573-4cb4-9c09-c237fbc2dcb1"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{address}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="61" width="70" height="20" uuid="4554615e-ecdf-4a1e-ab9f-b511be0836de"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Contact No:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="70" y="61" width="110" height="20" uuid="1d38bd38-f8e4-491a-8279-53c4e5582e2c"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{phoneNo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="172" y="0" width="70" height="20" uuid="e3ca2753-3619-4716-aed2-458bc69bd6fe"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Order Date :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="242" y="0" width="138" height="20" uuid="44215137-fd24-4e9a-af20-f264835cc0e1"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dateAndTime}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="184" y="61" width="86" height="20" uuid="ee0636e2-2eab-4601-8049-06c5e186b515"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Total : LKR]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="254" y="61" width="126" height="20" uuid="610fa7c2-ff4e-4b46-966a-97a261de95c0"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{getTotal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="100" width="120" height="20" uuid="87bc59d2-7b93-4f0d-a992-e1aaa6c95724"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Customer Signature :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="120" y="110" width="108" height="20" uuid="54489f61-af95-4f6c-9b3c-edf0f42d0eb1"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[---------------------------]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
