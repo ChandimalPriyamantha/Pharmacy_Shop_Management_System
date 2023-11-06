@@ -630,7 +630,7 @@
                         <String fx:value="radius" />
                      </styleClass>
                      <children>
-                        <TableView fx:id="inventorytbl" layoutX="17.0" layoutY="50.0" prefHeight="164.0" prefWidth="819.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="50.0">
+                        <TableView fx:id="inventorytbl" layoutX="17.0" layoutY="50.0" onMouseClicked="#SelectionMedicineData" prefHeight="164.0" prefWidth="819.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="50.0">
                            <columns>
                               <TableColumn fx:id="itblid" prefWidth="75.0" text="ID" />
                               <TableColumn fx:id="itblname" prefWidth="75.0" text="Name" />
@@ -662,14 +662,14 @@
                               <Font size="10.0" />
                            </font>
                         </Button>
-                        <Button fx:id="iupdatebtn" layoutX="137.0" layoutY="118.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="98.0" styleClass="btn" stylesheets="@Style/mainFormDesign.css" text="Update">
+                        <Button fx:id="iupdatebtn" layoutX="137.0" layoutY="118.0" mnemonicParsing="false" onAction="#updateMedicineData" prefHeight="30.0" prefWidth="98.0" styleClass="btn" stylesheets="@Style/mainFormDesign.css" text="Update">
                            <font>
                               <Font size="10.0" />
                            </font>
                         </Button>
                         <TextField fx:id="imanufacture" layoutX="577.0" layoutY="14.0" prefHeight="29.0" prefWidth="257.0" promptText="Manufacture" stylesheets="@Style/mainFormDesign.css" />
                         <TextField fx:id="iedate" layoutX="577.0" layoutY="63.0" prefHeight="30.0" prefWidth="257.0" promptText="Expire Date" stylesheets="@Style/mainFormDesign.css" />
-                        <Button fx:id="ideletebtn" layoutX="264.0" layoutY="118.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="98.0" styleClass="btn" stylesheets="@Style/mainFormDesign.css" text="Delete">
+                        <Button fx:id="ideletebtn" layoutX="264.0" layoutY="118.0" mnemonicParsing="false" onAction="#deleteMedicineData" prefHeight="30.0" prefWidth="98.0" styleClass="btn" stylesheets="@Style/mainFormDesign.css" text="Delete">
                            <font>
                               <Font size="10.0" />
                            </font>

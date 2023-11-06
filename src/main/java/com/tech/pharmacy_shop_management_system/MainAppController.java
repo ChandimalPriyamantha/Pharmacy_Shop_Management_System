@@ -633,11 +633,29 @@ public class MainAppController implements Initializable {
         itblexpireDate.setCellValueFactory(new PropertyValueFactory<>("medicineExpireDate"));
         itblprice.setCellValueFactory(new PropertyValueFactory<>("medicinePrice"));
 
-
-
-
         inventorytbl.setItems(MedicinesDatas);
     }
+
+//tg706-data-selection-from-table-start
+public void SelectionMedicineData(){
+    int i = inventorytbl.getSelectionModel().getSelectedIndex();
+
+    String idv=itblid.getCellData(i);
+    String namev= itblname.getCellData(i);
+    int qtyv= itblquantity.getCellData(i);
+    String mfv= itblManufacturer.getCellData(i);
+    String datev= itblexpireDate.getCellData(i);
+    double pricev = itblprice.getCellData(i);
+
+    irid.setText(idv);
+    imname.setText(namev);
+    istoke.setText(String.valueOf(qtyv));
+    imanufacture.setText(mfv);
+    iedate.setText(datev);
+    iprice.setText(String.valueOf(pricev));
+
+}
+
 
 //tg706-addData-Medicine-start
 public void insertMedicineData()
@@ -654,7 +672,10 @@ public void insertMedicineData()
         ps.setString(5,iedate.getText());
         ps.setDouble(6, Double.parseDouble(iprice.getText()));
 
+
+        //reminder - msg *scful!
         ps.executeUpdate();
+        //clear all txt fields!!!
         ShowMedicineData();
 
     } catch (SQLException e) {
@@ -719,44 +740,56 @@ public ObservableList<Medicine> searchMedicine()
 
     }
 
-
-public ObservableList<Medicine> updateMedicineData()
+//tg706-start-update
+public void updateMedicineData()
 {
-    String sql="Update medicine set medicineID=?, name=?,quantity=?,manufacturer=?,expireDate=?,price=? where medicineID=? ;";
-    ObservableList<Medicine> MedicineDataListUpdate = FXCollections.observableArrayList();
+    PreparedStatement ps;
+    ResultSet rs;
+    String sql="Update medicine set name=?,quantity=?,manufacturer=?,expireDate=?,price=? where medicineID=?";
     try {
-        prepare = connect.prepareStatement(sql);
-        Medicine medicineUpdate;
+        ps= connect.prepareStatement(sql);
 
-        prepare.setString(1,);
-        prepare.setString(2,);
-        prepare.setInt(3,);
-        prepare.setString(4,);
-        prepare.setString(5,);
-        prepare.setString(6,);
-        prepare.setString(7,);
+        ps.setString(1,imname.getText());
+        ps.setInt(2, Integer.parseInt(istoke.getText()));
+        ps.setString(3,imanufacture.getText());
+        ps.setString(4,iedate.getText());
+        ps.setDouble(5, Double.parseDouble(iprice.getText()));
+        ps.setString(6,irid.getText());
+        //reminder - msg *scful!
+        ps.executeUpdate();
+        //clear all txt fields!!!
+        ShowMedicineData();
 
-        result = prepare.executeQuery();
     } catch (SQLException e) {
         throw new RuntimeException(e);
     }
-    return null;
 }
 
+//706-end-update
 
 
+//706-start-deleteDataMedicine
 public void deleteMedicineData()
 {
+    PreparedStatement ps;
+    ResultSet rs;
     String sql="DELETE FROM table_name WHERE medicineID=?";
     try {
-        prepare = connect.prepareStatement(sql);
-        prepare.setString(1,isearch.getText());
+        ps= connect.prepareStatement(sql);
+        ps.setString(1,isearch.getText());
+        //reminder - msg *deleted!
+
+        ps.executeUpdate();
+        //clear all txt fields!!!
+        ShowMedicineData();
     } catch (SQLException e) {
         throw new RuntimeException(e);
     }
 
 
 }
+
+//706-end-deleteDataMedicine
 
 
 
