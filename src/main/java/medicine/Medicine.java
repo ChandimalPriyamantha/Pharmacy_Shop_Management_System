@@ -3,13 +3,13 @@ package medicine;
 public class Medicine {
     private String medicineID;
     private String medicineName;
-    private String medicineQuantity;
+    private int medicineQuantity;
     private String medicineManufacturer;
     private String medicinePrice;
-    private String medicineExpireDate;
+    private double medicineExpireDate;
 
 
-    public Medicine(String medicineID, String medicineName, String medicineQuantity, String medicineManufacturer, String medicinePrice, String medicineExpireDate) {
+    public Medicine(String medicineID, String medicineName, int medicineQuantity, String medicineManufacturer, String medicinePrice, double medicineExpireDate) {
         this.medicineID = medicineID;
         this.medicineName = medicineName;
         this.medicineQuantity = medicineQuantity;
@@ -34,11 +34,11 @@ public class Medicine {
         this.medicineName = medicineName;
     }
 
-    public String getMedicineQuantity() {
+    public int getMedicineQuantity() {
         return medicineQuantity;
     }
 
-    public void setMedicineQuantity(String medicineQuantity) {
+    public void setMedicineQuantity(int medicineQuantity) {
         this.medicineQuantity = medicineQuantity;
     }
 
@@ -59,11 +59,11 @@ public class Medicine {
     }
 
 
-    public String getMedicineExpireDate() {
+    public double getMedicineExpireDate() {
         return medicineExpireDate;
     }
 
-    public void setMedicineExpireDate(String medicineExpireDate) {
+    public void setMedicineExpireDate(double medicineExpireDate) {
         this.medicineExpireDate = medicineExpireDate;
     }
 }

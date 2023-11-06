@@ -318,6 +318,9 @@ public class MainAppController implements Initializable {
     private TextField istoke;
 
     @FXML
+    private TextField isearch;
+
+    @FXML
     private TableColumn<Medicine, Integer> itblquantity;
 
     @FXML
@@ -584,10 +587,10 @@ public class MainAppController implements Initializable {
                 medicinetable = new Medicine(
                         result.getString("medicineID"),
                         result.getString("name"),
-                        result.getString("quantity"),
+                        result.getInt("quantity"),
                         result.getString("manufacturer"),
                         result.getString("expireDate"),
-                        result.getString("price"));
+                        result.getDouble("price"));
 
                 listMedicineData.add(medicinetable);
             }
@@ -635,6 +638,127 @@ public class MainAppController implements Initializable {
 
         inventorytbl.setItems(MedicinesDatas);
     }
+
+//tg706-addData-Medicine-start
+public void insertMedicineData()
+{
+    PreparedStatement ps;
+    ResultSet rs;
+    String sql="insert into medicine (medicineID,name,quantity,manufacturer,expireDate,price) values (?,?,?,?,?,?)";
+    try {
+        ps= connect.prepareStatement(sql);
+        ps.setString(1,irid.getText());
+        ps.setString(2,imname.getText());
+        ps.setInt(3, Integer.parseInt(istoke.getText()));
+        ps.setString(4,imanufacture.getText());
+        ps.setString(5,iedate.getText());
+        ps.setDouble(6, Double.parseDouble(iprice.getText()));
+
+        ps.executeUpdate();
+        ShowMedicineData();
+
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+    }
+
+}
+
+
+
+public ObservableList<Medicine> searchMedicine()
+{
+    String sql="select * from medicine where medicineID=?";
+    ObservableList<Medicine> MedicineDataListSearch = FXCollections.observableArrayList();
+    try {
+        prepare = connect.prepareStatement(sql);
+        Medicine medicineSearchTable;
+
+        prepare.setString(1,isearch.getText());
+        result = prepare.executeQuery();
+
+        while(result.next())
+        {
+            medicineSearchTable = new Medicine(
+            result.getString("medicineID"),
+            result.getString("name"),
+            result.getInt("quantity"),
+            result.getString("manufacturer"),
+            result.getString("expireDate"),
+            result.getDouble("price"));
+
+            MedicineDataListSearch.add(medicineSearchTable);
+        }
+
+
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+    }
+
+
+    return MedicineDataListSearch;
+}
+
+    private ObservableList<Medicine> MedicinesDataSearch;
+    public  void ShowMedicineDataSearch(){
+
+        if (isearch.getText().isEmpty()){
+            ShowMedicineData();
+        }else {
+            MedicinesDataSearch = searchMedicine();
+
+            itblid.setCellValueFactory(new PropertyValueFactory<>("medicineID"));
+            itblname.setCellValueFactory(new PropertyValueFactory<>("medicineName"));
+            itblquantity.setCellValueFactory(new PropertyValueFactory<>("medicineQuantity"));
+            itblManufacturer.setCellValueFactory(new PropertyValueFactory<>("medicineManufacturer"));
+            itblexpireDate.setCellValueFactory(new PropertyValueFactory<>("medicineExpireDate"));
+            itblprice.setCellValueFactory(new PropertyValueFactory<>("medicinePrice"));
+
+
+            inventorytbl.setItems(MedicinesDataSearch);
+        }
+
+    }
+
+
+public ObservableList<Medicine> updateMedicineData()
+{
+    String sql="Update medicine set medicineID=?, name=?,quantity=?,manufacturer=?,expireDate=?,price=? where medicineID=? ;";
+    ObservableList<Medicine> MedicineDataListUpdate = FXCollections.observableArrayList();
+    try {
+        prepare = connect.prepareStatement(sql);
+        Medicine medicineUpdate;
+
+        prepare.setString(1,);
+        prepare.setString(2,);
+        prepare.setInt(3,);
+        prepare.setString(4,);
+        prepare.setString(5,);
+        prepare.setString(6,);
+        prepare.setString(7,);
+
+        result = prepare.executeQuery();
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+    }
+    return null;
+}
+
+
+
+public void deleteMedicineData()
+{
+    String sql="DELETE FROM table_name WHERE medicineID=?";
+    try {
+        prepare = connect.prepareStatement(sql);
+        prepare.setString(1,isearch.getText());
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+    }
+
+
+}
+
+
 
 
     @Override
