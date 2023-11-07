@@ -3,6 +3,7 @@ package com.tech.pharmacy_shop_management_system;
 import Email.Email;
 import Connection.DatabaseConnection;
 import RemortCustomer.RemoteCustomerOrderMedicineDetails;
+import ReportGenerater.ReportCreator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -568,6 +569,40 @@ public class MainAppController implements Initializable {
         return  listData;
     }
 
+    //tg706-sales
+    public ObservableList<ReportCreator> getReportData(){
+
+        String sql = "SELECT * FROM sales";
+
+
+        ObservableList<ReportCreator> listReportData = FXCollections.observableArrayList();
+        connect = DatabaseConnection.ConnectionDB();
+
+        try {
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+
+            ReportCreator reportcreator;
+
+            while (result.next()){
+
+                reportcreator = new ReportCreator(
+                        result.getString("saleID"),
+                        result.getString("saleDate"),
+                        result.getInt("saleQuantity"),
+                        result.getDouble("saleAmount"),
+                        result.getString("saleType"));
+
+                listReportData.add(reportcreator);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return  listReportData;
+    }
+//tg706-end
+
     //tg706-medicine
     public ObservableList<Medicine> getMedicineData(){
 
@@ -629,11 +664,9 @@ public class MainAppController implements Initializable {
         iedate.setText("");
         irid.setDisable(false);
     }
-
-
-    //tg706-medicine-view-start
+    //tg706-sales-view-start
     private ObservableList<Medicine> MedicinesDatas;
-    public  void ShowMedicineData(){
+    public  void ShowSalesData(){
 
         MedicinesDatas = getMedicineData();
 
@@ -645,6 +678,24 @@ public class MainAppController implements Initializable {
         itblprice.setCellValueFactory(new PropertyValueFactory<>("medicinePrice"));
 
         inventorytbl.setItems(MedicinesDatas);
+    }
+
+//tg706-data-selection-from-table-start
+
+    //tg706-medicine-view-start
+    private ObservableList<ReportCreator> ReportCreatorDisplay;
+    public  void ShowMedicineData(){
+
+        ReportCreatorDisplay = getReportData();
+
+        itblid.setCellValueFactory(new PropertyValueFactory<>("medicineID"));
+        itblname.setCellValueFactory(new PropertyValueFactory<>("medicineName"));
+        itblquantity.setCellValueFactory(new PropertyValueFactory<>("medicineQuantity"));
+        itblManufacturer.setCellValueFactory(new PropertyValueFactory<>("medicineManufacturer"));
+        itblexpireDate.setCellValueFactory(new PropertyValueFactory<>("medicineExpireDate"));
+        itblprice.setCellValueFactory(new PropertyValueFactory<>("medicinePrice"));
+
+        inventorytbl.setItems(ReportCreatorDisplay);
     }
 
 //tg706-data-selection-from-table-start
