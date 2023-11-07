@@ -409,6 +409,7 @@ public class MainAppController implements Initializable {
     private Statement statement;
     private ResultSet result;
 
+    Alert alert;
 
     // This method can help to move through the windows
           public void controlPanel(ActionEvent event){
@@ -589,8 +590,9 @@ public class MainAppController implements Initializable {
                         result.getString("name"),
                         result.getInt("quantity"),
                         result.getString("manufacturer"),
+                        result.getDouble("price"),
                         result.getString("expireDate"),
-                        result.getDouble("price"));
+                        result.getString("type"));
 
                 listMedicineData.add(medicinetable);
             }
@@ -618,6 +620,16 @@ public class MainAppController implements Initializable {
 
         TABLE_VIEW.setItems(ROCListData);
     }
+    //tg706-clear-data-from-txt-fields
+    public void ClearDataMedicine(){
+        irid.setText("");
+        imname.setText("");
+        imanufacture.setText("");
+        iprice.setText("");
+        istoke.setText("");
+        iedate.setText("");
+        irid.setDisable(false);
+    }
 
 
     //tg706-medicine-view-start
@@ -644,8 +656,8 @@ public void SelectionMedicineData(){
     String namev= itblname.getCellData(i);
     int qtyv= itblquantity.getCellData(i);
     String mfv= itblManufacturer.getCellData(i);
-    String datev= itblexpireDate.getCellData(i);
-    double pricev = itblprice.getCellData(i);
+    String datev = itblexpireDate.getCellData(i);
+    double pricev = (itblprice.getCellData(i));
 
     irid.setText(idv);
     imname.setText(namev);
@@ -653,6 +665,8 @@ public void SelectionMedicineData(){
     imanufacture.setText(mfv);
     iedate.setText(datev);
     iprice.setText(String.valueOf(pricev));
+    irid.setDisable(true);
+
 
 }
 
@@ -662,8 +676,27 @@ public void insertMedicineData()
 {
     PreparedStatement ps;
     ResultSet rs;
+
+
+
     String sql="insert into medicine (medicineID,name,quantity,manufacturer,expireDate,price) values (?,?,?,?,?,?)";
     try {
+        ps= connect.prepareStatement("select medicineID from medicine ");
+
+        rs=ps.executeQuery();
+
+        while (rs.next()){
+            if (rs.getString(1).equals(irid.getText())){
+                alert = new Alert(Alert.AlertType.ERROR);     //Success alert
+                alert.setTitle("Error Message");
+                alert.setHeaderText("ERROR!!!");
+                alert.setContentText("ID is Existing!");
+                alert.showAndWait();
+                return;
+            }
+
+        }
+
         ps= connect.prepareStatement(sql);
         ps.setString(1,irid.getText());
         ps.setString(2,imname.getText());
@@ -704,8 +737,8 @@ public ObservableList<Medicine> searchMedicine()
             result.getString("name"),
             result.getInt("quantity"),
             result.getString("manufacturer"),
-            result.getString("expireDate"),
-            result.getDouble("price"));
+            result.getDouble("price"),
+            result.getString("expireDate"));
 
             MedicineDataListSearch.add(medicineSearchTable);
         }
@@ -743,6 +776,13 @@ public ObservableList<Medicine> searchMedicine()
 //tg706-start-update
 public void updateMedicineData()
 {
+    if (irid.getText().isEmpty() || imname.getText().isEmpty() || imanufacture.getText().isEmpty() || iprice.getText().isEmpty() || istoke.getText().isEmpty() || iedate.getText().isEmpty() ){
+        alert = new Alert(Alert.AlertType.ERROR);     //Success alert
+        alert.setTitle("Error Message");
+        alert.setHeaderText("ERROR!");
+        alert.setContentText("Please fill the All Fields");
+        alert.showAndWait();
+    }
     PreparedStatement ps;
     ResultSet rs;
     String sql="Update medicine set name=?,quantity=?,manufacturer=?,expireDate=?,price=? where medicineID=?";
@@ -758,6 +798,7 @@ public void updateMedicineData()
         //reminder - msg *scful!
         ps.executeUpdate();
         //clear all txt fields!!!
+        ClearDataMedicine();
         ShowMedicineData();
 
     } catch (SQLException e) {
@@ -769,22 +810,60 @@ public void updateMedicineData()
 
 
 //706-start-deleteDataMedicine
+
 public void deleteMedicineData()
 {
-    PreparedStatement ps;
-    ResultSet rs;
-    String sql="DELETE FROM table_name WHERE medicineID=?";
-    try {
-        ps= connect.prepareStatement(sql);
-        ps.setString(1,isearch.getText());
-        //reminder - msg *deleted!
+    if (irid.getText().isEmpty()){
 
-        ps.executeUpdate();
-        //clear all txt fields!!!
-        ShowMedicineData();
-    } catch (SQLException e) {
-        throw new RuntimeException(e);
+        alert = new Alert(Alert.AlertType.ERROR);     //Success alert
+        alert.setTitle("Error Message");
+        alert.setHeaderText("ERROR!");
+        alert.setContentText("Please fill the Read-ID Field");
+        alert.showAndWait();
+
+        return;
     }
+
+    alert = new Alert(Alert.AlertType.CONFIRMATION);
+    alert.setTitle("Confirmation Massage!");
+    alert.setHeaderText("Do you want to Delete this Medicine Details?");
+
+    alert.setContentText("Choose your option:");
+    ButtonType buttonTypeYes = new ButtonType("Yes");
+    ButtonType buttonTypeNo = new ButtonType("No");
+    alert.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
+
+    alert.showAndWait().ifPresent(response -> {
+        if (response == buttonTypeYes) {
+
+            PreparedStatement ps;
+            ResultSet rs;
+            String sql="DELETE FROM medicine WHERE medicineID=?";
+            try {
+                ps= connect.prepareStatement(sql);
+                ps.setString(1,irid.getText());
+                //reminder - msg *deleted!
+
+                ps.executeUpdate();
+                //clear all txt fields!!!
+                alert = new Alert(Alert.AlertType.INFORMATION);     //Success alert
+                alert.setTitle("Deleted Success Message");
+                alert.setHeaderText("DELETED");
+                alert.setContentText("Medicine Details Deleted Successfully");
+                alert.showAndWait();
+
+                ClearDataMedicine();
+                ShowMedicineData();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+            // Perform the action when the user clicks 'Yes'
+        } else if (response == buttonTypeNo) {
+            return;
+            // Perform the action when the user clicks 'No' or dismisses the dialog
+        }
+    });
+
 
 
 }

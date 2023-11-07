@@ -5,11 +5,13 @@ public class Medicine {
     private String medicineName;
     private int medicineQuantity;
     private String medicineManufacturer;
-    private String medicinePrice;
-    private double medicineExpireDate;
+    private Double medicinePrice;
+    private String medicineExpireDate;
+
+    private String medicineType
 
 
-    public Medicine(String medicineID, String medicineName, int medicineQuantity, String medicineManufacturer, String medicinePrice, double medicineExpireDate) {
+    public Medicine(String medicineID, String medicineName, int medicineQuantity, String medicineManufacturer, double medicinePrice, String medicineExpireDate) {
         this.medicineID = medicineID;
         this.medicineName = medicineName;
         this.medicineQuantity = medicineQuantity;
@@ -50,20 +52,20 @@ public class Medicine {
         this.medicineManufacturer = medicineManufacturer;
     }
 
-    public String getMedicinePrice() {
+    public double getMedicinePrice() {
         return medicinePrice;
     }
 
-    public void setMedicinePrice(String medicinePrice) {
+    public void setMedicinePrice(double medicinePrice) {
         this.medicinePrice = medicinePrice;
     }
 
 
-    public double getMedicineExpireDate() {
+    public String getMedicineExpireDate() {
         return medicineExpireDate;
     }
 
-    public void setMedicineExpireDate(double medicineExpireDate) {
+    public void setMedicineExpireDate(String medicineExpireDate) {
         this.medicineExpireDate = medicineExpireDate;
     }
 }
