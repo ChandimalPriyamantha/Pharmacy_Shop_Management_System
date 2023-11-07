@@ -7,6 +7,7 @@ module com.tech.pharmacy_shop_management_system {
                 requires org.kordamp.bootstrapfx.core;
     requires java.sql;
     requires javafx.web;
+    requires jasperreports;
 
     opens com.tech.pharmacy_shop_management_system to javafx.fxml;
     exports com.tech.pharmacy_shop_management_system;
@@ -14,4 +15,6 @@ module com.tech.pharmacy_shop_management_system {
     opens RemortCustomer to javafx.fxml;
     exports medicine;
     opens medicine to javafx.fxml;
+    exports ReportGenerater;
+    opens ReportGenerater to javafx.fxml;
 }

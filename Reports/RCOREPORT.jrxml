@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RCOREPORT" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0908f0a0-81bc-46af-8c4d-531064dfdc8d">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="phamacyDB"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT sales.salesID, sales.quantity, sales.dateandTime, sales.amount
+FROM pharmacydb.sales
+WHERE
+    MONTH(sales.dateandTime) = MONTH(CURRENT_DATE())
+    AND YEAR(sales.dateandTime) = YEAR(CURRENT_DATE())
+    AND sales.type = 'RCO';
+]]>
+	</queryString>
+	<field name="salesID" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="salesID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="sales"/>
+	</field>
+	<field name="quantity" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="quantity"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="sales"/>
+	</field>
+	<field name="dateandTime" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="dateandTime"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="sales"/>
+	</field>
+	<field name="amount" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="sales"/>
+	</field>
+	<group name="salesID">
+		<groupExpression><![CDATA[$F{salesID}]]></groupExpression>
+	</group>
+	<group name="quantity">
+		<groupExpression><![CDATA[$F{quantity}]]></groupExpression>
+	</group>
+	<group name="dateandTime">
+		<groupExpression><![CDATA[$F{dateandTime}]]></groupExpression>
+	</group>
+	<group name="amount">
+		<groupExpression><![CDATA[$F{amount}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="110" y="20" width="330" height="59" uuid="e3fbac49-e33c-417c-a6fd-fe8015b72685"/>
+				<textElement textAlignment="Center">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Remort Order Sales Report]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="52" splitType="Stretch">
+			<staticText>
+				<reportElement x="20" y="0" width="120" height="39" uuid="9782ca75-406e-4424-ac8e-addc00270628"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="140" y="0" width="130" height="39" uuid="c5576386-1ed9-4d09-a189-775647066cda"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Quantity]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="1" width="150" height="39" uuid="9bc996e6-711c-4079-bab8-11dfa1bf07ad"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="420" y="0" width="130" height="39" uuid="b890db01-fc9a-4ba1-8446-70f4929c7e61"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+			<line>
+				<reportElement x="10" y="42" width="549" height="1" uuid="1c3d7a8e-4b50-4624-8112-ab396e2da458"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="39" splitType="Stretch">
+			<textField>
+				<reportElement x="20" y="0" width="120" height="30" uuid="40bcd3cd-5c04-4879-91ab-e0108c9d6bbb"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{salesID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="0" width="130" height="30" uuid="ec2404bf-7707-4fdd-804b-68cabb97e03e"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{quantity}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="270" y="0" width="150" height="30" uuid="aabb72c5-c6ce-41f2-8bf9-ba6bacab278c"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{dateandTime}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="420" y="0" width="130" height="30" uuid="026efa37-ea79-440f-a198-34d57a6a631d"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="10" y="38" width="549" height="1" uuid="5d9b64b8-e050-4a10-9abc-6c9e97442a3c"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="59" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="20" width="100" height="20" uuid="c0c89d7b-9e92-49b9-a0b3-90f553bfad9e"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Total Amount : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="110" y="20" width="100" height="20" uuid="ceb6c7ea-9c0b-439a-936e-5eb249e6f647"/>
+				<textFieldExpression><![CDATA[$V{amount_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

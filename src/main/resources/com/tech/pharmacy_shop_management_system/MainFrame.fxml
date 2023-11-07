@@ -625,7 +625,7 @@
       </AnchorPane>
       <AnchorPane fx:id="irViewAP" layoutX="208.0" layoutY="80.0" prefHeight="525.0" prefWidth="916.0" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="208.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="80.0">
          <children>
-            <AnchorPane fx:id="purchareview" layoutY="6.0" prefHeight="428.0" prefWidth="1103.0" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="6.0">
+            <AnchorPane fx:id="purchareview" layoutY="6.0" prefHeight="428.0" prefWidth="1103.0" visible="false" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="6.0">
                <children>
                   <AnchorPane fx:id="inventorytblAP" layoutX="20.0" layoutY="22.0" prefHeight="222.0" prefWidth="856.0" stylesheets="@Style/mainFormDesign.css" AnchorPane.bottomAnchor="226.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="6.0">
                      <styleClass>
@@ -703,14 +703,14 @@
                   <Font size="10.0" />
                </font>
             </Button>
-            <Button fx:id="reportbtn" layoutX="167.0" layoutY="478.0" mnemonicParsing="false" onAction="#controlPanel" prefHeight="30.0" prefWidth="98.0" styleClass="btn" stylesheets="@Style/mainFormDesign.css" text="Report" AnchorPane.bottomAnchor="17.0">
+            <Button fx:id="reportbtn" layoutX="167.0" layoutY="478.0" mnemonicParsing="false" onAction="#controlPanel" onMouseClicked="#ShowReportData" prefHeight="30.0" prefWidth="98.0" styleClass="btn" stylesheets="@Style/mainFormDesign.css" text="Report" AnchorPane.bottomAnchor="17.0">
                <font>
                   <Font size="10.0" />
                </font>
             </Button>
-            <AnchorPane fx:id="reportAP" layoutX="7.0" layoutY="16.0" prefHeight="450.0" prefWidth="889.0" visible="false" AnchorPane.bottomAnchor="69.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="6.0">
+            <AnchorPane fx:id="reportAP" layoutX="7.0" layoutY="16.0" prefHeight="450.0" prefWidth="889.0" AnchorPane.bottomAnchor="69.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="6.0">
                <children>
-                  <AnchorPane fx:id="rcodcoreporttbl" layoutX="20.0" layoutY="22.0" prefHeight="260.0" prefWidth="862.0" stylesheets="@Style/mainFormDesign.css" AnchorPane.bottomAnchor="184.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="6.0">
+                  <AnchorPane fx:id="rcodcoreporttbl" layoutX="20.0" layoutY="22.0" prefHeight="260.0" prefWidth="862.0" stylesheets="@Style/mainFormDesign.css" visible="false" AnchorPane.bottomAnchor="184.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="6.0">
                      <styleClass>
                         <String fx:value="white-bg" />
                         <String fx:value="shadow" />
@@ -742,17 +742,17 @@
                               <Font size="10.0" />
                            </font>
                         </Button>
-                        <Button fx:id="dcorbtn" layoutX="179.0" layoutY="28.0" mnemonicParsing="false" onAction="#controlPanel" prefHeight="30.0" prefWidth="126.0" styleClass="btn" stylesheets="@Style/mainFormDesign.css" text="DCO Report">
+                        <Button fx:id="dcorbtn" layoutX="179.0" layoutY="28.0" mnemonicParsing="false" onAction="#controlPanel" onMouseClicked="#ShowReportDataDCO" prefHeight="30.0" prefWidth="126.0" styleClass="btn" stylesheets="@Style/mainFormDesign.css" text="DCO Report">
                            <font>
                               <Font size="10.0" />
                            </font>
                         </Button>
-                        <Button fx:id="prbtn" layoutX="333.0" layoutY="28.0" mnemonicParsing="false" onAction="#controlPanel" prefHeight="30.0" prefWidth="126.0" styleClass="btn" stylesheets="@Style/mainFormDesign.css" text="Purchase Report">
+                        <Button fx:id="prbtn" layoutX="333.0" layoutY="28.0" mnemonicParsing="false" onAction="#controlPanel" onMouseClicked="#ShowReportPurchase" prefHeight="30.0" prefWidth="126.0" styleClass="btn" stylesheets="@Style/mainFormDesign.css" text="Purchase Report">
                            <font>
                               <Font size="10.0" />
                            </font>
                         </Button>
-                        <Button fx:id="printbtnreport" layoutX="726.0" layoutY="93.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="98.0" styleClass="btn" stylesheets="@Style/mainFormDesign.css" text="Print" AnchorPane.bottomAnchor="21.0" AnchorPane.rightAnchor="38.0">
+                        <Button fx:id="printbtnreportPR" layoutX="726.0" layoutY="93.0" mnemonicParsing="false" onAction="#getReportPurchase" prefHeight="30.0" prefWidth="105.0" styleClass="btn" stylesheets="@Style/mainFormDesign.css" text="Print Purchase" AnchorPane.bottomAnchor="21.0" AnchorPane.rightAnchor="31.0">
                            <font>
                               <Font size="10.0" />
                            </font>
@@ -769,9 +769,19 @@
                               </Lighting>
                            </effect>
                         </Separator>
+                        <Button fx:id="printbtnreportDCO" layoutX="611.0" layoutY="93.0" mnemonicParsing="false" onAction="#getReportDOC" prefHeight="30.0" prefWidth="98.0" styleClass="btn" stylesheets="@Style/mainFormDesign.css" text="Print DCO">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="printbtnreportRCO" layoutX="497.0" layoutY="93.0" mnemonicParsing="false" onAction="#getReportROC" prefHeight="30.0" prefWidth="98.0" styleClass="btn" stylesheets="@Style/mainFormDesign.css" text="Print RCO">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Button>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="prtblAP" layoutX="20.0" layoutY="9.0" prefHeight="260.0" prefWidth="862.0" stylesheets="@Style/mainFormDesign.css" visible="false" AnchorPane.bottomAnchor="184.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="6.0">
+                  <AnchorPane fx:id="prtblAP" layoutX="20.0" layoutY="9.0" prefHeight="260.0" prefWidth="862.0" stylesheets="@Style/mainFormDesign.css" AnchorPane.bottomAnchor="184.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="6.0">
                      <styleClass>
                         <String fx:value="white-bg" />
                         <String fx:value="shadow" />
@@ -781,7 +791,7 @@
                         <TableView fx:id="prtbl" layoutX="17.0" layoutY="16.0" prefHeight="229.0" prefWidth="787.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="16.0">
                            <columns>
                               <TableColumn fx:id="prid" prefWidth="75.0" text="ID" />
-                              <TableColumn fx:id="prdate" prefWidth="75.0" text="Date" />
+                              <TableColumn fx:id="prdate" prefWidth="75.0" text="Date &amp; Time" />
                               <TableColumn fx:id="prqnty" prefWidth="75.0" text="Quantity" />
                               <TableColumn fx:id="prsupplierid" prefWidth="75.0" text="Supplier ID" />
                               <TableColumn fx:id="prpurchase" prefWidth="75.0" text="Purchase" />

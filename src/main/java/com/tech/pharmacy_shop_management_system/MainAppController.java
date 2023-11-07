@@ -3,6 +3,7 @@ package com.tech.pharmacy_shop_management_system;
 import Email.Email;
 import Connection.DatabaseConnection;
 import RemortCustomer.RemoteCustomerOrderMedicineDetails;
+import ReportGenerater.PurchaseReport;
 import ReportGenerater.ReportCreator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,7 +18,14 @@ import medicine.Medicine;
 
 import java.net.URL;
 import java.sql.*;
+import java.util.HashMap;
 import java.util.ResourceBundle;
+
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 
 public class MainAppController implements Initializable {
@@ -352,7 +360,13 @@ public class MainAppController implements Initializable {
     private TableColumn<?, ?> prid;
 
     @FXML
-    private Button printbtnreport;
+    private Button printbtnreportPR;
+
+    @FXML
+    private Button printbtnreportDCO;
+
+    @FXML
+    private Button printbtnreportRCO;
 
     @FXML
     private TableColumn<?, ?> prpurchase;
@@ -364,7 +378,7 @@ public class MainAppController implements Initializable {
     private TableColumn<?, ?> prsupplierid;
 
     @FXML
-    private TableView<?> prtbl;
+    private TableView<PurchaseReport> prtbl;
 
     @FXML
     private AnchorPane prtblAP;
@@ -391,7 +405,7 @@ public class MainAppController implements Initializable {
     private TableColumn<?, ?> rcodcosales;
 
     @FXML
-    private TableView<?> rcodcotbl;
+    private TableView<ReportCreator> rcodcotbl;
 
     @FXML
     private Button rcorbtn;
@@ -508,6 +522,7 @@ public class MainAppController implements Initializable {
                      purchareview.setVisible(false);
                      rcodcoreporttbl.setVisible(true);
                      prtblAP.setVisible(false);
+                     ShowReportData();
 
                  }
                  else if(event.getSource()==dcorbtn){ // navigate into User Manage page
@@ -537,6 +552,84 @@ public class MainAppController implements Initializable {
                  }
 
           }
+
+
+    public void getReportROC(){
+
+
+
+            HashMap map = new HashMap();
+//            map.put("getReceipt", RCO_ADD_ID.getText());
+//            map.put("getTotal", RCO_TOTAL.getText());
+
+            try {
+                JasperDesign jasperDesign = JRXmlLoader.load("/Users/ganidusahan/Documents/SE Project/Pharmacy_Shop_Management_System/Reports/RCOREPORT.jrxml");
+                JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+                JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, map, connect);
+
+                JasperViewer.viewReport(jasperPrint, false);
+                //JasperPrintManager.printReport(jasperPrint, true);
+
+            } catch (JRException e) {
+                throw new RuntimeException(e);
+            }
+
+
+
+
+    }
+
+    public void getReportDOC(){
+
+
+
+        HashMap map = new HashMap();
+//            map.put("getReceipt", RCO_ADD_ID.getText());
+//            map.put("getTotal", RCO_TOTAL.getText());
+
+        try {
+            JasperDesign jasperDesign = JRXmlLoader.load("/Users/ganidusahan/Documents/SE Project/Pharmacy_Shop_Management_System/Reports/DCOREPORT.jrxml");
+            JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, map, connect);
+
+            JasperViewer.viewReport(jasperPrint, false);
+            //JasperPrintManager.printReport(jasperPrint, true);
+
+        } catch (JRException e) {
+            throw new RuntimeException(e);
+        }
+
+
+
+
+    }
+
+    public void getReportPurchase(){
+
+
+
+        HashMap map = new HashMap();
+//            map.put("getReceipt", RCO_ADD_ID.getText());
+//            map.put("getTotal", RCO_TOTAL.getText());
+
+        try {
+            JasperDesign jasperDesign = JRXmlLoader.load("/Users/ganidusahan/Documents/SE Project/Pharmacy_Shop_Management_System/Reports/RCOREPORT.jrxml");
+            JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, map, connect);
+
+            JasperViewer.viewReport(jasperPrint, false);
+            //JasperPrintManager.printReport(jasperPrint, true);
+
+        } catch (JRException e) {
+            throw new RuntimeException(e);
+        }
+
+
+
+
+    }
+
+
 
     public ObservableList<RemoteCustomerOrderMedicineDetails> getData(){
 
@@ -569,10 +662,81 @@ public class MainAppController implements Initializable {
         return  listData;
     }
 
-    //tg706-sales
+
+    //tg706-sales-RCO
+    public ObservableList<PurchaseReport> getPurchaseReport(){
+
+        String sql = "SELECT * FROM purchase";
+
+
+        ObservableList<PurchaseReport> listPurchaseReport = FXCollections.observableArrayList();
+        connect = DatabaseConnection.ConnectionDB();
+
+        try {
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+
+            PurchaseReport purchasereport;
+
+            while (result.next()){
+
+                purchasereport = new PurchaseReport(
+                        result.getString("purchaseID"),
+                        result.getString("dateAndTime"),
+                        result.getInt("quantity"),
+                        result.getString("supplierID"),
+                        result.getDouble("amount"));
+
+                listPurchaseReport.add(purchasereport);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return  listPurchaseReport;
+    }
+//tg706-end
+
+
+
+    //tg706-sales-DCO
+    public ObservableList<ReportCreator> getReportDataDCO(){
+
+        String sql = "SELECT * FROM sales where type='DCO'";
+
+
+        ObservableList<ReportCreator> listReportDataDCO = FXCollections.observableArrayList();
+        connect = DatabaseConnection.ConnectionDB();
+
+        try {
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+
+            ReportCreator reportcreator;
+
+            while (result.next()){
+
+                reportcreator = new ReportCreator(
+                        result.getString("salesID"),
+                        result.getString("dateandTime"),
+                        result.getInt("quantity"),
+                        result.getDouble("amount"),
+                        result.getString("type"));
+
+                listReportDataDCO.add(reportcreator);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return  listReportDataDCO;
+    }
+//tg706-end
+
+    //tg706-sales-RCO
     public ObservableList<ReportCreator> getReportData(){
 
-        String sql = "SELECT * FROM sales";
+        String sql = "SELECT * FROM sales where type='RCO'";
 
 
         ObservableList<ReportCreator> listReportData = FXCollections.observableArrayList();
@@ -587,11 +751,11 @@ public class MainAppController implements Initializable {
             while (result.next()){
 
                 reportcreator = new ReportCreator(
-                        result.getString("saleID"),
-                        result.getString("saleDate"),
-                        result.getInt("saleQuantity"),
-                        result.getDouble("saleAmount"),
-                        result.getString("saleType"));
+                        result.getString("salesID"),
+                        result.getString("dateandTime"),
+                        result.getInt("quantity"),
+                        result.getDouble("amount"),
+                        result.getString("type"));
 
                 listReportData.add(reportcreator);
             }
@@ -666,7 +830,7 @@ public class MainAppController implements Initializable {
     }
     //tg706-sales-view-start
     private ObservableList<Medicine> MedicinesDatas;
-    public  void ShowSalesData(){
+    public  void ShowMedicineData(){
 
         MedicinesDatas = getMedicineData();
 
@@ -684,21 +848,49 @@ public class MainAppController implements Initializable {
 
     //tg706-medicine-view-start
     private ObservableList<ReportCreator> ReportCreatorDisplay;
-    public  void ShowMedicineData(){
+    public  void ShowReportData(){
 
         ReportCreatorDisplay = getReportData();
 
-        itblid.setCellValueFactory(new PropertyValueFactory<>("medicineID"));
-        itblname.setCellValueFactory(new PropertyValueFactory<>("medicineName"));
-        itblquantity.setCellValueFactory(new PropertyValueFactory<>("medicineQuantity"));
-        itblManufacturer.setCellValueFactory(new PropertyValueFactory<>("medicineManufacturer"));
-        itblexpireDate.setCellValueFactory(new PropertyValueFactory<>("medicineExpireDate"));
-        itblprice.setCellValueFactory(new PropertyValueFactory<>("medicinePrice"));
+        rcodcoid.setCellValueFactory(new PropertyValueFactory<>("saleID"));
+        rcodcodate.setCellValueFactory(new PropertyValueFactory<>("saleDate"));
+        rcodcoqnty.setCellValueFactory(new PropertyValueFactory<>("saleQuantity"));
+        rcodcosales.setCellValueFactory(new PropertyValueFactory<>("saleAmount"));
 
-        inventorytbl.setItems(ReportCreatorDisplay);
+        rcodcotbl.setItems(ReportCreatorDisplay);
+    }
+    //tg706-medicine-view-start
+    private ObservableList<ReportCreator> ReportCreatorDisplayDCO;
+    public  void ShowReportDataDCO(){
+
+        ReportCreatorDisplayDCO = getReportDataDCO();
+
+        rcodcoid.setCellValueFactory(new PropertyValueFactory<>("saleID"));
+        rcodcodate.setCellValueFactory(new PropertyValueFactory<>("saleDate"));
+        rcodcoqnty.setCellValueFactory(new PropertyValueFactory<>("saleQuantity"));
+        rcodcosales.setCellValueFactory(new PropertyValueFactory<>("saleAmount"));
+
+        rcodcotbl.setItems(ReportCreatorDisplayDCO);
     }
 
 //tg706-data-selection-from-table-start
+
+    //tg706-medicine-view-start
+    private ObservableList<PurchaseReport> ReportPurchaseDisplay;
+    public  void ShowReportPurchase(){
+
+        ReportPurchaseDisplay = getPurchaseReport();
+
+        prid.setCellValueFactory(new PropertyValueFactory<>("PRID"));
+        prdate.setCellValueFactory(new PropertyValueFactory<>("PRDnT"));
+        prqnty.setCellValueFactory(new PropertyValueFactory<>("PRQuantity"));
+        prsupplierid.setCellValueFactory(new PropertyValueFactory<>("PRSupplierID"));
+        prpurchase.setCellValueFactory(new PropertyValueFactory<>("PRAmount"));
+
+        prtbl.setItems(ReportPurchaseDisplay);
+    }
+
+    //tg706-data-selection-from-table-start
 public void SelectionMedicineData(){
     int i = inventorytbl.getSelectionModel().getSelectedIndex();
 
