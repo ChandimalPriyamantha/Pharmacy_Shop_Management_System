@@ -8,7 +8,6 @@ public class Medicine {
     private Double medicinePrice;
     private String medicineExpireDate;
 
-    private String medicineType
 
 
     public Medicine(String medicineID, String medicineName, int medicineQuantity, String medicineManufacturer, double medicinePrice, String medicineExpireDate) {

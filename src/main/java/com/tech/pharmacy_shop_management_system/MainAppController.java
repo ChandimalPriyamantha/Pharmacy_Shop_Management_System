@@ -591,8 +591,7 @@ public class MainAppController implements Initializable {
                         result.getInt("quantity"),
                         result.getString("manufacturer"),
                         result.getDouble("price"),
-                        result.getString("expireDate"),
-                        result.getString("type"));
+                        result.getString("expireDate"));
 
                 listMedicineData.add(medicinetable);
             }
